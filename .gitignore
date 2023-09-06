@@ -1,5 +1,6 @@
 data/
-env/
+*env/
+*/.ipynb_checkpoints/
 .DS_Store
 .csv
 __pycache__/
