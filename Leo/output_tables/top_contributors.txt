@@ -1,156 +1,156 @@
-┌──────────────────────────────────────────────────────────────┐
-├──────────────────────────────────────────────────────────────┤
-│        Top Contributors for Each Principal Component         │
-├──────────────────────────────────────────────────────────────┤
-│                                                              │
-├──────────────────────────────────────────────────────────────┤
-│               Top contributors for component 1               │
-├──────────────────────────────────────────────────────────────┤
-│                                                              │
-│ Symptom_Sensations_skin_burning_no_rash: 0.1418              │
-│ Symptom_Eye_Vision_sensitivity_to_light: 0.1373              │
-│ Symptom_Gastrointestinal_abdominal_pain: 0.1337              │
-│ Symptom_Muscle_spasms: 0.1327                                │
-│ Symptom_Nausea: 0.1325                                       │
-│ Symptom_Eye_vision_symptoms: 0.1324                          │
-│ Symptom_Neuralgia: 0.1323                                    │
-│ Symptom_Chills_flushing_sweats: 0.1312                       │
-│ Symptom_Sensations_tingling_prickling: 0.1282                │
-│ Symptom_Ear_sensitivity_to_noise: 0.1282                     │
-│                                                              │
-├──────────────────────────────────────────────────────────────┤
-│               Top contributors for component 2               │
-├──────────────────────────────────────────────────────────────┤
-│                                                              │
-│ Symptom_Memory_long: 0.2153                                  │
-│ Symptom_Cognitive_Functioning_executive: 0.1922              │
-│ Symptom_Speech_difficulty_finding_words: 0.1797              │
-│ Symptom_Cognitive_Functioning_slowedthoughts: 0.1655         │
-│ Symptom_Headaches_brain_pressure: 0.1420                     │
-│ Symptom_Headaches_after_mental_exertion: 0.1247              │
-│ Symptom_Ear_sensitivity_to_noise: 0.1201                     │
-│ Symptom_Eye_Vision_sensitivity_to_light: 0.1192              │
-│ Symptom_Speech_difficulty_communicating_writing: 0.1158      │
-│ Symptom_Cognitive_Functioning_attentionconcentration: 0.1139 │
-│                                                              │
-├──────────────────────────────────────────────────────────────┤
-│               Top contributors for component 3               │
-├──────────────────────────────────────────────────────────────┤
-│                                                              │
-│ Symptom_Sensations_skin_burning_no_rash: 0.2523              │
-│ Symptom_Sensations_tingling_prickling: 0.2522                │
-│ Symptom_Sensations_numbness_loss_sensation: 0.2252           │
-│ Symptom_Vibrating_sensations: 0.2167                         │
-│ Symptom_Tremors: 0.2068                                      │
-│ Symptom_Sensations_electrical_zaps: 0.1714                   │
-│ Symptom_Neuralgia: 0.1698                                    │
-│ Symptom_Muscle_spasms: 0.1436                                │
-│ Symptom_Bulging_veins: 0.1136                                │
-│ Symptom_Sensations_coldness: 0.1066                          │
-│                                                              │
-├──────────────────────────────────────────────────────────────┤
-│               Top contributors for component 4               │
-├──────────────────────────────────────────────────────────────┤
-│                                                              │
-│ Symptom_Diarrhea: 0.1892                                     │
-│ Symptom_Gastrointestinal_abdominal_pain: 0.1839              │
-│ Symptom_Nausea: 0.1790                                       │
-│ Symptom_Runny_nose: 0.1742                                   │
-│ Symptom_Loss_of_appetite: 0.1623                             │
-│ Symptom_Sneezing: 0.1550                                     │
-│ Symptom_Gastrointestinal_hyperactive_bowel: 0.1410           │
-│ Symptom_Gastrointestinal_feeling_full_quickly_eating: 0.1306 │
-│ Symptom_SkinAllergy_itchy_eyes: 0.1284                       │
-│ Symptom_SkinAllergy_itchy_skin: 0.1231                       │
-│                                                              │
-├──────────────────────────────────────────────────────────────┤
-│               Top contributors for component 5               │
-├──────────────────────────────────────────────────────────────┤
-│                                                              │
-│ Symptom_Loss_of_taste: 0.1852                                │
-│ Symptom_Memory_long: 0.1696                                  │
-│ Symptom_Speech_difficulty_finding_words: 0.1639              │
-│ Symptom_Phantom_smell: 0.1443                                │
-│ Symptom_Altered_taste: 0.1426                                │
-│ Symptom_Speech_difficulty_communicating_writing: 0.0926      │
-│ Symptom_Slurring_words: 0.0908                               │
-│ Symptom_SkinAllergy_itchy_skin: 0.0883                       │
-│ Symptom_Cough_with_mucus: 0.0873                             │
-│ Symptom_Fever: 0.0855                                        │
-│                                                              │
-├──────────────────────────────────────────────────────────────┤
-│               Top contributors for component 6               │
-├──────────────────────────────────────────────────────────────┤
-│                                                              │
-│ Symptom_Night_sweats: 0.2884                                 │
-│ Symptom_Waking_up_in_night: 0.2715                           │
-│ Symptom_Sleep_other: 0.2610                                  │
-│ Symptom_Vivid_dreams: 0.2581                                 │
-│ Symptom_Chills_flushing_sweats: 0.2071                       │
-│ Symptom_Nightmares: 0.1879                                   │
-│ Symptom_Waking_up_early: 0.1488                              │
-│ Symptom_Temp_lability: 0.1428                                │
-│ Symptom_Merged_temperature_other_temp_issues: 0.1294         │
-│ Symptom_Diarrhea: 0.1206                                     │
-│                                                              │
-├──────────────────────────────────────────────────────────────┤
-│               Top contributors for component 7               │
-├──────────────────────────────────────────────────────────────┤
-│                                                              │
-│ Symptom_Eye_Vision_other_eye_issues: 0.1829                  │
-│ Symptom_Tinnitus: 0.1773                                     │
-│ Symptom_Other_ear_hearing_symptoms: 0.1507                   │
-│ Symptom_Ear_sensitivity_to_noise: 0.1461                     │
-│ Symptom_Heart_palpitations: 0.1453                           │
-│ Symptom_Tachycardia: 0.1385                                  │
-│ Symptom_Eye_vision_symptoms: 0.1376                          │
-│ Symptom_Eye_Vision_dry_eyes: 0.1359                          │
-│ Symptom_Ear_changes_to_ear_canal: 0.1185                     │
-│ Symptom_Eye_Vision_sensitivity_to_light: 0.1159              │
-│                                                              │
-├──────────────────────────────────────────────────────────────┤
-│               Top contributors for component 8               │
-├──────────────────────────────────────────────────────────────┤
-│                                                              │
-│ Symptom_Nausea: 0.2928                                       │
-│ Symptom_Loss_of_appetite: 0.2572                             │
-│ Symptom_Diarrhea: 0.2466                                     │
-│ Symptom_Gastrointestinal_abdominal_pain: 0.1783              │
-│ Symptom_Cognitive_Functioning_slowedthoughts: 0.1631         │
-│ Symptom_Dizziness_vertigo: 0.1546                            │
-│ Symptom_Gastrointestinal_feeling_full_quickly_eating: 0.1538 │
-│ Symptom_Cognitive_Functioning_executive: 0.1262              │
-│ Symptom_Speech_difficulty_finding_words: 0.1235              │
-│ Symptom_Vomiting: 0.1124                                     │
-│                                                              │
-├──────────────────────────────────────────────────────────────┤
-│               Top contributors for component 9               │
-├──────────────────────────────────────────────────────────────┤
-│                                                              │
-│ Symptom_Loss_of_taste: 0.1683                                │
-│ Symptom_Nightmares: 0.1663                                   │
-│ Symptom_Vivid_dreams: 0.1619                                 │
-│ Symptom_Diarrhea: 0.1449                                     │
-│ Symptom_Awakened_cannot_breathe: 0.1436                      │
-│ Symptom_Gastrointestinal_abdominal_pain: 0.1428              │
-│ Symptom_Loss_of_appetite: 0.1411                             │
-│ Symptom_Acid_reflux: 0.1399                                  │
-│ Symptom_Gastrointestinal_feeling_full_quickly_eating: 0.1322 │
-│ Symptom_Phantom_smell: 0.1262                                │
-│                                                              │
-├──────────────────────────────────────────────────────────────┤
-│              Top contributors for component 10               │
-├──────────────────────────────────────────────────────────────┤
-│                                                              │
-│ Symptom_Temp_lability: 0.3692                                │
-│ Symptom_Loss_of_taste: 0.3030                                │
-│ Symptom_Fever: 0.2632                                        │
-│ Symptom_Phantom_smell: 0.2569                                │
-│ Symptom_Altered_taste: 0.2262                                │
-│ Symptom_Tachycardia: 0.1465                                  │
-│ Symptom_Phantom_taste: 0.1303                                │
-│ Symptom_Chills_flushing_sweats: 0.1218                       │
-│ Symptom_Heart_palpitations: 0.1051                           │
-│ Symptom_Headaches_behind_eyes: 0.0919                        │
-│                                                              │
-└──────────────────────────────────────────────────────────────┘
+┌───────────────────────────────────────────────────────────────┐
+├───────────────────────────────────────────────────────────────┤
+│         Top Contributors for Each Principal Component         │
+├───────────────────────────────────────────────────────────────┤
+│                                                               │
+├───────────────────────────────────────────────────────────────┤
+│                Top contributors for component 1               │
+├───────────────────────────────────────────────────────────────┤
+│                                                               │
+│ Symptom_Sensations_skin_burning_no_rash: 0.1460               │
+│ Symptom_Eye_Vision_sensitivity_to_light: 0.1412               │
+│ Symptom_Muscle_spasms: 0.1364                                 │
+│ Symptom_Eye_vision_symptoms: 0.1360                           │
+│ Symptom_Neuralgia: 0.1353                                     │
+│ Symptom_Ear_sensitivity_to_noise: 0.1318                      │
+│ Symptom_Gastrointestinal_abdominal_pain: 0.1312               │
+│ Symptom_Tremors: 0.1292                                       │
+│ Symptom_Sensations_tingling_prickling: 0.1282                 │
+│ Symptom_Nausea: 0.1263                                        │
+│                                                               │
+├───────────────────────────────────────────────────────────────┤
+│                Top contributors for component 2               │
+├───────────────────────────────────────────────────────────────┤
+│                                                               │
+│ Symptom_Cognitive_Functioning_problemsolving: 0.3088          │
+│ Symptom_Memory_long: 0.2958                                   │
+│ Symptom_Cognitive_Functioning_thinking: 0.2913                │
+│ Symptom_Cognitive_Functioning_slowedthoughts: 0.2416          │
+│ Symptom_Speech_difficulty_understanding_others_speech: 0.2280 │
+│ Symptom_Cognitive_Functioning_attentionconcentration: 0.2120  │
+│ Symptom_Speech_difficulty_speaking_complete_sentences: 0.1866 │
+│ Symptom_Headaches_after_mental_exertion: 0.1727               │
+│ Flag_MECFS: 0.1217                                            │
+│ Symptom_Headaches_brain_pressure: 0.1159                      │
+│                                                               │
+├───────────────────────────────────────────────────────────────┤
+│                Top contributors for component 3               │
+├───────────────────────────────────────────────────────────────┤
+│                                                               │
+│ Symptom_Sensations_skin_burning_no_rash: 0.1952               │
+│ Symptom_Sensations_numbness_loss_sensation: 0.1829            │
+│ Symptom_Sensations_tingling_prickling: 0.1819                 │
+│ Symptom_Neuralgia: 0.1589                                     │
+│ Symptom_Sensations_electrical_zaps: 0.1587                    │
+│ Symptom_Vibrating_sensations: 0.1565                          │
+│ Symptom_Tremors: 0.1517                                       │
+│ Symptom_Muscle_spasms: 0.1311                                 │
+│ Symptom_Eye_vision_symptoms: 0.1116                           │
+│ Symptom_Sensations_numbness_one_sided_weakness: 0.0912        │
+│                                                               │
+├───────────────────────────────────────────────────────────────┤
+│                Top contributors for component 4               │
+├───────────────────────────────────────────────────────────────┤
+│                                                               │
+│ Symptom_Headaches_behind_eyes: 0.3339                         │
+│ Symptom_Headaches_temples: 0.2961                             │
+│ Symptom_Headaches_stiff_neck: 0.2529                          │
+│ Symptom_Headaches_base_of_skull: 0.2348                       │
+│ Symptom_Headaches_brain_pressure: 0.2083                      │
+│ Symptom_Headaches_migraines: 0.1988                           │
+│ Symptom_Headaches_diffuse: 0.1902                             │
+│ Symptom_Headaches_after_mental_exertion: 0.1853               │
+│ Symptom_Eye_Vision_eye_pressure_pain: 0.1600                  │
+│ Symptom_Gastrointestinal_abdominal_pain: 0.1366               │
+│                                                               │
+├───────────────────────────────────────────────────────────────┤
+│                Top contributors for component 5               │
+├───────────────────────────────────────────────────────────────┤
+│                                                               │
+│ Symptom_Pain_burning_chest: 0.2194                            │
+│ Symptom_Tightness_of_chest: 0.2161                            │
+│ Symptom_Awakened_cannot_breathe: 0.2084                       │
+│ Symptom_Gasping_air_normal_oxygen: 0.1970                     │
+│ Symptom_Vibrating_sensations: 0.1657                          │
+│ Symptom_Heart_palpitations: 0.1596                            │
+│ Symptom_Sensations_tingling_prickling: 0.1581                 │
+│ Symptom_Shortness_of_breath: 0.1520                           │
+│ Symptom_Headaches_brain_pressure: 0.1471                      │
+│ Symptom_Tachycardia: 0.1426                                   │
+│                                                               │
+├───────────────────────────────────────────────────────────────┤
+│                Top contributors for component 6               │
+├───────────────────────────────────────────────────────────────┤
+│                                                               │
+│ Symptom_Waking_up_in_night: 0.3482                            │
+│ Flag_MECFS: 0.3025                                            │
+│ Symptom_Difficulty_falling_asleep: 0.2567                     │
+│ Symptom_Night_sweats: 0.2445                                  │
+│ Symptom_Vivid_dreams: 0.2437                                  │
+│ Symptom_Sleep_other: 0.2176                                   │
+│ Symptom_Nightmares: 0.1816                                    │
+│ Symptom_Waking_up_early: 0.1801                               │
+│ Symptom_Lucid_dreams: 0.1184                                  │
+│ Symptom_Sensations_skin_burning_no_rash: 0.1160               │
+│                                                               │
+├───────────────────────────────────────────────────────────────┤
+│                Top contributors for component 7               │
+├───────────────────────────────────────────────────────────────┤
+│                                                               │
+│ Symptom_Eye_Vision_other_eye_issues: 0.1852                   │
+│ Symptom_Tinnitus: 0.1501                                      │
+│ Symptom_Eye_Vision_dry_eyes: 0.1481                           │
+│ Symptom_Other_ear_hearing_symptoms: 0.1373                    │
+│ Symptom_Ear_sensitivity_to_noise: 0.1284                      │
+│ Symptom_Difficulty_swallowing: 0.1268                         │
+│ Symptom_Changes_in_voice: 0.1251                              │
+│ Symptom_SkinAllergy_itchy_eyes: 0.1073                        │
+│ Symptom_Pain_burning_chest: 0.1069                            │
+│ Symptom_Eye_vision_symptoms: 0.1047                           │
+│                                                               │
+├───────────────────────────────────────────────────────────────┤
+│                Top contributors for component 8               │
+├───────────────────────────────────────────────────────────────┤
+│                                                               │
+│ Symptom_Loss_of_smell: 0.2550                                 │
+│ Symptom_Joint_pain: 0.2098                                    │
+│ Symptom_Phantom_smell: 0.1927                                 │
+│ Symptom_Altered_smell: 0.1638                                 │
+│ Symptom_Dry_cough: 0.1638                                     │
+│ Symptom_Bone_ache_burning: 0.1586                             │
+│ Symptom_Rattling_breath: 0.1549                               │
+│ Symptom_Cough_with_mucus: 0.1492                              │
+│ Symptom_SkinAllergy_itchy_skin: 0.1471                        │
+│ Symptom_Awakened_cannot_breathe: 0.1382                       │
+│                                                               │
+├───────────────────────────────────────────────────────────────┤
+│                Top contributors for component 9               │
+├───────────────────────────────────────────────────────────────┤
+│                                                               │
+│ Symptom_Chills_flushing_sweats: 0.2930                        │
+│ Symptom_Elevated_temp: 0.2566                                 │
+│ Symptom_Merged_temperature_other_temp_issues: 0.2545          │
+│ Symptom_Fever: 0.1957                                         │
+│ Symptom_SkinAllergy_itchy_skin: 0.1547                        │
+│ Symptom_SkinAllergy_itchy_eyes: 0.1411                        │
+│ Symptom_Night_sweats: 0.1367                                  │
+│ Symptom_Heat_intolerance: 0.1328                              │
+│ Symptom_Skin_rashes: 0.1296                                   │
+│ Symptom_Eye_Vision_other_eye_issues: 0.1288                   │
+│                                                               │
+├───────────────────────────────────────────────────────────────┤
+│               Top contributors for component 10               │
+├───────────────────────────────────────────────────────────────┤
+│                                                               │
+│ Symptom_Joint_pain: 0.2145                                    │
+│ Flag_MECFS: 0.2134                                            │
+│ Symptom_SkinAllergy_itchy_skin: 0.2006                        │
+│ Symptom_Muscle_aches: 0.1775                                  │
+│ Symptom_Cognitive_Functioning_thinking: 0.1477                │
+│ Symptom_Cognitive_Functioning_attentionconcentration: 0.1366  │
+│ Symptom_Dry_cough: 0.1360                                     │
+│ Symptom_Sensations_weakness: 0.1353                           │
+│ Symptom_Sensations_skin_burning_no_rash: 0.1342               │
+│ Symptom_SkinAllergy_itchy_eyes: 0.1260                        │
+│                                                               │
+└───────────────────────────────────────────────────────────────┘
