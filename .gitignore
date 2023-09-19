@@ -4,4 +4,5 @@ data/
 .DS_Store
 .csv
 __pycache__/
+Chris/graphs/
 wandb/
