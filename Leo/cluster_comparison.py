@@ -10,7 +10,7 @@ def drop_na_values(df1, df2):
 
 # Used to compute the contingency table for two attributes
 def perform_umap(df, n_neighbors=15, min_dist=0.1, n_components=2):
-    umap_model = umap.UMAP(n_neighbors=n_neighbors, min_dist=min_dist, n_components=n_components, random_state=42)
+    umap_model = umap.UMAP(n_neighbors=n_neighbors, min_dist=min_dist, n_components=n_components)
     return umap_model.fit_transform(df)
 
 # Used to compute the contingency table for two attributes
