@@ -116,5 +116,6 @@ def genetic_algorithm(dataset, population_size=20, n_generations=100, selection_
     final_scores = Parallel(n_jobs=-1)(delayed(fitness)(ind, dataset) for ind in population)
     best_idx = max(range(len(final_scores)), key=lambda i: final_scores[i])
     best_individual = population[best_idx]
+    best_columns = [col for col, keep in zip(dataset['data_symp_groups_all'].columns, best_individual[:n_features]) if keep]
 
-    return best_individual, best_fitnesses, variances
+    return best_individual, best_fitnesses, variances, best_columns, n_features

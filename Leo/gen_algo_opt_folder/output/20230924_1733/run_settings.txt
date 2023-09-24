@@ -1,0 +1,1 @@
+population_size=20, n_generations=10, selection_rate=0.3, mutation_rate=0.05, increased_mutation_rate=0.2, num_elites=None

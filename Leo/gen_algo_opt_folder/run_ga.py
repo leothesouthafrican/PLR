@@ -5,30 +5,26 @@ sys.path.append("../")
 
 from data_loading import load_data
 from genetic_algorithm import genetic_algorithm
-import matplotlib.pyplot as plt
-import numpy as np
+from folder_management import create_output_folders
+from file_writer import write_run_settings, write_best_genome
+from plotting import save_fitness_plot
 
 def main():
     dataset = load_data()
 
-    # Specify other parameters as needed
-    best_individual, best_fitnesses, variances = genetic_algorithm(dataset, population_size=20, n_generations=10, selection_rate=0.3, mutation_rate=0.05, increased_mutation_rate = 0.2, num_elites=None)
+    best_individual, best_fitnesses, variances, best_columns, n_features = genetic_algorithm(dataset, population_size=20, n_generations=2, selection_rate=0.3, mutation_rate=0.05, increased_mutation_rate=0.2, num_elites=None)
 
-    # Print the best individual's genome and fitness
-    print("Best Individual's Genome:", best_individual)
-    print("Best Individual's Fitness:", max(best_fitnesses))
+    param_labels = ["n_neighbors", "min_dist", "min_cluster_size", "n_components"]
 
-    plt.figure(figsize=(10, 6))
-    plt.plot(range(1, len(best_fitnesses) + 1), best_fitnesses, label='Best Fitness')
-    plt.fill_between(range(1, len(best_fitnesses) + 1), 
-                     np.array(best_fitnesses) - np.array(variances), 
-                     np.array(best_fitnesses) + np.array(variances), 
-                     color='gray', alpha=0.5, label='Variance')
-    plt.xlabel('Generation')
-    plt.ylabel('Fitness')
-    plt.title('Evolution of Best Fitness Over Generations')
-    plt.legend()
-    plt.show()
+    sub_folder_path = create_output_folders()
+    
+    settings_str = "population_size=20, n_generations=10, selection_rate=0.3, mutation_rate=0.05, increased_mutation_rate=0.2, num_elites=None\n"
+    write_run_settings(sub_folder_path, settings_str)
+
+    write_best_genome(sub_folder_path, best_columns, param_labels, best_individual, n_features, best_fitnesses)
+    
+    save_fitness_plot(sub_folder_path, best_fitnesses, variances)
+
 
 if __name__ == "__main__":
     main()
