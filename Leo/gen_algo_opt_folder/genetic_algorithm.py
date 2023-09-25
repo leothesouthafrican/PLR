@@ -5,8 +5,17 @@ from cluster_comparison import perform_umap, perform_hdbscan, calculate_silhouet
 from tqdm import tqdm
 from joblib import Parallel, delayed
 import numpy as np
+import wandb
 
-def genetic_algorithm(dataset, population_size=20, n_generations=100, selection_rate=0.3, mutation_rate=0.05, increased_mutation_rate = 0.2, num_elites=None):
+from datetime import datetime
+current_time = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+
+
+run_name = f'genetic_algorithm_run_{current_time}'
+wandb.init(project='PLR', name=run_name)
+
+
+def genetic_algorithm(dataset, population_size=20, n_generations=100, selection_rate=0.3, mutation_rate=0.05, increased_mutation_rate=0.2, num_elites=None):
     if num_elites is None:
         num_elites = int(0.1 * population_size)
 
@@ -35,26 +44,35 @@ def genetic_algorithm(dataset, population_size=20, n_generations=100, selection_
 
         return score
     
+    # Best known feature vector
+    best_feature_vector = (
+        1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0,
+        1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0,
+        0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 0, 0, 
+        1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 
+        0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0, 1, 
+        1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 1, 
+        1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 
+        1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 0
+    )
+
     # Initialize population
     population = []
-    for _ in range(population_size // 4):
-        feature_vector = tuple(random.choices([0, 1], k=n_features))
 
-        # First set of individuals (close to best performing genome)
-        population.append(feature_vector + (0.6492373060806188, 0.03733592291556887, 29, 47))
-        population.append(feature_vector + (0.6757706356698308, 0.04030749239323905, 38, 35))
-        
-        # Second set of individuals (random within a specific range)
-        population.append(feature_vector + (random.uniform(0.1, 5), random.uniform(0.045, 0.75), random.randint(30, 45), random.randint(8, 22)))
-        population.append(feature_vector + (random.uniform(6, 20), random.uniform(0.76, 1.0), random.randint(46, 50), random.randint(23, 25)))
-        
-        # Third set of individuals (another set close to best performing genome but with slight variations)
-        population.append(feature_vector + (0.6757706356698308 + random.uniform(-0.1, 0.1), 0.04030749239323905 + random.uniform(-0.01, 0.01), 29 + random.randint(-2, 2), 48 + random.randint(-2, 2)))
-        population.append(feature_vector + (0.6757706356698308 + random.uniform(-0.1, 0.1), 0.04030749239323905 + random.uniform(-0.01, 0.01), 38 + random.randint(-2, 2), 35 + random.randint(-2, 2)))
+    for _ in range(population_size // 10):  # Adjusted to account for increased population initialization
+        # Individuals close to the best performing genome
+        population.append(best_feature_vector + (0.6492373060806188, 0.03733592291556887, 29, 47))
+        population.append(best_feature_vector + (0.6757706356698308, 0.04030749239323905, 38, 35))
 
-        # Fourth set of individuals (another set of random individuals)
-        population.append(feature_vector + (random.uniform(21, 35), random.uniform(0.26, 0.5), random.randint(21, 35), random.randint(25, 38)))
-        population.append(feature_vector + (random.uniform(36, 45), random.uniform(0.51, 0.75), random.randint(36, 45), random.randint(39, 65)))
+        # Slight variations of the above individuals
+        population.append(best_feature_vector + (0.6757706356698308 + random.uniform(-0.1, 0.1), 0.04030749239323905 + random.uniform(-0.01, 0.01), 29 + random.randint(-2, 2), 48 + random.randint(-2, 2)))
+        population.append(best_feature_vector + (0.6757706356698308 + random.uniform(-0.1, 0.1), 0.04030749239323905 + random.uniform(-0.01, 0.01), 38 + random.randint(-2, 2), 35 + random.randint(-2, 2)))
+
+        # Diverse genome exploration - now bumped up to 4 individuals
+        population.append(best_feature_vector + (random.uniform(0.1, 5), random.uniform(0.045, 0.75), random.randint(30, 45), random.randint(8, 22)))
+        population.append(best_feature_vector + (random.uniform(6, 20), random.uniform(0.76, 1.0), random.randint(46, 50), random.randint(23, 25)))
+        population.append(best_feature_vector + (random.uniform(21, 35), random.uniform(0.26, 0.5), random.randint(21, 35), random.randint(25, 38)))
+        population.append(best_feature_vector + (random.uniform(36, 45), random.uniform(0.51, 0.75), random.randint(36, 45), random.randint(39, 65)))
 
     # To store best fitness and variance for each generation
     best_fitnesses = []
@@ -66,6 +84,23 @@ def genetic_algorithm(dataset, population_size=20, n_generations=100, selection_
         best_fitness = max(scores)
         best_fitnesses.append(best_fitness)
         variances.append(np.var(scores))
+
+        # Log the metrics (without the genome) to wandb
+        wandb.log({
+            "Best Fitness": best_fitness,
+            "Variance": variances[generation]
+        })
+
+        best_idx = scores.index(best_fitness)
+        best_genome = population[best_idx]
+        best_genome_str = ', '.join(map(str, best_genome))
+        best_columns = [col for col, keep in zip(dataset['data_symp_groups_all'].columns, best_genome[:n_features]) if keep]
+
+
+        # Create and log a new table for this generation
+        table_data = [(generation, best_genome_str, ', '.join(best_columns), best_fitness)]
+        table = wandb.Table(columns=["Generation", "Best Genome", "Best Columns", "Fitness"], data=table_data)
+        wandb.log({f"Best Genomes (Generation {generation})": table})
 
         if best_fitness <= last_best_fitness:
             mutation_rate = increased_mutation_rate
