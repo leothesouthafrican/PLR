@@ -3,7 +3,7 @@
 import pandas as pd
 
 # Define the base path at the top of the file
-BASE_PATH = '/root/PLR/Leo/data/'
+BASE_PATH = '/Users/leo/Programming/PLR/Leo/data/'
 
 def load_data():
     raw_data = pd.read_csv(BASE_PATH + 'cleaned_data_SYMPTOMS_9_13_23_DNA.csv')

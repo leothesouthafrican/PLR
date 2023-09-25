@@ -133,18 +133,20 @@ def genetic_algorithm(dataset, population_size=20, n_generations=100, selection_
         for i in range(len(children)):
             if random.random() < mutation_rate:
                 mutate_pos = random.randint(0, len(children[i]) - 1)
-                if mutate_pos < n_features:
+                if mutate_pos < n_features:  # For feature selection mutations
                     mutated_bit = 1 - children[i][mutate_pos]
                     children[i] = children[i][:mutate_pos] + (mutated_bit,) + children[i][mutate_pos+1:]
                 else:
-                    new_value = random.choice([
-                        random.randint(5, 50),
-                        random.uniform(0.0, 1.0),
-                        random.randint(5, 50),
-                        random.randint(2, 25)
-                    ])
+                    # For parameter mutations
+                    if mutate_pos == n_features:  # for n_neighbors
+                        new_value = int(best_individual[mutate_pos] + np.random.normal(0, 10))
+                    elif mutate_pos == n_features + 1:  # for min_dist
+                        new_value = best_individual[mutate_pos] + np.random.normal(0, 0.35)
+                        new_value = max(0, min(new_value, 1))
+                    elif mutate_pos == n_features + 2 or mutate_pos == n_features + 3:  # for min_cluster_size and n_components
+                        new_value = int(best_individual[mutate_pos] + np.random.normal(0, 10))
                     children[i] = children[i][:mutate_pos] + (new_value,) + children[i][mutate_pos+1:]
-                mutations += 1
+                    mutations += 1
 
         population = elites + selected_population + children
 
