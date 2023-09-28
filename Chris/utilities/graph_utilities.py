@@ -1,9 +1,21 @@
 import networkx as nx
 from itertools import combinations
 import pandas as pd
-import pickle as pk
-from pathlib import Path
+from scipy.spatial import distance
+import pickle
 import time
+
+
+def load_symptom_data(data_path):
+    df = pd.read_csv(data_path, index_col=0)
+    df = df.fillna(value=0)
+
+    symptoms = [
+        col
+        for col in df.columns
+        if 'Symptom' in col
+    ]
+    return df[symptoms]
 
 
 def pairwise_weight(v1, v2):
@@ -23,6 +35,45 @@ def pairwise_weight(v1, v2):
          float: weight
     """
     return (v1 * v2).sum()
+
+
+def pairwise_relative_weight(v1, v2):
+    """
+    Weight metric to be used in a Networkx weighted graph.
+
+    This version computes the number of shared elements in binary vectors,
+    divided by the sum of the larger two vectors.
+
+    This is taking the number of shared symptoms relative to the symptom count
+    of the patient with the most symptoms.
+
+    Args:
+        v1: numpy.array
+        v2: numpy.array
+            Vectors to compute the weight between
+
+    Returns:
+         float: weight
+    """
+    return (v1 * v2).sum() / max(v1.sum(), v2.sum())
+
+
+def pairwise_hamming_complement(v1, v2):
+    """
+    Weight metric to be used in a Networkx weighted graph.
+
+    This version uses 1 minus the hamming distance.
+
+    Args:
+        v1: numpy.array
+        v2: numpy.array
+            Vectors to compute the weight between
+
+    Returns:
+         float: weight
+    """
+
+    return 1 - distance.hamming(v1, v2)
 
 
 def build_graph(
@@ -80,12 +131,18 @@ def build_graph(
 
 
 def build_patient_graph(
-        data_path='../../data/cleaned_data_SYMPTOMS_9_7_23.csv',
-        save_path='../graphs/full_patient_graph_shared_symptom_count.edgelist'
+        data_path='../../data/cleaned_data_SYMPTOMS_9_13_23.csv',
+        save_path='../graphs/full_patient_graph_shared_symptom_count.edgelist',
+        weight_metric=pairwise_weight,
+        threshold=0.0
 ):
-    df = pd.read_csv(data_path, index_col=0)
-    df = df.fillna(value=0)
-    return build_graph(df.transpose(), save_path=save_path)
+    df = load_symptom_data(data_path)
+    return build_graph(
+        df.transpose(),
+        save_path=save_path,
+        weight_metric=weight_metric,
+        threshold=threshold
+    )
 
 
 def modularity(partition, graph=None, nodelist=None, gamma=1):
@@ -147,20 +204,8 @@ def modularity_sweep(partition, nodelist=None):
     pass
 
 
-if __name__ == '__main__':
+def load_communities(path='../graphs/full_patient_graph_louvain_communities_gamma_1.pickle'):
+    with open(path, 'rb') as infile:
+        communities = pickle.load(infile)
 
-    start = time.time()
-    g1 = build_patient_graph()
-    print('built graph in %d seconds.' % (time.time() - start))
-
-    # start = time.time()
-    # g1 = nx.read_gml('../graphs/full_patient_graph_shared_symptom_count.gml.gz')
-    # print('loaded gml.gz in %d seconds.' % (time.time() - start))
-
-    # start = time.time()
-    # g1 = nx.read_adjlist('../graphs/full_patient_graph_shared_symptom_count.adjlist', nodetype=int)
-    # print('loaded adjlist in %d seconds.' % (time.time() - start))
-
-    # start = time.time()
-    # g1 = nx.read_weighted_edgelist('../graphs/full_patient_graph_shared_symptom_count.edgelist', nodetype=int)
-    # print('loaded adjlist in %d seconds.' % (time.time() - start))
+    return communities
