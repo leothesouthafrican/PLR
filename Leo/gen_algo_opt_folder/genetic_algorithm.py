@@ -1,7 +1,7 @@
 #genetic_algorithm.py
 
 import random
-from cluster_comparison import perform_umap, perform_hdbscan, calculate_silhouette
+from Leo.gen_algo_opt_folder.cluster_comparison import perform_umap, perform_hdbscan, calculate_silhouette
 from tqdm import tqdm
 from joblib import Parallel, delayed
 import numpy as np
