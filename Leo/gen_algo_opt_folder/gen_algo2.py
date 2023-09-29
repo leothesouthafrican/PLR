@@ -112,6 +112,18 @@ class GeneticAlgorithm:
             current_best_fitness = scores[max_fitness_index]
             current_best_individual = population[max_fitness_index]
 
+            # Get the best genome string and related columns
+            best_genome_str = ', '.join(map(str, current_best_individual))
+            try:
+                best_columns = [col for col, bit in zip(self.dataset['data_symp_groups_all'].columns, current_best_individual[:self.n_features]) if bit]
+            except KeyError:
+                best_columns = []
+
+            # Create a table for wandb logging
+            table_data = [(generation, best_genome_str, ', '.join(best_columns), current_best_fitness)]
+            table = wandb.Table(columns=["Generation", "Best Genome", "Best Columns", "Fitness"], data=table_data)
+            
+
             if current_best_fitness > best_individual_fitness:
                 best_individual = current_best_individual
                 best_individual_fitness = current_best_fitness
@@ -125,6 +137,8 @@ class GeneticAlgorithm:
             
             # 3. Selection: select potential parents with a probability related to their fitness.
             total_fitness = sum(scores)
+            if total_fitness == 0:
+                raise ValueError("Total fitness is zero. Please check the fitness calculation.")
             probabilities = [score / total_fitness for score in scores]
             parents_indices = np.random.choice(len(population), size=int(self.population_size * self.selection_rate), p=probabilities, replace=False)
             parents = [population[i] for i in parents_indices]
@@ -153,10 +167,12 @@ class GeneticAlgorithm:
             population = children + elites
 
             # Calculate variance for analysis purposes.
+            print("Before append, variances:", variances)
             variances.append(np.var(scores))
+            print("After append, variances:", variances)
 
-            # Log the results using wandb (or another logging tool).
-            wandb.log({'Best Fitness': best_individual_fitness, 'Variance': variances[-1], 'Generation': generation})
+            # Log the results using wandb
+            wandb.log({'Best Fitness': current_best_fitness, 'Variance': variances[-1], 'Generation': generation, f"Best Genomes (Generation {generation})": table})
 
             # Update the mutation rate based on the progress.
             if current_best_fitness > self.last_best_fitness:
