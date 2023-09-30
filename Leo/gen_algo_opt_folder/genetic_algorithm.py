@@ -21,7 +21,7 @@ class GeneticAlgorithm:
                  increased_mutation_rate=0.2, num_elites=None, depth_range=(1,5), latent_dim_range=(2, 128),
                  n_epochs=5, score_metric=silhouette_score, clustering_algo="hdbscan", parent_selection_method="roulette",
                  crossover_method="one_point",min_cluster_size_range=(2, 50), learning_rate=0.001, batch_size=64,
-                device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")):
+                device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu"), n_jobs = -1):
         
         self.dataset = dataset
         self.population_size = population_size
@@ -45,6 +45,7 @@ class GeneticAlgorithm:
         self.fitness_cache = {}
         self.last_best_fitness = -1
         self.device = device
+        self.n_jobs = n_jobs
 
     def _get_config_params(self):
         # Extract the names of the attributes in order to log them to wandb
@@ -208,10 +209,9 @@ class GeneticAlgorithm:
             best_fitness_this_gen = -np.inf
             best_genome_this_gen = None
 
-            for individual in fitness_eval_pbar:
-                fitness_val = self.fitness(individual)
-                fitness_values.append(fitness_val)
+            fitness_values = Parallel(n_jobs=self.n_jobs)(delayed(self.fitness)(individual) for individual in fitness_eval_pbar)
 
+            for fitness_val, individual in zip(fitness_values, population):
                 if fitness_val > best_fitness_this_gen:
                     best_fitness_this_gen = fitness_val
                     best_genome_this_gen = individual
@@ -260,7 +260,7 @@ class GeneticAlgorithm:
             })
 
         # Evaluate final fitness with a progress bar
-        final_fitness_values = [self.fitness(individual) for individual in tqdm(population, desc="Final Fitness Evaluation")]
+        final_fitness_values = Parallel(n_jobs=self.n_jobs)(delayed(self.fitness)(individual) for individual in tqdm(population, desc="Final Fitness Evaluation"))
 
         best_index = np.argmax(final_fitness_values)
 
