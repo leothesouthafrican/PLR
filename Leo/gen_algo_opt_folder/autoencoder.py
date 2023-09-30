@@ -1,54 +1,55 @@
+# Autoencoder.py
+
 import torch
 import torch.nn as nn
-import torch.optim as optim
 
 class Autoencoder(nn.Module):
-    def __init__(self, input_dim, encoding_dim=2):
+    def __init__(self, input_size, depth=3):
         super(Autoencoder, self).__init__()
-        
-        self.encoder = nn.Sequential(
-            nn.Linear(input_dim, 128),
-            nn.ReLU(),
-            nn.Linear(128, 64),
-            nn.ReLU(),
-            nn.Linear(64, encoding_dim)
-        )
-        
-        self.decoder = nn.Sequential(
-            nn.Linear(encoding_dim, 64),
-            nn.ReLU(),
-            nn.Linear(64, 128),
-            nn.ReLU(),
-            nn.Linear(128, input_dim),
-            nn.Sigmoid()  # you can also use Tanh or other activations depending on the nature of your data.
-        )
+        assert depth >= 1, "Depth must be at least 1"
 
-    def forward(self, x):
-        x = self.encoder(x)
-        x = self.decoder(x)
+        # Encoder layers
+        self.encoder_layers = nn.ModuleList([nn.Linear(input_size, input_size // 2)])
+        
+        current_input_size = input_size // 2
+        for i in range(depth - 1):
+            next_input_size = current_input_size // 2
+            self.encoder_layers.append(nn.Linear(current_input_size, next_input_size))
+            current_input_size = next_input_size
+
+        # Decoder layers
+        self.decoder_layers = nn.ModuleList([nn.Linear(input_size // (2**depth), input_size // (2**(depth-1)))])
+        for i in range(depth - 1, 0, -1):
+            self.decoder_layers.append(nn.Linear(input_size // (2**i), input_size // (2**(i-1))))
+
+        # Print layer structures
+        print("Encoder layers:")
+        for layer in self.encoder_layers:
+            print(layer)
+            
+        print("\nDecoder layers:")
+        for layer in self.decoder_layers:
+            print(layer)
+
+        self.relu = nn.ReLU()
+
+    def encode(self, x):
+        print("Encoding...")
+        for i, layer in enumerate(self.encoder_layers):
+            x = self.relu(layer(x))
+            print(f"Encoder Layer {i+1}: {x.shape}")
         return x
 
-def train_autoencoder(model, dataset, epochs=50, lr=0.001):
-    criterion = nn.MSELoss()
-    optimizer = optim.Adam(model.parameters(), lr=lr)
-    
-    for epoch in range(epochs):
-        for data in dataset:
-            # Zero the parameter gradients
-            optimizer.zero_grad()
-            
-            # Forward
-            outputs = model(data)
-            loss = criterion(outputs, data)
-            
-            # Backward
-            loss.backward()
-            
-            # Optimize
-            optimizer.step()
+    def decode(self, x):
+        print("Decoding...")
+        for i, layer in enumerate(self.decoder_layers):
+            x = self.relu(layer(x))
+            print(f"Decoder Layer {i+1}: {x.shape}")
+        return x
 
-    return model
-
-# To get the encoded representation
-def get_encoded_representation(model, data):
-    return model.encoder(data).detach().numpy()
+    def forward(self, x):
+        print(f"Input: {x.shape}")
+        x = self.encode(x)
+        x = self.decode(x)
+        print(f"Output: {x.shape}")
+        return x
