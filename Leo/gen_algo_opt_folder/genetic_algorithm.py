@@ -19,7 +19,7 @@ from autoencoder import Autoencoder
 class GeneticAlgorithm:
     def __init__(self, dataset, population_size=100, n_generations=20, max_depth=5, selection_rate=0.3, mutation_rate=0.05, 
                  increased_mutation_rate=0.2, num_elites=None, depth_range=(1,5), latent_dim_range=(2, 128),
-                 n_epochs=5, score_metric=silhouette_score, clustering_algo="hdbscan", parent_selection_method="roulette",
+                 n_epochs=20, score_metric=silhouette_score, clustering_algo="hdbscan", parent_selection_method="roulette",
                  crossover_method="one_point",min_cluster_size_range=(2, 50), learning_rate=0.001, batch_size=64,
                 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu"), n_jobs = -1):
         
@@ -85,7 +85,6 @@ class GeneticAlgorithm:
                 loss = criterion(outputs, batch_data)
                 loss.backward()
                 optimizer.step()
-
         # Extract latent features
         with torch.no_grad():
             latent_data = autoencoder.encode(data_tensor).cpu().numpy()
@@ -201,9 +200,9 @@ class GeneticAlgorithm:
         generation_variances = []
 
         # Main evolutionary loop
-        for generation in tqdm(range(self.n_generations), desc="Generations"):
+        for generation in tqdm(range(self.n_generations), desc="Generations — Best Fitness So Far {:.4f}".format(self.last_best_fitness)"):
             # Create a tqdm object for fitness evaluation progress
-            fitness_eval_pbar = tqdm(population, desc=f"Eval Fitness Gen {generation+1} - Best Fitness: {self.last_best_fitness}", leave=False)
+            fitness_eval_pbar = tqdm(population, desc=f"Eval Fitness Gen {generation+1} - Best Fitness: {best_fitness_this_gen}", leave=False)
             
             fitness_values = []
             best_fitness_this_gen = -np.inf
@@ -278,12 +277,44 @@ if __name__ == "__main__":
     # Load your data using load_data()
     dataset = load_data()
 
-    # Create a GeneticAlgorithm instance
-    ga = GeneticAlgorithm(dataset=dataset, population_size= 80, n_generations= 5)
+    # Creating a dictionary of hyperparameters
+    hyperparameters = {
+        "population_size": 160,
+        "n_generations": 25,
+        "selection_rate": 0.3,
+        "mutation_rate": 0.05,
+        "increased_mutation_rate": 0.2,
+        "num_elites": None,
+        "max_depth": 5,
+        "depth_range": (1, 5),
+        "latent_dim_range": (2, 128),
+        "n_epochs": 15,
+        "score_metric": silhouette_score,
+        "clustering_algo": "hdbscan",
+        "parent_selection_method": ["roulette", "tournament", "rank", "elite"],
+        "crossover_method": ["one_point", "two_point", "uniform"],
+        "min_cluster_size_range": (2, 50),
+        "learning_rate": 0.001,
+        "batch_size": 64,
+        "device": torch.device("cuda:0" if torch.cuda.is_available() else "cpu"),
+        "n_jobs": -1
+    }
 
-    # Run the GA
-    best_individual, best_fitness = ga.run()
+    #testing the GA for all combinations of parent selection and crossover methods
+    for parent_selection_method in hyperparameters["parent_selection_method"]:
+        for crossover_method in hyperparameters["crossover_method"]:
+            print("Parent Selection Method:", parent_selection_method)
+            print("Crossover Method:", crossover_method)
+            # Create a GeneticAlgorithm instance
+            ga = GeneticAlgorithm(dataset=dataset, population_size=hyperparameters["population_size"], n_generations=hyperparameters["n_generations"],
+                                selection_rate=hyperparameters["selection_rate"], mutation_rate=hyperparameters["mutation_rate"], 
+                                increased_mutation_rate=hyperparameters["increased_mutation_rate"], num_elites=hyperparameters["num_elites"],
+                                max_depth=hyperparameters["max_depth"], depth_range=hyperparameters["depth_range"], 
+                                latent_dim_range=hyperparameters["latent_dim_range"], n_epochs=hyperparameters["n_epochs"], 
+                                score_metric=hyperparameters["score_metric"], clustering_algo=hyperparameters["clustering_algo"], 
+                                parent_selection_method=parent_selection_method, crossover_method=crossover_method, 
+                                min_cluster_size_range=hyperparameters["min_cluster_size_range"], learning_rate=hyperparameters["learning_rate"], 
+                                batch_size=hyperparameters["batch_size"], device=hyperparameters["device"], n_jobs=hyperparameters["n_jobs"])
 
-    # Print the results
-    print("Best Individual:", best_individual)
-    print("Best Fitness:", best_fitness)
+            # Run the GA
+            best_individual, best_fitness = ga.run()
