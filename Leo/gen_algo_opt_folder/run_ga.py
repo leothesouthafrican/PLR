@@ -4,7 +4,7 @@ import sys
 sys.path.append("../")
 
 from data_loading import load_data
-from genetic_algorithm import genetic_algorithm
+from Leo.gen_algo_opt_folder.genetic_algorithm2 import genetic_algorithm
 from folder_management import create_output_folders
 from file_writer import write_run_settings, write_best_genome
 from plotting import save_fitness_plot
