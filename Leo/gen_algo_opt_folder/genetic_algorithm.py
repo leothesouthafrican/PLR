@@ -184,7 +184,7 @@ class GeneticAlgorithm:
     def run(self):
         # Initialize wandb
         run_name = f"GA_run_{datetime.now().strftime('%Y_%m_%d_%H_%M')}"
-        wandb.init(project="PLR", name=run_name)
+        #wandb.init(project="PLR", name=run_name)
 
         # Log the parameters to wandb.config
         wandb.config.update(self._get_config_params())
@@ -200,7 +200,7 @@ class GeneticAlgorithm:
         generation_variances = []
 
         # Main evolutionary loop
-        for generation in tqdm(range(self.n_generations), desc="Generations — Best Fitness So Far {:.4f}".format(self.last_best_fitness)"):
+        for generation in tqdm(range(self.n_generations), desc="Generations: "):
             # Create a tqdm object for fitness evaluation progress
             fitness_eval_pbar = tqdm(population, desc=f"Eval Fitness Gen {generation+1} - Best Fitness: {best_fitness_this_gen}", leave=False)
             
@@ -214,7 +214,6 @@ class GeneticAlgorithm:
                 if fitness_val > best_fitness_this_gen:
                     best_fitness_this_gen = fitness_val
                     best_genome_this_gen = individual
-                    fitness_eval_pbar.set_description(f"Eval Fitness Gen {generation+1} - Best Fitness: {best_fitness_this_gen:.4f}")
 
             # Calculate variance for this generation
             generation_variance = np.var(fitness_values)
