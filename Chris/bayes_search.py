@@ -1,7 +1,7 @@
 """
 Code for running BayesSearchCV to optimise embedding + shallow classifier.
 """
-# TODO: add labels_ and number of clusters to log
+# TODO: add number of clusters to log
 import pickle
 import hdbscan
 import pandas as pd
@@ -55,10 +55,12 @@ def cv_score(model, X, score=GLOBALS['optimiser_score']):
     data = model.steps[0][1].transform(X)
 
     if score == 'all':
-        return {
+        return_dict = {
             score_name: score_func(data, labels)
             for score_name, score_func in score_dict.items()
         }
+        return_dict.update({'labels': labels})
+        return return_dict
     else:
         return score_dict[score](data, labels)
 
