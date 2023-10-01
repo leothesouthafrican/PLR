@@ -39,3 +39,10 @@ class Autoencoder(nn.Module):
         x = self.encode(x)
         x = self.decode(x)
         return x
+
+if __name__ == "__main__":
+    input_size = 144
+    model = Autoencoder(input_size, depth=5)
+
+    # Print the architecture
+    print(model)

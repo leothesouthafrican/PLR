@@ -1,7 +1,7 @@
 import random
 import numpy as np
 from joblib import Parallel, delayed
-from cluster_comparison import perform_hdbscan
+from Leo.gen_algo_opt_folder.helpers import perform_hdbscan
 from data_loading import load_data
 from datetime import datetime
 import wandb

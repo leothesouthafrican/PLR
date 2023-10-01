@@ -7,7 +7,6 @@ import numpy as np
 def drop_na_values(df1, df2):
     return df1.dropna(), df2.dropna()
 
-
 def perform_hdbscan(umap_result, min_cluster_size=5):
     hdbscan_model = hdbscan.HDBSCAN(min_cluster_size=min_cluster_size)
     hdbscan_model.fit(umap_result)
