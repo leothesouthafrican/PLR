@@ -5,6 +5,7 @@ Code for running BayesSearchCV to optimise embedding + shallow classifier.
 import pickle
 import hdbscan
 import pandas as pd
+import numpy as np
 import time
 import wandb
 from sklearn.cluster import KMeans
@@ -12,6 +13,8 @@ from sklearn.model_selection import PredefinedSplit
 from sklearn.pipeline import Pipeline
 from sklearn.decomposition import PCA
 from skopt import BayesSearchCV
+from umap.parametric_umap import ParametricUMAP
+import umap
 
 from utilities import (
     load_symptom_data,
@@ -26,11 +29,11 @@ from utilities import (
 GLOBALS = {
     'run_id': 0,
     'random_seed': 42,
-    'dim_reducer': 'pca',
-    'clustering_algo': 'kmeans',
+    'dim_reducer': 'umap',
+    'clustering_algo': 'hdbscan',
     'data_path': '../data/cleaned_data_SYMPTOMS_9_13_23.csv',
     'optimiser_score': 'silhouette',
-    'search_iter': 20
+    'search_iter': 2
 }
 
 
@@ -66,9 +69,11 @@ def cv_score(model, X, score=GLOBALS['optimiser_score']):
 
 
 all_models = {
-    'pca': PCA(random_state=42),
-    'hdb': hdbscan.HDBSCAN(gen_min_span_tree=True, core_dist_n_jobs=1),
-    'kmeans': KMeans(random_state=42)
+    'pca': PCA(random_state=GLOBALS['random_seed']),
+    'hdbscan': hdbscan.HDBSCAN(gen_min_span_tree=True, core_dist_n_jobs=1),
+    'kmeans': KMeans(random_state=GLOBALS['random_seed']),
+    'umap': umap.UMAP(random_state=GLOBALS['random_seed']),
+    'parametric_umap': ParametricUMAP(random_state=GLOBALS['random_seed'])
 }
 
 if __name__ == '__main__':
@@ -78,7 +83,7 @@ if __name__ == '__main__':
         **all_model_parameters[GLOBALS['dim_reducer']],
         **all_model_parameters[GLOBALS['clustering_algo']]
     }
-    print(pipeline_params)
+    # print(pipeline_params)
 
     pipe = Pipeline(
         steps=[
@@ -115,7 +120,8 @@ if __name__ == '__main__':
         n_jobs=1,
         refit=False,
         return_train_score=True,
-        n_iter=GLOBALS['search_iter']
+        n_iter=GLOBALS['search_iter'],
+        error_score=np.nan
     )
 
     def wandb_callback(result):
