@@ -1,8 +1,11 @@
 data/
 *env/
+*.idea/
 */.ipynb_checkpoints/
 .DS_Store
 .csv
 __pycache__/
 Chris/graphs/
+Chris/results/
+Chris/results/
 wandb/
