@@ -22,7 +22,6 @@ class Autoencoder(nn.Module):
         for i in range(depth - 1, 0, -1):
             self.decoder_layers.append(nn.Linear(input_size // (2**i), input_size // (2**(i-1))))
 
-
         self.relu = nn.ReLU()
 
     def encode(self, x):
