@@ -1,9 +1,6 @@
-import random
 import numpy as np
 from joblib import Parallel, delayed
 from helpers import perform_hdbscan
-import json
-import pandas as pd
 from datetime import datetime
 import wandb
 from tqdm import tqdm
@@ -136,39 +133,59 @@ class GeneticAlgorithm:
 
 
     def mutate(self, individual):
-        mutation = False
+        mutation_occurred = False
+        
+        # 1. Mutate features
         if np.random.rand() < self.mutation_rate:
-            for i in range(self.n_features):
-                if np.random.rand() < self.mutation_rate:
-                    individual[i] = 1 - individual[i]
-                    mutation = True
-                    
+            mutation_occurred = True
+            individual = self._mutate_features(individual)
+        
+        # 2. Mutate depth
         if np.random.rand() < self.mutation_rate:
-            individual[self.n_features] += np.random.choice([-1, 1])
-            individual[self.n_features] = np.clip(individual[self.n_features], self.depth_range[0], self.depth_range[1])
-            mutation = True
-            
-        # Mutate the first_hidden_dim by steps of 32
+            mutation_occurred = True
+            individual = self._mutate_depth(individual)
+        
+        # 3. Mutate hidden dimensions
         if np.random.rand() < self.mutation_rate:
-            change = 32 * np.random.choice([-1, 1])
-            individual[self.n_features + 1] += change
-            individual[self.n_features + 1] = np.clip(individual[self.n_features + 1], 
-                                                    self.hidden_dim_range[0], 
-                                                    self.hidden_dim_range[1])
-            # Ensure the mutated value is still a multiple of 32.
-            # If not, round it to the nearest multiple of 32 within the allowed range.
-            individual[self.n_features + 1] = round(individual[self.n_features + 1] / 32) * 32
-            mutation = True
-            
+            mutation_occurred = True
+            individual = self._mutate_hidden_dim(individual)
+        
+        # 4. Mutate minimum cluster size
         if np.random.rand() < self.mutation_rate:
-            individual[self.n_features + 2] += np.random.choice([-1, 1])
-            individual[self.n_features + 2] = np.clip(individual[self.n_features + 2], 
-                                                    self.min_cluster_size_range[0], 
-                                                    self.min_cluster_size_range[1])
-            mutation = True
-            
-        return individual, mutation
+            mutation_occurred = True
+            individual = self._mutate_min_cluster_size(individual)
+        
+        return individual, mutation_occurred
 
+    def _mutate_features(self, individual):
+        """Randomly flip a feature's inclusion/exclusion status."""
+        idx = np.random.randint(0, self.n_features)
+        individual[idx] = 1 - individual[idx]
+        return individual
+
+    def _mutate_depth(self, individual):
+        """Change depth using Gaussian distribution centered around current depth."""
+        mutation_strength = 1  # You can adjust this
+        delta = int(np.random.normal(0, mutation_strength))
+        individual[self.n_features] += delta
+        individual[self.n_features] = np.clip(individual[self.n_features], self.depth_range[0], self.depth_range[1])
+        return individual
+
+    def _mutate_hidden_dim(self, individual):
+        """Change hidden dim in steps of 32 but based on a Gaussian distribution."""
+        mutation_strength = 32  # Adjust this for larger/smaller jumps
+        delta = int(np.round(np.random.normal(0, mutation_strength) / 32)) * 32
+        individual[self.n_features + 1] += delta
+        individual[self.n_features + 1] = np.clip(individual[self.n_features + 1], self.hidden_dim_range[0], self.hidden_dim_range[1])
+        return individual
+
+    def _mutate_min_cluster_size(self, individual):
+        """Change min cluster size using Gaussian distribution."""
+        mutation_strength = 5  # You can adjust this
+        delta = int(np.random.normal(0, mutation_strength))
+        individual[self.n_features + 2] += delta
+        individual[self.n_features + 2] = np.clip(individual[self.n_features + 2], self.min_cluster_size_range[0], self.min_cluster_size_range[1])
+        return individual
 
     def crossover(self, parent1, parent2):
         if self.crossover_method == "one_point":

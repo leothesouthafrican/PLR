@@ -24,7 +24,7 @@ def main(args):
         "crossover_method":  ["two_point"], #["one_point", "two_point", "uniform"],
         "min_cluster_size_range": (2, 50),
         "batch_size": 64,
-        "device": torch.device("cuda:0" if torch.cuda.is_available() else "mps"),
+        "device": torch.device("cuda:0" if torch.cuda.is_available() else "cpu"),
         "n_jobs": -1
     }
 
@@ -43,7 +43,7 @@ def main(args):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run Genetic Algorithm")
     parser.add_argument("--n_generations", type=int, default=5, help="Number of generations")
-    parser.add_argument("--population_size", type=int, default=20, help="Size of the population")
+    parser.add_argument("--population_size", type=int, default=50, help="Size of the population")
 
     args = parser.parse_args()
     main(args)
