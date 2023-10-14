@@ -12,6 +12,30 @@ from subprocess import call
 current_directory = os.path.dirname(os.path.realpath(__file__))
 graphs_script_path = os.path.join(current_directory, "graphs.py")
 
+def write_top_performers_to_txt(results, filename):
+    with open(filename, 'w') as f:
+        for comb in results["combinations"]:
+            parent_selection = comb["parent_selection_method"]
+            crossover_method = comb["crossover_method"]
+            f.write(f"Parent Selection: {parent_selection}, Crossover Method: {crossover_method}\n\n")
+            
+            generations = comb["generations"]
+            for gen in generations:
+                gen_num = gen["generation_number"]
+                f.write(f"Generation {gen_num}:\n")
+                
+                # Sort individuals by fitness and take the top 10
+                top_individuals = sorted(gen["individuals"], key=lambda x: x["fitness"], reverse=True)[:10]
+                
+                for idx, ind in enumerate(top_individuals, 1):
+                    genome = ind["genome"]
+                    fitness = ind["fitness"]
+                    f.write(f"  {idx}. Fitness: {fitness}, Genome: {genome}\n")
+                
+                f.write("\n")
+            
+            f.write("="*40 + "\n")
+
 def main(args):
     dataset = pd.read_csv("/Users/leo/Programming/PLR/Leo/data/dataset_1.csv").drop(columns=["Unnamed: 0"])
     
@@ -19,7 +43,7 @@ def main(args):
         "population_size": args.population_size,
         "n_generations": args.n_generations,
         "selection_rate": 0.3,
-        "mutation_rate": 0.1,
+        "mutation_rate": 0.05,
         "increased_mutation_rate": 0.2,
         "num_elites": None,
         "depth_range": (1, 5),
@@ -27,7 +51,7 @@ def main(args):
         "n_epochs": 15,
         "score_metric": silhouette_score,
         "clustering_algo": "hdbscan",
-        "parent_selection_method": ["tournament", "elitism"],  # ["roulette", "tournament", "rank", "elitism"],
+        "parent_selection_method": ["tournament"],  # ["roulette", "tournament", "rank", "elitism"],
         "crossover_method": ["two_point"],  # ["one_point", "two_point", "uniform"],
         "min_cluster_size_range": (2, 50),
         "batch_size": 64,
@@ -57,7 +81,12 @@ def main(args):
 
     # Save the JSON to this new directory
     with open(os.path.join(results_dir, "results.json"), "w") as outfile:
-        json.dump(results_dict, outfile, default=lambda o: float(o) if isinstance(o, np.float32) else o)
+        json.dump(results_dict, outfile, default=lambda o: float(o) if isinstance(o, np.float32) else o, indent=4)
+
+    
+    # Write top performers to a text file
+    txt_filename = os.path.join(results_dir, "top_performers.txt")
+    write_top_performers_to_txt(results_dict, txt_filename)
 
     # Call the graph generation script
     call(["python", graphs_script_path, "--path", os.path.join(results_dir, "results.json")])

@@ -158,16 +158,14 @@ class GeneticAlgorithm:
         """Randomly flip a feature's inclusion/exclusion status."""
         idx = np.random.randint(0, self.n_features)
         individual[idx] = 1 - individual[idx]
-        print(f"Feature {idx} mutated to {individual[idx]}")
         return individual
 
     def _mutate_depth(self, individual):
         """Change depth using Gaussian distribution centered around current depth."""
-        mutation_strength = 1  # You can adjust this
+        mutation_strength = 1
         delta = int(np.random.normal(0, mutation_strength))
         individual[self.n_features] += delta
         individual[self.n_features] = np.clip(individual[self.n_features], self.depth_range[0], self.depth_range[1])
-        print(f"Depth mutated to {individual[self.n_features]} from {individual[self.n_features] - delta}")
         return individual
 
     def _mutate_hidden_dim(self, individual):
@@ -179,12 +177,11 @@ class GeneticAlgorithm:
         individual[self.n_features + 1] += delta
         # Make sure hidden dim is within the range
         individual[self.n_features + 1] = np.clip(individual[self.n_features + 1], self.hidden_dim_range[0], self.hidden_dim_range[1])
-        print(f"Hidden dim mutated to {individual[self.n_features + 1]} from {individual[self.n_features + 1] - delta}")
         return individual
 
     def _mutate_min_cluster_size(self, individual):
         """Change min cluster size using Gaussian distribution."""
-        mutation_strength = 5  # You can adjust this
+        mutation_strength = 2  
         delta = int(np.random.normal(0, mutation_strength))
         individual[self.n_features + 2] += delta
         individual[self.n_features + 2] = np.clip(individual[self.n_features + 2], self.min_cluster_size_range[0], self.min_cluster_size_range[1])
