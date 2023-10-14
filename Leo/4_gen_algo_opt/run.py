@@ -15,18 +15,16 @@ def main(args):
         "mutation_rate": 0.05,
         "increased_mutation_rate": 0.2,
         "num_elites": None,
-        "max_depth": 5,
         "depth_range": (1, 5),
-        "latent_dim_range": (2, 128),
+        "hidden_dim_range": (64, 256),
         "n_epochs": 15,
         "score_metric": silhouette_score,
         "clustering_algo": "hdbscan",
-        "parent_selection_method": ["roulette"],#["roulette", "tournament", "rank", "elitism"],
-        "crossover_method": ["one_point", "two_point", "uniform"],
+        "parent_selection_method": ["roulette"], #["roulette", "tournament", "rank", "elitism"],
+        "crossover_method":  ["two_point"], #["one_point", "two_point", "uniform"],
         "min_cluster_size_range": (2, 50),
-        "learning_rate": 0.001,
         "batch_size": 64,
-        "device": torch.device("cuda:0" if torch.cuda.is_available() else "cpu"),
+        "device": torch.device("cuda:0" if torch.cuda.is_available() else "mps"),
         "n_jobs": -1
     }
 

@@ -17,8 +17,8 @@ from autoencoder import Autoencoder
 
 
 class GeneticAlgorithm:
-    def __init__(self, dataset, population_size=100, n_generations=20, max_depth=5, selection_rate=0.3, mutation_rate=0.05, 
-                 increased_mutation_rate=0.2, num_elites=None, depth_range=(1,5), latent_dim_range=(2, 128),
+    def __init__(self, dataset, population_size=100, n_generations=20, selection_rate=0.3, mutation_rate=0.05, 
+                 increased_mutation_rate=0.2, num_elites=None, depth_range=(1,5), hidden_dim_range=(64, 512),
                  n_epochs=20, score_metric=silhouette_score, clustering_algo="hdbscan", parent_selection_method="roulette",
                  crossover_method="one_point",min_cluster_size_range=(2, 50), learning_rate=0.001, batch_size=64,
                 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu"), n_jobs = -1):
@@ -31,9 +31,8 @@ class GeneticAlgorithm:
         self.increased_mutation_rate = increased_mutation_rate
         self.num_elites = num_elites or int(0.1 * population_size)
         self.n_features = len(dataset.columns)
-        self.max_depth = max_depth
         self.depth_range = depth_range
-        self.latent_dim_range = latent_dim_range
+        self.hidden_dim_range = hidden_dim_range
         self.n_epochs = n_epochs
         self.score_metric = score_metric
         self.parent_selection_method = parent_selection_method
@@ -47,15 +46,14 @@ class GeneticAlgorithm:
 
     def _get_config_params(self):
         attribute_names = ["population_size", "n_generations", "selection_rate", "mutation_rate", 
-                        "increased_mutation_rate", "num_elites", "n_features", "max_depth", 
-                        "depth_range", "latent_dim_range", "n_epochs", "score_metric", 
+                        "increased_mutation_rate", "num_elites", "n_features", 
+                        "depth_range", "hidden_dim_range", "n_epochs", "score_metric", 
                         "parent_selection_method", "crossover_method", "clustering_algo", 
                         "min_cluster_size_range", "learning_rate", "batch_size", "device"]
         return {attr: str(getattr(self, attr)) for attr in attribute_names}
 
     def fitness(self, params):
         selected_features = params[:self.n_features]
-        depth = max(1, self.max_depth)
         min_cluster_size = int(params[self.n_features + 2])
         
         selected_cols = [col for col, keep in zip(self.dataset.columns, selected_features) if keep]
@@ -64,7 +62,16 @@ class GeneticAlgorithm:
         dataset = self.dataset[selected_cols].dropna()
 
         input_size = len(dataset.columns)
-        autoencoder = Autoencoder(input_size=input_size, depth=depth).to(self.device)
+
+        # Extract depth from params
+        depth = int(params[self.n_features])
+
+        # Extract hidden dim from params
+        first_hidden_dim = int(params[self.n_features + 1])
+        print(f"Extracted hidden dim: {first_hidden_dim}")
+
+        print(f'Autoencoder depth: {depth}')
+        autoencoder = Autoencoder(input_size=input_size, first_hidden_dim=first_hidden_dim, depth=depth).to(self.device)
         criterion = nn.MSELoss()
         optimizer = torch.optim.Adam(autoencoder.parameters(), lr=self.learning_rate)
         
@@ -99,10 +106,19 @@ class GeneticAlgorithm:
         population = []
         for _ in range(self.population_size):
             features = np.random.choice([0, 1], size=self.n_features)
+            
+            # Get depth from depth_range
             depth = np.random.randint(self.depth_range[0], self.depth_range[1] + 1)
-            latent_dim = np.random.randint(self.latent_dim_range[0], self.latent_dim_range[1] + 1)
+
+            # Get the hidden dim from hidden_dim_range that's a multiple of 32
+            possible_hidden_dims = [i for i in range(self.hidden_dim_range[0], self.hidden_dim_range[1] + 1) if i % 32 == 0]
+            hidden_dim = np.random.choice(possible_hidden_dims)
+            print(f"Generated hidden dim: {hidden_dim}")
+
+            # Get the min_cluster_size from min_cluster_size_range
             min_cluster_size = np.random.randint(self.min_cluster_size_range[0], self.min_cluster_size_range[1] + 1)
-            chromosome = np.concatenate((features, [depth, latent_dim, min_cluster_size]))
+
+            chromosome = np.concatenate((features, [depth, hidden_dim, min_cluster_size]))
             population.append(chromosome)
         return population
 
@@ -126,18 +142,33 @@ class GeneticAlgorithm:
                 if np.random.rand() < self.mutation_rate:
                     individual[i] = 1 - individual[i]
                     mutation = True
+                    
         if np.random.rand() < self.mutation_rate:
             individual[self.n_features] += np.random.choice([-1, 1])
             individual[self.n_features] = np.clip(individual[self.n_features], self.depth_range[0], self.depth_range[1])
             mutation = True
+            
+        # Mutate the first_hidden_dim by steps of 32
         if np.random.rand() < self.mutation_rate:
-            individual[self.n_features + 1] += np.random.choice([-1, 1])
-            individual[self.n_features + 1] = np.clip(individual[self.n_features + 1], self.latent_dim_range[0], self.latent_dim_range[1])
+            change = 32 * np.random.choice([-1, 1])
+            individual[self.n_features + 1] += change
+            individual[self.n_features + 1] = np.clip(individual[self.n_features + 1], 
+                                                    self.hidden_dim_range[0], 
+                                                    self.hidden_dim_range[1])
+            # Ensure the mutated value is still a multiple of 32.
+            # If not, round it to the nearest multiple of 32 within the allowed range.
+            individual[self.n_features + 1] = round(individual[self.n_features + 1] / 32) * 32
             mutation = True
+            
         if np.random.rand() < self.mutation_rate:
             individual[self.n_features + 2] += np.random.choice([-1, 1])
-            individual[self.n_features + 2] = np.clip(individual[self.n_features + 2], self.min_cluster_size_range[0], self.min_cluster_size_range[1])
+            individual[self.n_features + 2] = np.clip(individual[self.n_features + 2], 
+                                                    self.min_cluster_size_range[0], 
+                                                    self.min_cluster_size_range[1])
+            mutation = True
+            
         return individual, mutation
+
 
     def crossover(self, parent1, parent2):
         if self.crossover_method == "one_point":

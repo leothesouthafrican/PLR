@@ -1,3 +1,5 @@
+#autoencoder.py
+
 import torch
 import torch.nn as nn
 
@@ -44,9 +46,9 @@ class Autoencoder(nn.Module):
 
 if __name__ == "__main__":
     # Define parameters
-    input_size = 32
-    first_hidden_dim = 64
-    depth = 6
+    input_size = 144
+    first_hidden_dim = 512
+    depth = 5
     
     # Create model
     model = Autoencoder(input_size, first_hidden_dim, depth)
