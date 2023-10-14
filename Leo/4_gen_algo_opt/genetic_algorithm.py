@@ -14,7 +14,7 @@ from autoencoder import Autoencoder
 
 
 class GeneticAlgorithm:
-    def __init__(self, dataset, population_size=100, n_generations=20, selection_rate=0.3, mutation_rate=0.05, 
+    def __init__(self, dataset, population_size=100, n_generations=20, selection_rate=0.3, mutation_rate=0.15, 
                  increased_mutation_rate=0.2, num_elites=None, depth_range=(1,5), hidden_dim_range=(64, 512),
                  n_epochs=20, score_metric=silhouette_score, clustering_algo="hdbscan", parent_selection_method="roulette",
                  crossover_method="one_point",min_cluster_size_range=(2, 50), learning_rate=0.001, batch_size=64,
@@ -65,9 +65,7 @@ class GeneticAlgorithm:
 
         # Extract hidden dim from params
         first_hidden_dim = int(params[self.n_features + 1])
-        print(f"Extracted hidden dim: {first_hidden_dim}")
 
-        print(f'Autoencoder depth: {depth}')
         autoencoder = Autoencoder(input_size=input_size, first_hidden_dim=first_hidden_dim, depth=depth).to(self.device)
         criterion = nn.MSELoss()
         optimizer = torch.optim.Adam(autoencoder.parameters(), lr=self.learning_rate)
@@ -110,7 +108,6 @@ class GeneticAlgorithm:
             # Get the hidden dim from hidden_dim_range that's a multiple of 32
             possible_hidden_dims = [i for i in range(self.hidden_dim_range[0], self.hidden_dim_range[1] + 1) if i % 32 == 0]
             hidden_dim = np.random.choice(possible_hidden_dims)
-            print(f"Generated hidden dim: {hidden_dim}")
 
             # Get the min_cluster_size from min_cluster_size_range
             min_cluster_size = np.random.randint(self.min_cluster_size_range[0], self.min_cluster_size_range[1] + 1)
@@ -161,6 +158,7 @@ class GeneticAlgorithm:
         """Randomly flip a feature's inclusion/exclusion status."""
         idx = np.random.randint(0, self.n_features)
         individual[idx] = 1 - individual[idx]
+        print(f"Feature {idx} mutated to {individual[idx]}")
         return individual
 
     def _mutate_depth(self, individual):
@@ -169,14 +167,19 @@ class GeneticAlgorithm:
         delta = int(np.random.normal(0, mutation_strength))
         individual[self.n_features] += delta
         individual[self.n_features] = np.clip(individual[self.n_features], self.depth_range[0], self.depth_range[1])
+        print(f"Depth mutated to {individual[self.n_features]} from {individual[self.n_features] - delta}")
         return individual
 
     def _mutate_hidden_dim(self, individual):
         """Change hidden dim in steps of 32 but based on a Gaussian distribution."""
         mutation_strength = 32  # Adjust this for larger/smaller jumps
+        # Get delta from Gaussian distribution
         delta = int(np.round(np.random.normal(0, mutation_strength) / 32)) * 32
+        # Add delta to hidden dim
         individual[self.n_features + 1] += delta
+        # Make sure hidden dim is within the range
         individual[self.n_features + 1] = np.clip(individual[self.n_features + 1], self.hidden_dim_range[0], self.hidden_dim_range[1])
+        print(f"Hidden dim mutated to {individual[self.n_features + 1]} from {individual[self.n_features + 1] - delta}")
         return individual
 
     def _mutate_min_cluster_size(self, individual):
@@ -199,18 +202,36 @@ class GeneticAlgorithm:
 
     def run(self):
         run_name = f"GA_run_{datetime.now().strftime('%Y_%m_%d_%H_%M')}"
-        #wandb.init(project="PLR", name=run_name)
-        #wandb.config.update(self._get_config_params())
+        # wandb.init(project="PLR", name=run_name)
+        # wandb.config.update(self._get_config_params())
         columns = ["Generation Number", "Best Genome", "Best Features", "Fitness"]
-        #generation_table = wandb.Table(columns=columns)
+        # generation_table = wandb.Table(columns=columns)
         population = self.init_population()
+
+        generations_data = []  # To store results for each generation
 
         for generation in tqdm(range(self.n_generations)):
             fitness_values = Parallel(n_jobs=self.n_jobs)(delayed(self.fitness)(individual) for individual in population)
+            
+            generation_results = {
+                "generation_number": generation + 1,
+                "individuals": []
+            }
+            
+            for fitness_val, individual in zip(fitness_values, population):
+                genome_data = {
+                    "genome": individual.tolist(),
+                    "fitness": fitness_val,
+                    "features": [col for col, keep in zip(self.dataset.columns, individual[:self.n_features]) if keep]
+                }
+                generation_results["individuals"].append(genome_data)
+
+            generations_data.append(generation_results)
+            
             best_index = np.argmax(fitness_values)
             best_genome_this_gen = population[best_index]
             best_features = [col for col, keep in zip(self.dataset.columns, best_genome_this_gen[:self.n_features]) if keep]
-            #generation_table.add_data(generation+1, best_genome_this_gen.tolist(), best_features, fitness_values[best_index])
+            # generation_table.add_data(generation+1, best_genome_this_gen.tolist(), best_features, fitness_values[best_index])
 
             new_population = [best_genome_this_gen]
             while len(new_population) < self.population_size:
@@ -222,20 +243,11 @@ class GeneticAlgorithm:
 
             population = new_population[:self.population_size]
 
-        final_fitness_values = Parallel(n_jobs=self.n_jobs)(delayed(self.fitness)(individual) for individual in population)
-        best_index = np.argmax(final_fitness_values)
-        #wandb.log({"Generations Table": generation_table})
-        #wandb.finish()
+        # wandb.log({"Generations Table": generation_table})
+        # wandb.finish()
 
         return {
             "parent_selection_method": self.parent_selection_method,
             "crossover_method": self.crossover_method,
-            "generations": [{
-                "generation_number": generation + 1,
-                "individuals": [{
-                    "genome": individual.tolist(),
-                    "fitness": fitness_val,
-                    "features": [col for col, keep in zip(self.dataset.columns, individual[:self.n_features]) if keep]
-                } for fitness_val, individual in zip(fitness_values, population)]
-            } for generation in range(self.n_generations)]
+            "generations": generations_data
         }

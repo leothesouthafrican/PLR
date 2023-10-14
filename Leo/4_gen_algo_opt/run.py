@@ -5,14 +5,21 @@ import torch
 from sklearn.metrics import silhouette_score
 from genetic_algorithm import GeneticAlgorithm
 import numpy as np
+import os
+from datetime import datetime
+from subprocess import call
+
+current_directory = os.path.dirname(os.path.realpath(__file__))
+graphs_script_path = os.path.join(current_directory, "graphs.py")
 
 def main(args):
     dataset = pd.read_csv("/Users/leo/Programming/PLR/Leo/data/dataset_1.csv").drop(columns=["Unnamed: 0"])
+    
     hyperparameters = {
         "population_size": args.population_size,
         "n_generations": args.n_generations,
         "selection_rate": 0.3,
-        "mutation_rate": 0.05,
+        "mutation_rate": 0.1,
         "increased_mutation_rate": 0.2,
         "num_elites": None,
         "depth_range": (1, 5),
@@ -20,8 +27,8 @@ def main(args):
         "n_epochs": 15,
         "score_metric": silhouette_score,
         "clustering_algo": "hdbscan",
-        "parent_selection_method": ["roulette"], #["roulette", "tournament", "rank", "elitism"],
-        "crossover_method":  ["two_point"], #["one_point", "two_point", "uniform"],
+        "parent_selection_method": ["tournament", "elitism"],  # ["roulette", "tournament", "rank", "elitism"],
+        "crossover_method": ["two_point"],  # ["one_point", "two_point", "uniform"],
         "min_cluster_size_range": (2, 50),
         "batch_size": 64,
         "device": torch.device("cuda:0" if torch.cuda.is_available() else "cpu"),
@@ -31,14 +38,29 @@ def main(args):
     results_dict = {"combinations": []}
     parent_selection_methods = hyperparameters.pop("parent_selection_method")
     crossover_methods = hyperparameters.pop("crossover_method")
+    
     for parent_selection_method in parent_selection_methods:
         for crossover_method in crossover_methods:
-            ga = GeneticAlgorithm(dataset=dataset, parent_selection_method=parent_selection_method, crossover_method=crossover_method, **hyperparameters)
+            ga = GeneticAlgorithm(
+                dataset=dataset, 
+                parent_selection_method=parent_selection_method, 
+                crossover_method=crossover_method, 
+                **hyperparameters
+            )
             combination_results = ga.run()
             results_dict["combinations"].append(combination_results)
 
-    with open("/Users/leo/Programming/PLR/Leo/4_gen_algo_opt/results/results.json", "w") as outfile:
-        json.dump(results_dict, outfile, default=lambda o: float(o) if isinstance(o, np.float32) else o, indent=4)
+    # Create a new directory for each run
+    current_time = datetime.now().strftime('%m_%d_%H_%M')
+    results_dir = f"/Users/leo/Programming/PLR/Leo/4_gen_algo_opt/results/{current_time}/"
+    os.makedirs(results_dir, exist_ok=True)
+
+    # Save the JSON to this new directory
+    with open(os.path.join(results_dir, "results.json"), "w") as outfile:
+        json.dump(results_dict, outfile, default=lambda o: float(o) if isinstance(o, np.float32) else o)
+
+    # Call the graph generation script
+    call(["python", graphs_script_path, "--path", os.path.join(results_dir, "results.json")])
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run Genetic Algorithm")
