@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import json
 import numpy as np
+from scipy.stats import linregress
 
 def plot_best_fitness_over_generations(json_file_path):
     with open(json_file_path, 'r') as f:
@@ -60,13 +61,23 @@ def plot_avg_fitness_over_generations(json_file_path):
         x = [gen["generation_number"] for gen in generations]
         y = [np.mean([ind["fitness"] for ind in gen["individuals"]]) for gen in generations]
         
+        # Compute linear regression for line of best fit
+        slope, intercept, r_value, p_value, std_err = linregress(x, y)
+        y_fit = [slope * xi + intercept for xi in x]
+        
         # Plot
         plt.plot(x, y, label=label)
+        plt.plot(x, y_fit, '--', label=f"{label} best fit")
+
+        # Annotate with gradient
+        plt.annotate(f"Slope: {slope:.4f}", 
+                     xy=(0.05, 0.95), xycoords='axes fraction',
+                     textcoords='offset points', ha='left', va='top')
 
     plt.xticks(np.arange(min(x), max(x)+1, 1.0))  # Ensure only whole numbers on x-axis
     plt.xlabel("Generation")
     plt.ylabel("Average Fitness")
-    plt.title("Average Fitness over Generations for Different Combinations")
+    plt.title("Average Fitness over Generations for Different Combinations with Line of Best Fit")
     plt.legend()
     plt.tight_layout()
     plt.savefig(json_file_path.replace("results.json", "avg_fitness_plot.png"))
