@@ -4,7 +4,7 @@ all_model_parameters ={
     'hdbscan': {
         'hdbscan__cluster_selection_epsilon': Real(0.0, 1000.0),
         'hdbscan__cluster_selection_method': Categorical(['eom', 'leaf']),
-        'hdbscan__metric': Categorical(['euclidean', 'minkowski', 'manhattan']),
+        'hdbscan__metric': Categorical(['euclidean', 'manhattan']),
         'hdbscan__min_cluster_size': Integer(5, 1000),
         'hdbscan__min_samples': Integer(1, 1000)
     },
@@ -21,11 +21,13 @@ all_model_parameters ={
         'umap__min_dist': Real(0, 1),
         'umap__n_components': Integer(2, 162),
         'umap__metric': Categorical([
-            'euclidean', 'manhattan', 'minkowski',
-            'cosine', 'correlation', 'canberra',
-            'chebyshev', 'braycurtis'
+            'euclidean', 'manhattan'
+                         #'minkowski',
+            # 'cosine', 'correlation', 'canberra',
+            # 'chebyshev', 'braycurtis'
         ])
     },
+    # Noe in use yet...
     'parametric_umap': {
         'parametric_umap__n_neighbors': Integer(2, 1000),
         'parametric_umap__min_dist': Real(0, 1),
