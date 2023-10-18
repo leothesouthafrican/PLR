@@ -1,4 +1,5 @@
 import hdbscan
+import numpy as np
 from sklearn.metrics import silhouette_score, davies_bouldin_score, calinski_harabasz_score
 
 
