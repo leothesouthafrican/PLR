@@ -33,7 +33,7 @@ GLOBALS = {
     'clustering_algo': 'hdbscan',
     'data_path': '../data/cleaned_data_SYMPTOMS_9_13_23.csv',
     'optimiser_score': 'dbcv',
-    'search_iter': 20
+    'search_iter': 1000000
 }
 
 
