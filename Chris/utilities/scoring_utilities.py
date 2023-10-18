@@ -4,41 +4,60 @@ from sklearn.metrics import silhouette_score, davies_bouldin_score, calinski_har
 
 
 def dbcv(data, labels, metric='euclidean'):
-    return hdbscan.validity.validity_index(
-        data, labels,
-        metric=metric
-    )
+    try:
+        return hdbscan.validity.validity_index(
+            data, labels,
+            metric=metric
+        )
+    except ValueError:
+        print("ValueError caught in dbcv, returning nan.")
+        return np.nan
 
 
 def dbcv_minkowski(data, labels):
-    return dbcv(data, labels, metric='minkowski')
-
+    try:
+        return dbcv(data, labels, metric='minkowski')
+    except ValueError:
+        print("ValueError caught in dbcv_minkowski, returning nan.")
+        return np.nan
 
 def silhouette(data, labels):
-    num_labels = len(set(labels))
-    if num_labels == 1:
-        print("Warning: Valid number of clusters must be 2 or more.")
+    try:
+        num_labels = len(set(labels))
+        if num_labels == 1:
+            print("Warning: Valid number of clusters must be 2 or more.")
+            return np.nan
+        else:
+            return silhouette_score(data, labels)
+    except ValueError:
+        print("ValueError caught in silhouette, returning nan.")
         return np.nan
-    else:
-        return silhouette_score(data, labels)
 
 
 def calinski_harabasz(data, labels):
-    num_labels = len(set(labels))
-    if num_labels == 1:
-        print("Warning: Valid number of clusters must be 2 or more.")
+    try:
+        num_labels = len(set(labels))
+        if num_labels == 1:
+            print("Warning: Valid number of clusters must be 2 or more.")
+            return np.nan
+        else:
+            return calinski_harabasz_score(data, labels)
+    except ValueError:
+        print("ValueError caught in calinski_harabasz, returning nan.")
         return np.nan
-    else:
-        return calinski_harabasz_score(data, labels)
 
 
 def davies_bouldin(data, labels):
     """
     Note: 0 is best. If using for CV need to use complement.
     """
-    num_labels = len(set(labels))
-    if num_labels == 1:
-        print("Warning: Valid number of clusters must be 2 or more.")
+    try:
+        num_labels = len(set(labels))
+        if num_labels == 1:
+            print("Warning: Valid number of clusters must be 2 or more.")
+            return np.nan
+        else:
+            return davies_bouldin_score(data, labels)
+    except ValueError:
+        print("ValueError caught in davies_bouldin, returning nan.")
         return np.nan
-    else:
-        return davies_bouldin_score(data, labels)

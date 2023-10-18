@@ -13,7 +13,7 @@ from sklearn.model_selection import PredefinedSplit
 from sklearn.pipeline import Pipeline
 from sklearn.decomposition import PCA
 from skopt import BayesSearchCV
-from umap.parametric_umap import ParametricUMAP
+# from umap.parametric_umap import ParametricUMAP
 import umap
 
 from utilities import (
