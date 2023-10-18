@@ -24,12 +24,12 @@ from utilities import (
 )
 
 GLOBALS = {
-    'run_id': 0,
+    'run_id': 1,
     'random_seed': 42,
-    'dim_reducer': 'pca',
-    'clustering_algo': 'kmeans',
+    'dim_reducer': 'umap',
+    'clustering_algo': 'hdbscan',
     'data_path': '../data/cleaned_data_SYMPTOMS_9_13_23.csv',
-    'optimiser_score': 'silhouette',
+    'optimiser_score': 'dbcv',
     'search_iter': 20
 }
 
