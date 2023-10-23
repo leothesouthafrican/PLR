@@ -27,9 +27,9 @@ from utilities import (
 )
 
 GLOBALS = {
-    'run_id': 2,
+    'run_id': 3,
     'random_seed': 42,
-    'dim_reducer': 'umap',
+    'dim_reducer': 'pca',
     'clustering_algo': 'kmeans',
     'data_path': '../data/cleaned_data_SYMPTOMS_9_13_23.csv',
     'optimiser_score': 'silhouette',
