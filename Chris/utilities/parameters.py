@@ -1,4 +1,5 @@
 from skopt.space import Real, Categorical, Integer
+import scipy.stats.distributions as dists
 import numpy as np
 
 all_model_parameters ={
@@ -47,24 +48,24 @@ all_model_parameters ={
 # Different format required for randomizedsearchcv
 randomized_search_parameters = {
     'hdbscan': {
-        'hdbscan__cluster_selection_epsilon': np.linspace(0.0, 1000.0, num=1000000),
+        'hdbscan__cluster_selection_epsilon': dists.uniform(0.0, 1000.0),
         'hdbscan__cluster_selection_method': ['eom', 'leaf'],
         'hdbscan__metric': ['euclidean', 'manhattan'],
-        'hdbscan__min_cluster_size': [i for i in range(1001) if i > 5],
-        'hdbscan__min_samples': [i for i in range(1001)]
+        'hdbscan__min_cluster_size': dists.randint(5, 1001),
+        'hdbscan__min_samples': dists.randint(1, 1001)
     },
     'pca': {
-        'pca__n_components': [i for i in range(151) if i > 2]
+        'pca__n_components': dists.randint(2, 151),
     },
     'kmeans': {
-        'kmeans__n_clusters': [i for i in range(21) if i > 1],
-        'kmeans__n_init': [i for i in range(11)],
+        'kmeans__n_clusters': dists.randint(2, 21),
+        'kmeans__n_init': dists.randint(1, 11),
         'kmeans__init': ['k-means++', 'random'],
     },
     'umap': {
-        'umap__n_neighbors': [i for i in range(1001) if i > 1],
-        'umap__min_dist': np.linspace(0, 1, num=10000),
-        'umap__n_components': [i for i in range(163) if i > 1],
+        'umap__n_neighbors': dists.randint(2, 1001),
+        'umap__min_dist': dists.uniform(0, 1),
+        'umap__n_components': dists.randint(2, 163),
         'umap__metric': [
             'euclidean', 'manhattan'
                          #'minkowski',
