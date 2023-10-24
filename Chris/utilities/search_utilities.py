@@ -64,7 +64,9 @@ class RandomizedSearch:
             callback(self.results_, params, all_scores)
 
     def choose_params(self):
-
+        """
+        Note: data type checking issue in this version of hdbscan - requires casting below.
+        """
         dist = self.rng.choice(self.param_distributions)
         # Always sort the keys of a dictionary, for reproducibility
         items = sorted(dist.items())
@@ -72,6 +74,9 @@ class RandomizedSearch:
         for k, v in items:
             if hasattr(v, "rvs"):
                 params[k] = v.rvs(random_state=self.rng)
+                if isinstance(params[k], np.float64):
+                    params[k] = float(params[k])
             else:
                 params[k] = v[self.rng.randint(len(v))]
+
         return params
