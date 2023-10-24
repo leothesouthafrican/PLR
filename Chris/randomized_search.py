@@ -105,6 +105,7 @@ if __name__ == '__main__':
     search = RandomizedSearch(
         pipeline=pipe,
         param_distributions=pipeline_params,
+        scorer=cv_score,
         scoring=GLOBALS['optimiser_score'],
         n_iter=GLOBALS['search_iter'],
     )
