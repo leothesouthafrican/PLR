@@ -1,19 +1,15 @@
 """
 Code for running BayesSearchCV to optimise embedding + shallow classifier.
 """
-# TODO: add number of clusters to log
 import pickle
 import hdbscan
-import pandas as pd
-import numpy as np
 import time
 import sys
 import wandb
 from sklearn.cluster import KMeans
-from sklearn.model_selection import PredefinedSplit
 from sklearn.pipeline import Pipeline
 from sklearn.decomposition import PCA
-from sklearn.model_selection import RandomizedSearchCV
+from utilities import RandomizedSearch
 # from umap.parametric_umap import ParametricUMAP
 import umap
 
@@ -24,6 +20,7 @@ from utilities import (
     calinski_harabasz,
     silhouette,
     davies_bouldin,
+    cluster_count,
     run_configs
 )
 from utilities import randomized_search_parameters as all_model_parameters
@@ -44,7 +41,8 @@ def cv_score(model, X, score=GLOBALS['optimiser_score']):
         'dbcv': dbcv,
         'calinski_harabasz': calinski_harabasz,
         'davies_bouldin': davies_bouldin,
-        'dbcv_minkowski': dbcv_minkowski
+        'dbcv_minkowski': dbcv_minkowski,
+        'cluster_count': cluster_count
     }
 
     model.fit(X)
@@ -104,33 +102,19 @@ if __name__ == '__main__':
         config=config
     )
 
-    ddf = pd.concat([df, df])
-    split = PredefinedSplit([0 if i < len(df) else 1 for i in range(len(ddf.index))])
-    search_cv = RandomizedSearchCV(
-        estimator=pipe,
+    search = RandomizedSearch(
+        pipeline=pipe,
         param_distributions=pipeline_params,
-        scoring=cv_score,
-        cv=split,
-        n_jobs=1,
-        refit=False,
-        return_train_score=True,
+        scoring=GLOBALS['optimiser_score'],
         n_iter=GLOBALS['search_iter'],
-        error_score=np.nan
     )
 
-    def wandb_callback(result):
+    def wandb_callback(result, current_params, all_scores):
         iter = len(result['x_iters'])
         print('Iteration %d' % iter)
 
-        current_params = dict(zip(
-            sorted(pipeline_params.keys()),
-            result['x_iters'][-1]
-        ))
-        pipe.set_params(**current_params)
-        all_scores = cv_score(pipe, df, score='all')
-
         log_dict = {
-            'best_score': -result['fun'],
+            'best_score': result['fun'],
             'best_params': result['x'],
             'current_params': current_params
         }
@@ -140,9 +124,10 @@ if __name__ == '__main__':
         print(log_dict)
 
     start_time = time.time()
-    search_cv.fit(ddf.to_numpy(), callback=wandb_callback)
+    search.fit(df.to_numpy(), callback=wandb_callback)
     elapsed_time = time.time() - start_time
     print(elapsed_time)
-    print(search_cv.cv_results_)
-    with open('./results/cv_results_%s.pickle' % run_name, 'wb') as out_file:
-        pickle.dump(search_cv.cv_results_, out_file)
+    print(search.results_)
+
+    with open('./results/results_%s.pickle' % run_name, 'wb') as out_file:
+        pickle.dump(search.results_, out_file)

@@ -6,8 +6,16 @@ fail_return_dict = {
     'dbcv': -1,
     'silhouette': -1,
     'calinski_harabasz': np.nan,
-    'davies_bouldin': np.nan
+    'davies_bouldin': np.nan,
+    'cluster_count': np.nan
 }
+
+def cluster_count(data, labels):
+    try:
+        return len(np.unique(labels))
+    except ValueError:
+        print("ValueError caught in cluster_count, returning nan.")
+        return fail_return_dict['cluster_count']
 
 def dbcv(data, labels, metric='euclidean'):
     try:

@@ -1,7 +1,6 @@
 """
 Code for running BayesSearchCV to optimise embedding + shallow classifier.
 """
-# TODO: add number of clusters to log
 import pickle
 import hdbscan
 import pandas as pd
