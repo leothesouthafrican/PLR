@@ -11,6 +11,7 @@ from sklearn.cluster import KMeans
 from sklearn.model_selection import PredefinedSplit
 from sklearn.pipeline import Pipeline
 from sklearn.decomposition import PCA
+from sklearn.preprocessing import FunctionTransformer
 from skopt import BayesSearchCV
 # from umap.parametric_umap import ParametricUMAP
 import umap
@@ -26,15 +27,17 @@ from utilities import (
 )
 
 GLOBALS = {
-    'run_id': 3,
+    'run_id': 5,
     'random_seed': 42,
-    'dim_reducer': 'pca',
-    'clustering_algo': 'kmeans',
+    'dim_reducer': 'umap',
+    'clustering_algo': 'hdbscan',
     'data_path': '../data/cleaned_data_SYMPTOMS_9_13_23.csv',
-    'optimiser_score': 'silhouette',
+    'optimiser_score': 'dbcv',
     'search_iter': 1000000
 }
 
+def cast_float(x):
+    return x.astype(np.float64)
 
 def cv_score(model, X, score=GLOBALS['optimiser_score']):
     """
@@ -87,6 +90,7 @@ if __name__ == '__main__':
     pipe = Pipeline(
         steps=[
             (GLOBALS['dim_reducer'], all_models[GLOBALS['dim_reducer']]),
+            ('cast', FunctionTransformer(cast_float)), 
             (GLOBALS['clustering_algo'], all_models[GLOBALS['clustering_algo']])
         ]
     )
