@@ -56,7 +56,7 @@ def cv_score(model, X, score=GLOBALS['optimiser_score']):
     }
 
     model.fit(X)
-    labels = model.steps[1][1].labels_
+    labels = model.steps[2][1].labels_
     data = model.steps[0][1].transform(X)
 
     if score == 'all':
