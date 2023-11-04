@@ -26,7 +26,6 @@ def roulette_wheel_selection(population, fitness_values):
 
     return parent1, parent2
 
-
 def tournament_selection(population, fitness_values, tournament_size=5):
     # First parent
     selected_indices = np.random.choice(len(population), tournament_size, replace=False)
@@ -43,9 +42,15 @@ def tournament_selection(population, fitness_values, tournament_size=5):
     return population[winner_index1], population[winner_index2]
 
 def rank_selection(population, fitness_values):
+    # Sort the indices of the population based on fitness values
     sorted_indices = np.argsort(fitness_values)
-    pick1, pick2 = random.randint(0, len(population)-1), random.randint(0, len(population)-1)
-    return population[sorted_indices[pick1]], population[sorted_indices[pick2]]
+    # Create a rank-based probability distribution
+    rank_probabilities = np.arange(len(sorted_indices), 0, -1)  # Higher rank has higher number
+    rank_probabilities = rank_probabilities / rank_probabilities.sum()  # Normalize to sum to 1
+    # Select two indices based on rank probabilities
+    selected_indices = np.random.choice(sorted_indices, size=2, replace=False, p=rank_probabilities)
+    # Return the selected chromosomes
+    return population[selected_indices[0]], population[selected_indices[1]]
 
 def elitism_selection(population, fitness_values):
     elite_index = np.argmax(fitness_values)

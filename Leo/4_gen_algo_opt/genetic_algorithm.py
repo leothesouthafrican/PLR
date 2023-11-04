@@ -26,6 +26,7 @@ class GeneticAlgorithm:
         self.selection_rate = selection_rate
         self.mutation_rate = mutation_rate
         self.increased_mutation_rate = increased_mutation_rate
+        self.generations_without_improvement = 0
         self.num_elites = num_elites or int(0.1 * population_size)
         self.n_features = len(dataset.columns)
         self.depth_range = depth_range
@@ -105,7 +106,8 @@ class GeneticAlgorithm:
             # Get depth from depth_range
             depth = np.random.randint(self.depth_range[0], self.depth_range[1] + 1)
 
-            # Get the hidden dim from hidden_dim_range that's a multiple of 32
+            # Get the hidden dim from hidden_dim_range that's a multiple of 32 (I made certain to make it multiples of 32 so that if the depth increases,
+            # the final latent space will always be "predictable" or part of a set)
             possible_hidden_dims = [i for i in range(self.hidden_dim_range[0], self.hidden_dim_range[1] + 1) if i % 32 == 0]
             hidden_dim = np.random.choice(possible_hidden_dims)
 
@@ -131,24 +133,30 @@ class GeneticAlgorithm:
 
     def mutate(self, individual):
         mutation_occurred = False
+        # Determine mutation rate
+        current_mutation_rate = self.mutation_rate if self.generations_without_improvement < 3 else self.increased_mutation_rate
+        print(f"Current mutation rate: {current_mutation_rate}")
         
+        # The reason that we have chosen to break this up into 4 steps instead of just inplementing a single if statement is so that
+        # don't always mutate the entire genome of the individual, mutating, by chance, only a small part. 
+
         # 1. Mutate features
-        if np.random.rand() < self.mutation_rate:
+        if np.random.rand() < current_mutation_rate:
             mutation_occurred = True
             individual = self._mutate_features(individual)
         
         # 2. Mutate depth
-        if np.random.rand() < self.mutation_rate:
+        if np.random.rand() < current_mutation_rate:
             mutation_occurred = True
             individual = self._mutate_depth(individual)
         
         # 3. Mutate hidden dimensions
-        if np.random.rand() < self.mutation_rate:
+        if np.random.rand() < current_mutation_rate:
             mutation_occurred = True
             individual = self._mutate_hidden_dim(individual)
         
         # 4. Mutate minimum cluster size
-        if np.random.rand() < self.mutation_rate:
+        if np.random.rand() < current_mutation_rate:
             mutation_occurred = True
             individual = self._mutate_min_cluster_size(individual)
         
@@ -170,7 +178,7 @@ class GeneticAlgorithm:
 
     def _mutate_hidden_dim(self, individual):
         """Change hidden dim in steps of 32 but based on a Gaussian distribution."""
-        mutation_strength = 32  # Adjust this for larger/smaller jumps
+        mutation_strength = 32  # I chose 32 initially but it is possible to change this to smaller or larger jumps
         # Get delta from Gaussian distribution
         delta = int(np.round(np.random.normal(0, mutation_strength) / 32)) * 32
         # Add delta to hidden dim
@@ -205,7 +213,8 @@ class GeneticAlgorithm:
         # generation_table = wandb.Table(columns=columns)
         population = self.init_population()
 
-        generations_data = []  # To store results for each generation
+        prev_best_fitness = -np.inf  # Keep track of best fitness from previous generation
+        generations_data = []  # Store the results for each generation which will then be stored in the JSON file
 
         for generation in tqdm(range(self.n_generations)):
             fitness_values = Parallel(n_jobs=self.n_jobs)(delayed(self.fitness)(individual) for individual in population)
@@ -229,6 +238,13 @@ class GeneticAlgorithm:
             best_genome_this_gen = population[best_index]
             best_features = [col for col, keep in zip(self.dataset.columns, best_genome_this_gen[:self.n_features]) if keep]
             # generation_table.add_data(generation+1, best_genome_this_gen.tolist(), best_features, fitness_values[best_index])
+            
+            # Check if best fitness improved
+            if fitness_values[best_index] > prev_best_fitness:
+                prev_best_fitness = fitness_values[best_index]
+                self.generations_without_improvement = 0
+            else:
+                self.generations_without_improvement += 1
 
             new_population = [best_genome_this_gen]
             while len(new_population) < self.population_size:
@@ -248,3 +264,4 @@ class GeneticAlgorithm:
             "crossover_method": self.crossover_method,
             "generations": generations_data
         }
+

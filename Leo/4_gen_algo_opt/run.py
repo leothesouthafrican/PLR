@@ -9,6 +9,9 @@ import os
 from datetime import datetime
 from subprocess import call
 
+#set a random seed for reproducibility
+np.random.seed(42)
+
 current_directory = os.path.dirname(os.path.realpath(__file__))
 graphs_script_path = os.path.join(current_directory, "graphs.py")
 
@@ -37,7 +40,7 @@ def write_top_performers_to_txt(results, filename):
             f.write("="*40 + "\n")
 
 def main(args):
-    dataset = pd.read_csv("/Users/leo/Programming/PLR/Leo/data/dataset_1.csv").drop(columns=["Unnamed: 0"])
+    dataset = pd.read_csv(args.dataset_path).drop(columns=["Unnamed: 0"])
     
     hyperparameters = {
         "population_size": args.population_size,
@@ -95,6 +98,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run Genetic Algorithm")
     parser.add_argument("--n_generations", type=int, default=5, help="Number of generations")
     parser.add_argument("--population_size", type=int, default=50, help="Size of the population")
+    parser.add_argument("--dataset_path", type=str, default="/Users/leo/Programming/PLR/Leo/data/dataset_1.csv", help="Path to the dataset CSV file")
 
     args = parser.parse_args()
     main(args)
