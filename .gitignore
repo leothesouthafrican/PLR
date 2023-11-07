@@ -6,4 +6,5 @@ data/
 __pycache__/
 Chris/graphs/
 wandb/
+*results.json
 Tessa/output/
