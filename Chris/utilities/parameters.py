@@ -148,4 +148,42 @@ run_configs = {
         'optimiser_score': 'dbcv',
         'search_iter': 1000000
     },
+    # Added these using relative_validity metric because dbcv not working reliably...
+    # Also added fraction_clustered as alternative (only works with hdbscan due to noise label -1).
+    9: {
+        'run_id': 0,
+        'random_seed': 42,
+        'dim_reducer': 'pca',
+        'clustering_algo': 'hdbscan',
+        'data_path': '../data/cleaned_data_SYMPTOMS_9_13_23.csv',
+        'optimiser_score': 'rv',
+        'search_iter': 1000000
+    },
+    10: {
+        'run_id': 0,
+        'random_seed': 42,
+        'dim_reducer': 'umap',
+        'clustering_algo': 'hdbscan',
+        'data_path': '../data/cleaned_data_SYMPTOMS_9_13_23.csv',
+        'optimiser_score': 'rv',
+        'search_iter': 1000000
+    },
+    11: {
+        'run_id': 0,
+        'random_seed': 42,
+        'dim_reducer': 'pca',
+        'clustering_algo': 'hdbscan',
+        'data_path': '../data/cleaned_data_SYMPTOMS_9_13_23.csv',
+        'optimiser_score': 'fraction_clustered',
+        'search_iter': 1000000
+    },
+    12: {
+        'run_id': 0,
+        'random_seed': 42,
+        'dim_reducer': 'umap',
+        'clustering_algo': 'hdbscan',
+        'data_path': '../data/cleaned_data_SYMPTOMS_9_13_23.csv',
+        'optimiser_score': 'fraction_clustered',
+        'search_iter': 1000000
+    }
 }

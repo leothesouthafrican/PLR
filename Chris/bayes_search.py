@@ -7,6 +7,7 @@ import pandas as pd
 import numpy as np
 import time
 import wandb
+import sys
 from sklearn.cluster import KMeans
 from sklearn.model_selection import PredefinedSplit
 from sklearn.pipeline import Pipeline
@@ -19,22 +20,27 @@ import umap
 from utilities import (
     load_symptom_data,
     dbcv,
+    rv,
     dbcv_minkowski,
     calinski_harabasz,
     silhouette,
     davies_bouldin,
-    all_model_parameters
+    all_model_parameters,
+    fraction_clustered,
+    run_configs
 )
 
-GLOBALS = {
-    'run_id': 5,
-    'random_seed': 42,
-    'dim_reducer': 'umap',
-    'clustering_algo': 'hdbscan',
-    'data_path': '../data/cleaned_data_SYMPTOMS_9_13_23.csv',
-    'optimiser_score': 'dbcv',
-    'search_iter': 1000000
-}
+# GLOBALS = {
+#     'run_id': 5,
+#     'random_seed': 42,
+#     'dim_reducer': 'umap',
+#     'clustering_algo': 'hdbscan',
+#     'data_path': '../data/cleaned_data_SYMPTOMS_9_13_23.csv',
+#     'optimiser_score': 'dbcv',
+#     'search_iter': 1000000
+# }
+GLOBALS = run_configs[int(sys.argv[1])]
+
 
 def cast_float(x):
     return x.astype(np.float64)
@@ -50,9 +56,11 @@ def cv_score(model, X, score=GLOBALS['optimiser_score']):
     score_dict = {
         'silhouette': silhouette,
         'dbcv': dbcv,
+        'rv': rv,
         'calinski_harabasz': calinski_harabasz,
         'davies_bouldin': davies_bouldin,
-        'dbcv_minkowski': dbcv_minkowski
+        'dbcv_minkowski': dbcv_minkowski,
+        'fraction_clustered': fraction_clustered
     }
 
     model.fit(X)
@@ -61,13 +69,13 @@ def cv_score(model, X, score=GLOBALS['optimiser_score']):
 
     if score == 'all':
         return_dict = {
-            score_name: score_func(data, labels)
+            score_name: score_func(data, labels, model=model)
             for score_name, score_func in score_dict.items()
         }
         return_dict.update({'labels': labels})
         return return_dict
     else:
-        return score_dict[score](data, labels)
+        return score_dict[score](data, labels, model=model)
 
 
 all_models = {

@@ -4,38 +4,54 @@ from sklearn.metrics import silhouette_score, davies_bouldin_score, calinski_har
 
 fail_return_dict = {
     'dbcv': -1,
+    'rv': -1,
     'silhouette': -1,
     'calinski_harabasz': np.nan,
     'davies_bouldin': np.nan,
-    'cluster_count': np.nan
+    'cluster_count': np.nan,
+    'fraction_clustered': 0
 }
 
-def cluster_count(data, labels):
+def cluster_count(data, labels, model=None):
     try:
         return len(np.unique(labels))
     except ValueError:
         print("ValueError caught in cluster_count, returning nan.")
         return fail_return_dict['cluster_count']
 
-def dbcv(data, labels, metric='euclidean'):
+def dbcv(data, labels, metric='euclidean', model=None):
     try:
         return hdbscan.validity.validity_index(
             data, labels,
             metric=metric
         )
     except ValueError:
-        print("ValueError caught in dbcv, returning nan.")
+        print("ValueError caught in dbcv, returning -1.")
         return fail_return_dict['dbcv']
 
+def rv(data, labels, metric='euclidean', model=None):
+    try:
+        return model.relative_validity_
+    except ValueError:
+        print("ValueError caught in rv, returning -1.")
+        return fail_return_dict['rv']
 
-def dbcv_minkowski(data, labels):
+def fraction_clustered(data, labels, model=None):
+    try:
+        fraction = sum(labels == -1) / len(labels)
+        return 1 - fraction
+    except ValueError:
+        print("ValueError caught in fraction_clustered, returning 0.")
+        return fail_return_dict['fraction_clustered']
+
+def dbcv_minkowski(data, labels, model=None):
     try:
         return dbcv(data, labels, metric='minkowski')
     except ValueError:
         print("ValueError caught in dbcv_minkowski, returning nan.")
         return fail_return_dict['dbcv']
 
-def silhouette(data, labels):
+def silhouette(data, labels, model=None):
     try:
         num_labels = len(set(labels))
         if num_labels == 1:
@@ -44,11 +60,11 @@ def silhouette(data, labels):
         else:
             return silhouette_score(data, labels)
     except ValueError:
-        print("ValueError caught in silhouette, returning nan.")
+        print("ValueError caught in silhouette, returning -1.")
         return fail_return_dict['silhouette']
 
 
-def calinski_harabasz(data, labels):
+def calinski_harabasz(data, labels, model=None):
     try:
         num_labels = len(set(labels))
         if num_labels == 1:
@@ -61,7 +77,7 @@ def calinski_harabasz(data, labels):
         return fail_return_dict['calinski_harabasz']
 
 
-def davies_bouldin(data, labels):
+def davies_bouldin(data, labels, model=None):
     """
     Note: 0 is best. If using for CV need to use complement.
     """
