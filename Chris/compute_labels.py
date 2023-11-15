@@ -145,8 +145,6 @@ for ri, row in df.iterrows():
     scores[ri] = cv_score(pipe, symptom_data, score='all')
     count += 1
 
-    if count >= 3:
-        break
 
 scores = pd.DataFrame.from_dict(scores, orient='index')
 print(scores)
