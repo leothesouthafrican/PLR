@@ -198,5 +198,42 @@ run_configs = {
         'data_path': '../data/cleaned_data_SYMPTOMS_9_13_23.csv',
         'optimiser_score': 'fraction_clustered',
         'search_iter': 1000000
+    },
+    # Added for parameteric UMAP:
+    13: {
+        'run_id': 0,
+        'random_seed': 42,
+        'dim_reducer': 'parametric_umap',
+        'clustering_algo': 'kmeans',
+        'data_path': '../data/cleaned_data_SYMPTOMS_9_13_23.csv',
+        'optimiser_score': 'silhouette',
+        'search_iter': 1000000
+    },
+    14: {
+        'run_id': 0,
+        'random_seed': 42,
+        'dim_reducer': 'parametric_umap',
+        'clustering_algo': 'kmeans',
+        'data_path': '../data/cleaned_data_SYMPTOMS_9_13_23.csv',
+        'optimiser_score': 'dbcv',
+        'search_iter': 1000000
+    },
+    15: {
+        'run_id': 0,
+        'random_seed': 42,
+        'dim_reducer': 'parametric_umap',
+        'clustering_algo': 'hdbscan',
+        'data_path': '../data/cleaned_data_SYMPTOMS_9_13_23.csv',
+        'optimiser_score': 'silhouette',
+        'search_iter': 1000000
+    },
+    16: {
+        'run_id': 0,
+        'random_seed': 42,
+        'dim_reducer': 'parametric_umap',
+        'clustering_algo': 'hdbscan',
+        'data_path': '../data/cleaned_data_SYMPTOMS_9_13_23.csv',
+        'optimiser_score': 'dbcv',
+        'search_iter': 1000000
     }
 }
