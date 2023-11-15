@@ -29,7 +29,7 @@ all_model_parameters ={
             # 'chebyshev', 'braycurtis'
         ])
     },
-    # Noe in use yet...
+    # Not in use yet...
     'parametric_umap': {
         'parametric_umap__n_neighbors': Integer(2, 1000),
         'parametric_umap__min_dist': Real(0, 1),
@@ -72,6 +72,19 @@ randomized_search_parameters = {
             # 'cosine', 'correlation', 'canberra',
             # 'chebyshev', 'braycurtis'
         ]
+    },
+    'parametric_umap': {
+        'parametric_umap__n_neighbors': Integer(2, 1000),
+        'parametric_umap__min_dist': Real(0, 1),
+        'parametric_umap__n_components': Integer(2, 162),
+        'parametric_umap__metric': Categorical([
+            'euclidean', 'manhattan', 'minkowski',
+            'cosine', 'correlation', 'canberra',
+            'chebyshev', 'braycurtis', 'haversine'
+        ]),
+        'parametric_umap__autoencoder_loss': Categorical([True, False]),
+        'parametric_umap__n_training_epochs': Integer(1, 500),
+        'parametric_umap__autocencoder_loss': Categorical([True, False])
     }
 }
 

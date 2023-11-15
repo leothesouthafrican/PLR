@@ -10,7 +10,7 @@ from sklearn.cluster import KMeans
 from sklearn.pipeline import Pipeline
 from sklearn.decomposition import PCA
 from utilities import RandomizedSearch
-# from umap.parametric_umap import ParametricUMAP
+from umap.parametric_umap import ParametricUMAP
 import umap
 
 from utilities import (
@@ -65,7 +65,7 @@ all_models = {
     'hdbscan': hdbscan.HDBSCAN(gen_min_span_tree=True, core_dist_n_jobs=1),
     'kmeans': KMeans(random_state=GLOBALS['random_seed']),
     'umap': umap.UMAP(random_state=GLOBALS['random_seed']),
-    # 'parametric_umap': ParametricUMAP(random_state=GLOBALS['random_seed'])
+    'parametric_umap': ParametricUMAP(random_state=GLOBALS['random_seed'])
 }
 
 if __name__ == '__main__':

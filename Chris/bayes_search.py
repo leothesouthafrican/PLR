@@ -27,7 +27,7 @@ from utilities import (
     davies_bouldin,
     all_model_parameters,
     fraction_clustered,
-    run_configs
+    run_configs, cluster_count
 )
 
 # GLOBALS = {
@@ -45,6 +45,7 @@ GLOBALS = run_configs[int(sys.argv[1])]
 def cast_float(x):
     return x.astype(np.float64)
 
+
 def cv_score(model, X, score=GLOBALS['optimiser_score']):
     """
     If score == 'all' we return a dictionary of all scores, which
@@ -60,7 +61,8 @@ def cv_score(model, X, score=GLOBALS['optimiser_score']):
         'calinski_harabasz': calinski_harabasz,
         'davies_bouldin': davies_bouldin,
         'dbcv_minkowski': dbcv_minkowski,
-        'fraction_clustered': fraction_clustered
+        'fraction_clustered': fraction_clustered,
+        'cluster_count': cluster_count
     }
 
     model.fit(X)
