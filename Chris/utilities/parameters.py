@@ -83,7 +83,6 @@ randomized_search_parameters = {
         ]),
         'parametric_umap__autoencoder_loss': Categorical([True, False]),
         'parametric_umap__n_training_epochs': Integer(1, 500),
-        'parametric_umap__autocencoder_loss': Categorical([True, False])
     }
 }
 
