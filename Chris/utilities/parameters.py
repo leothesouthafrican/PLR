@@ -33,10 +33,10 @@ all_model_parameters ={
     'parametric_umap': {
         # 'parametric_umap__n_neighbors': Integer(2, 1000),
         # 'parametric_umap__min_dist': Real(0, 1),
-        # 'parametric_umap__n_components': Integer(2, 160),
+        #'parametric_umap__n_components': Integer(2, 160),
         'parametric_umap__autoencoder_loss': Categorical([True, False]),
         'parametric_umap__n_training_epochs': Integer(1, 50),
-        'parametric_umapglobal_correlation_loss_weight': Categorical([True, False])
+        #'parametric_umap__global_correlation_loss_weight': Categorical([True, False])
     }
 }
 
@@ -71,10 +71,10 @@ randomized_search_parameters = {
     'parametric_umap': {
 #        'parametric_umap__n_neighbors': Integer(2, 1000),
 #        'parametric_umap__min_dist': Real(0, 1),
-#        'parametric_umap__n_components': Integer(2, 162),
+        #'parametric_umap__n_components': dists.randint(2, 161),
         'parametric_umap__autoencoder_loss': [True, False],
         'parametric_umap__n_training_epochs': dists.randint(1, 51),
-        'parametric_umapglobal_correlation_loss_weight': [True, False]
+        #'parametric_umap__global_correlation_loss_weight': [True, False]
     }
 }
 
