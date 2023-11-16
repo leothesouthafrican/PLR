@@ -1,7 +1,10 @@
 """
 Code for running BayesSearchCV to optimise embedding + shallow classifier.
 """
+import os
 import pickle
+from pathlib import Path
+
 import hdbscan
 import pandas as pd
 import numpy as np
@@ -75,6 +78,7 @@ def cv_score(model, X, score=GLOBALS['optimiser_score']):
             for score_name, score_func in score_dict.items()
         }
         return_dict.update({'labels': labels})
+        return_dict.update(model.get_params())
         return return_dict
     else:
         return score_dict[score](data, labels, model=model)
@@ -90,6 +94,8 @@ all_models = {
 
 if __name__ == '__main__':
     df = load_symptom_data(GLOBALS['data_path'])
+
+    all_results = {}
 
     pipeline_params = {
         **all_model_parameters[GLOBALS['dim_reducer']],
@@ -113,6 +119,9 @@ if __name__ == '__main__':
                 'run_%d' % GLOBALS['run_id']
             ]
         )
+    save_path = Path('./results') / run_name
+    os.makedirs(save_path, exist_ok=False)
+
     config = {
         **GLOBALS,
         **pipeline_params
@@ -158,10 +167,16 @@ if __name__ == '__main__':
         run.log(log_dict)
         print(log_dict)
 
+        all_results[iter] = log_dict
+        if iter % GLOBALS['save_freq'] == 0:
+            with open(save_path / 'all_results.pickle', 'wb') as outfile:
+                pickle.dump(all_results, outfile)
+
     start_time = time.time()
     search_cv.fit(ddf.to_numpy(), callback=wandb_callback)
     elapsed_time = time.time() - start_time
     print(elapsed_time)
     print(search_cv.cv_results_)
-    with open('./results/cv_results_%s.pickle' % run_name, 'wb') as out_file:
+
+    with open(save_path / 'search_cv_results_%s.pickle' % run_name, 'wb') as out_file:
         pickle.dump(search_cv.cv_results_, out_file)
