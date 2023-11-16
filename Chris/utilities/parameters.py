@@ -4,11 +4,11 @@ import numpy as np
 
 all_model_parameters ={
     'hdbscan': {
-        'hdbscan__cluster_selection_epsilon': Real(0.0, 10.0),
+#        'hdbscan__cluster_selection_epsilon': Real(0.0, 1.0),
         'hdbscan__cluster_selection_method': Categorical(['eom', 'leaf']),
         'hdbscan__metric': Categorical(['euclidean', 'manhattan']),
-        'hdbscan__min_cluster_size': Integer(5, 1000),
-        'hdbscan__min_samples': Integer(1, 100)
+        'hdbscan__min_cluster_size': Integer(2, 100),
+        'hdbscan__min_samples': Integer(1, 50)
     },
     'pca': {
         'pca__n_components': Integer(2, 160)
@@ -43,11 +43,11 @@ all_model_parameters ={
 # Different format required for randomizedsearchcv
 randomized_search_parameters = {
     'hdbscan': {
-        'hdbscan__cluster_selection_epsilon': dists.uniform(0.0, 10.0),
+#        'hdbscan__cluster_selection_epsilon': dists.uniform(0.0, 1.0),
         'hdbscan__cluster_selection_method': ['eom', 'leaf'],
         'hdbscan__metric': ['euclidean', 'manhattan'],
-        'hdbscan__min_cluster_size': dists.randint(5, 1001),
-        'hdbscan__min_samples': dists.randint(1, 101)
+        'hdbscan__min_cluster_size': dists.randint(2, 101),
+        'hdbscan__min_samples': dists.randint(1, 51)
     },
     'pca': {
         'pca__n_components': dists.randint(2, 161),
