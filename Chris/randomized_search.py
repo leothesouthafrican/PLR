@@ -37,7 +37,7 @@ GLOBALS = run_configs[int(sys.argv[1])]
 
 
 def cast_float(x):
-    return x.astype(np.float64)
+    return x.astype(np.double)
 
 
 def cv_score(model, X, score=GLOBALS['optimiser_score']):
@@ -61,7 +61,7 @@ def cv_score(model, X, score=GLOBALS['optimiser_score']):
 
     model.fit(X)
     labels = model.steps[2][1].labels_
-    data = model.steps[0][1].transform(X)
+    data = pipe.steps[1][1].transform(pipe.steps[0][1].transform(X))
 
     if score == 'all':
         return_dict = {
