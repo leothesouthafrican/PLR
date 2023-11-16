@@ -68,7 +68,13 @@ def cv_score(model, X, score=GLOBALS['optimiser_score']):
             for score_name, score_func in score_dict.items()
         }
         return_dict.update({'labels': labels})
-        return_dict.update(model.get_params())
+
+        params = model.get_params()
+        keys = list(params.keys())
+        for p in keys:
+            if '_' not in p:
+                params.pop(p, None)
+        return_dict.update(params)
         return return_dict
     else:
         return score_dict[score](data, labels, model=model)
