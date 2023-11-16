@@ -30,7 +30,9 @@ from utilities import (
     davies_bouldin,
     all_model_parameters,
     fraction_clustered,
-    run_configs, cluster_count
+    run_configs,
+    cluster_count,
+    is_jsonable
 )
 
 # GLOBALS = {
@@ -82,7 +84,7 @@ def cv_score(model, X, score=GLOBALS['optimiser_score']):
         params = model.get_params()
         keys = list(params.keys())
         for p in keys:
-            if '_' not in p:
+            if not is_jsonable(params[p]):
                 params.pop(p, None)
         return_dict.update(params)
         return return_dict

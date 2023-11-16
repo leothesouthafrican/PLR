@@ -94,3 +94,10 @@ def davies_bouldin(data, labels, model=None):
     except ValueError:
         print("ValueError caught in davies_bouldin, returning nan.")
         return fail_return_dict['davies_bouldin']
+
+def is_jsonable(x):
+    try:
+        json.dumps(x)
+        return True
+    except (TypeError, OverflowError):
+        return False

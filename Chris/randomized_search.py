@@ -28,7 +28,8 @@ from utilities import (
     cluster_count,
     run_configs,
     rv,
-    fraction_clustered
+    fraction_clustered,
+    is_jsonable
 )
 from utilities import randomized_search_parameters as all_model_parameters
 
@@ -72,7 +73,7 @@ def cv_score(model, X, score=GLOBALS['optimiser_score']):
         params = model.get_params()
         keys = list(params.keys())
         for p in keys:
-            if '_' not in p:
+            if not is_jsonable(params[p]):
                 params.pop(p, None)
         return_dict.update(params)
         return return_dict
