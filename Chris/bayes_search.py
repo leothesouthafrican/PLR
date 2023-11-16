@@ -127,7 +127,7 @@ if __name__ == '__main__':
                 'run_%d' % GLOBALS['run_id']
             ]
         )
-    save_path = Path('./results') / run_name
+    save_path = Path('./results/bayes_search') / run_name
     os.makedirs(save_path, exist_ok=False)
 
     config = {
