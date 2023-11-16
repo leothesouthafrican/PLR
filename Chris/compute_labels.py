@@ -75,8 +75,8 @@ SCORE_DICT = {
 
 api = wandb.Api(timeout=100)
 run = api.run(run_configs[run_id]['best_run_path'])
-# df = run.history()
-df = pd.DataFrame.from_dict(run.scan_history())
+df = run.history()
+# df = pd.DataFrame.from_dict(run.scan_history())
 # df_sorted = df.sort_values(run_configs[run_id]['optimiser_score'], ascending=False)
 
 
