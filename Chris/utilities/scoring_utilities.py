@@ -31,7 +31,10 @@ def dbcv(data, labels, metric='euclidean', model=None):
 
 def rv(data, labels, metric='euclidean', model=None, pipeline_step=1):
     try:
-        return model.steps[pipeline_step][1].relative_validity_
+        return model.steps[pipeline_step][2].relative_validity_
+    except AttributeError:
+        print("AttributeError caught in rv, returning -1.")
+        return fail_return_dict['rv']
     except ValueError:
         print("ValueError caught in rv, returning -1.")
         return fail_return_dict['rv']
