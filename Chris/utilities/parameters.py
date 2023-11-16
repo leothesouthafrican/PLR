@@ -4,11 +4,11 @@ import numpy as np
 
 all_model_parameters ={
     'hdbscan': {
-        'hdbscan__cluster_selection_epsilon': Real(0.0, 1000.0),
+        'hdbscan__cluster_selection_epsilon': Real(0.0, 10.0),
         'hdbscan__cluster_selection_method': Categorical(['eom', 'leaf']),
         'hdbscan__metric': Categorical(['euclidean', 'manhattan']),
         'hdbscan__min_cluster_size': Integer(5, 1000),
-        'hdbscan__min_samples': Integer(1, 1000)
+        'hdbscan__min_samples': Integer(1, 100)
     },
     'pca': {
         'pca__n_components': Integer(2, 160)
@@ -31,25 +31,26 @@ all_model_parameters ={
     },
     # Not in use yet...
     'parametric_umap': {
-        'parametric_umap__n_neighbors': Integer(2, 1000),
-        'parametric_umap__min_dist': Real(0, 1),
-        'parametric_umap__n_components': Integer(2, 160),
+        # 'parametric_umap__n_neighbors': Integer(2, 1000),
+        # 'parametric_umap__min_dist': Real(0, 1),
+        # 'parametric_umap__n_components': Integer(2, 160),
         'parametric_umap__autoencoder_loss': Categorical([True, False]),
-        'parametric_umap__n_training_epochs': Integer(1, 500),
+        'parametric_umap__n_training_epochs': Integer(1, 50),
+        'parametric_umapglobal_correlation_loss_weight': Categorical([True, False])
     }
 }
 
 # Different format required for randomizedsearchcv
 randomized_search_parameters = {
     'hdbscan': {
-        'hdbscan__cluster_selection_epsilon': dists.uniform(0.0, 1000.0),
+        'hdbscan__cluster_selection_epsilon': dists.uniform(0.0, 10.0),
         'hdbscan__cluster_selection_method': ['eom', 'leaf'],
         'hdbscan__metric': ['euclidean', 'manhattan'],
         'hdbscan__min_cluster_size': dists.randint(5, 1001),
-        'hdbscan__min_samples': dists.randint(1, 1001)
+        'hdbscan__min_samples': dists.randint(1, 101)
     },
     'pca': {
-        'pca__n_components': dists.randint(2, 160),
+        'pca__n_components': dists.randint(2, 161),
     },
     'kmeans': {
         'kmeans__n_clusters': dists.randint(2, 21),
@@ -59,7 +60,7 @@ randomized_search_parameters = {
     'umap': {
         'umap__n_neighbors': dists.randint(2, 1001),
         'umap__min_dist': dists.uniform(0, 1),
-        'umap__n_components': dists.randint(2, 160),
+        'umap__n_components': dists.randint(2, 161),
         'umap__metric': [
             'euclidean', 'manhattan'
                          #'minkowski',
@@ -72,7 +73,8 @@ randomized_search_parameters = {
 #        'parametric_umap__min_dist': Real(0, 1),
 #        'parametric_umap__n_components': Integer(2, 162),
         'parametric_umap__autoencoder_loss': [True, False],
-        'parametric_umap__n_training_epochs': dists.randint(1, 500),
+        'parametric_umap__n_training_epochs': dists.randint(1, 51),
+        'parametric_umapglobal_correlation_loss_weight': [True, False]
     }
 }
 
