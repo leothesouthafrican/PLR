@@ -90,7 +90,7 @@ run_configs = {
         'save_freq': 100
     },
     2: {
-        'run_id': 10,
+        'run_id': 11,
         'random_seed': 42,
         'dim_reducer': 'umap',
         'clustering_algo': 'kmeans',
@@ -110,7 +110,7 @@ run_configs = {
         'save_freq': 100
     },
     4: {
-        'run_id': 10,
+        'run_id': 11,
         'random_seed': 42,
         'dim_reducer': 'umap',
         'clustering_algo': 'hdbscan',
