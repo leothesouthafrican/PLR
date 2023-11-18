@@ -11,3 +11,4 @@ Chris/results/
 wandb/
 *results.json
 Tessa/output/
+*.png
