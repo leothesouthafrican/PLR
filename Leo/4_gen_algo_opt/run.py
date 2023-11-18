@@ -9,7 +9,7 @@ import os
 from datetime import datetime
 from subprocess import call
 
-#set a random seed for reproducibility
+# Set a random seed for reproducibility
 np.random.seed(42)
 
 current_directory = os.path.dirname(os.path.realpath(__file__))
@@ -38,7 +38,7 @@ def write_top_performers_to_txt(results, filename):
                 f.write("\n")
             
             f.write("="*40 + "\n")
-
+    
 def main(args):
     dataset = pd.read_csv(args.dataset_path).drop(columns=["Unnamed: 0"])
     
@@ -49,16 +49,9 @@ def main(args):
         "mutation_rate": 0.05,
         "increased_mutation_rate": 0.2,
         "num_elites": None,
-        "depth_range": (1, 5),
-        "hidden_dim_range": (64, 256),
-        "n_epochs": 15,
         "score_metric": silhouette_score,
-        "clustering_algo": "hdbscan",
-        "parent_selection_method": ["tournament"],  # ["roulette", "tournament", "rank", "elitism"],
-        "crossover_method": ["two_point"],  # ["one_point", "two_point", "uniform"],
-        "min_cluster_size_range": (2, 50),
-        "batch_size": 64,
-        "device": torch.device("cuda:0" if torch.cuda.is_available() else "cpu"),
+        "parent_selection_method": ["tournament"],  # Adjust as needed
+        "crossover_method": ["two_point"],  # Adjust as needed
         "n_jobs": -1
     }
 
@@ -86,7 +79,6 @@ def main(args):
     with open(os.path.join(results_dir, "results.json"), "w") as outfile:
         json.dump(results_dict, outfile, default=lambda o: float(o) if isinstance(o, np.float32) else o, indent=4)
 
-    
     # Write top performers to a text file
     txt_filename = os.path.join(results_dir, "top_performers.txt")
     write_top_performers_to_txt(results_dict, txt_filename)
