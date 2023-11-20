@@ -9,3 +9,6 @@ Chris/graphs/
 Chris/results/
 Chris/results/
 wandb/
+*results.json
+Tessa/output/
+*.png
