@@ -86,7 +86,7 @@ all_models = {
     'hdbscan': hdbscan.HDBSCAN(gen_min_span_tree=True, core_dist_n_jobs=1),
     'kmeans': KMeans(random_state=GLOBALS['random_seed']),
     'umap': umap.UMAP(random_state=GLOBALS['random_seed']),
-#    'parametric_umap': ParametricUMAP(random_state=GLOBALS['random_seed'])#, batch_size=250)
+    'parametric_umap': ParametricUMAP(random_state=GLOBALS['random_seed'])#, batch_size=250)
 }
 
 if __name__ == '__main__':
