@@ -241,24 +241,24 @@ def convert_age(age_string):
     return conversion_diict[age_string]
 
 
-def build_cluster_summary(all_data, labels):
+def build_cluster_summary(_all_data, labels):
 
     symptoms = [
         col
-        for col in all_data.columns
+        for col in _all_data.columns
         if 'Symptom' in col
     ]
 
-    all_data['cluster'] = labels
-    all_data['dummy'] = 1
-    all_data['woman'] = all_data['Demographics_Gender_Cleaned'] == 'Woman'
-    all_data['Flag_MCAS_norm'] = all_data['Flag_MCAS'] / 6
-    all_data['symptom_count'] = all_data[symptoms].sum(axis=1)
-    all_data['age_numeric'] = all_data['Demographics_Age_Cleaned'].apply(convert_age)
-    all_data['Physical_PEM_Severity_norm'] = all_data['Physical_PEM_Severity'] / 10
-    all_data['Cognitive_PEM_Severity_norm'] = all_data['Cognitive_PEM_Severity'] / 10
+    _all_data['cluster'] = labels
+    _all_data['dummy'] = 1
+    _all_data['woman'] = _all_data['Demographics_Gender_Cleaned'] == 'Woman'
+    _all_data['Flag_MCAS_norm'] = _all_data['Flag_MCAS'] / 6
+    _all_data['symptom_count'] = _all_data[symptoms].sum(axis=1)
+    _all_data['age_numeric'] = _all_data['Demographics_Age_Cleaned'].apply(convert_age)
+    _all_data['Physical_PEM_Severity_norm'] = _all_data['Physical_PEM_Severity'] / 10
+    _all_data['Cognitive_PEM_Severity_norm'] = _all_data['Cognitive_PEM_Severity'] / 10
 
-    cluster_summary = all_data.groupby('cluster').agg({
+    cluster_summary = _all_data.groupby('cluster').agg({
         'dummy': len,
         'Flag_MECFS': sum,
         'Flag_POTS': pd.Series.mode,
@@ -302,19 +302,21 @@ if BUILD_GRAPH:
     n_estimators = len(combined_results)
 
     for ri, row in df.iterrows():
-
         if ri % 500 == 0:
             print(ri)
+        compare = df.loc[ri + 1:]
+        shared_counts = ((row == compare) * (row != -1) * (compare != -1)).sum(axis=1)
 
-        compare = df.iloc[ri + 1:]
-        shared_counts = ((row == df) * (row != -1) * (df != -1)).sum(axis=1)
+        #     for i, ci in enumerate(range(ri+1, 6031)):
+        for i, count in enumerate(shared_counts):
 
-        for i, ci in enumerate(range(ri + 1, 6031)):
-            E.add_edge(
-                u_of_edge=symptom_data.index[ri],
-                v_of_edge=symptom_data.index[ci],
-                weight=shared_counts[i] / n_estimators
-            )
+            #         count = shared_counts.iloc[i]
+            if count > 0:
+                E.add_edge(
+                    u_of_edge=symptom_data.index[ri],
+                    v_of_edge=symptom_data.index[ri + 1 + i],
+                    weight=count / n_estimators
+                )
 
     nx.write_weighted_edgelist(
         E, path=save_dir / 'raw_graph.edgelist'
@@ -336,7 +338,7 @@ for gamma in [1, 1.005, 1.01, 1.05, 1.1]:
     print("%d clusters of size: " % len(coms))
     print([len(c) for c in coms])
 
-    with open(save_dir / 'community_partition_gamma_%.3f.pickle' % gamma, 'rb') as outfile:
+    with open(save_dir / ('community_partition_gamma_%.3f.pickle' % gamma), 'wb') as outfile:
         pickle.dump(coms, outfile)
 
     labels = {c: ci for ci, com in enumerate(coms) for c in com}
