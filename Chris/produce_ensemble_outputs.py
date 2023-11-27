@@ -135,7 +135,24 @@ ENSEMBLE_DEFINITIONS = {
         # defined in run_config.
         'RUN_IDS_TO_INCLUDE': [13]
     },
-    
+    14: {
+        'SEARCH_TYPE': 'bayes_search',  # perhaps more complete (uniform) exploration of parameter space.
+        'SAMPLE_SIZE': 10,  # number of trained pipelines to sample from each run config
+        'SAMPLE_METHOD': 'best',  # best or random sample.
+        'SAMPLE_SCORE': 'silhouette',  # score to use to define 'best' if that sample method is in use.
+        # can be 'run_objective' in which case it uses the optimiser score
+        # defined in run_config.
+        'RUN_IDS_TO_INCLUDE': [1, 3, 5, 7]
+    },
+    15: {
+        'SEARCH_TYPE': 'bayes_search',  # perhaps more complete (uniform) exploration of parameter space.
+        'SAMPLE_SIZE': 100,  # number of trained pipelines to sample from each run config
+        'SAMPLE_METHOD': 'best',  # best or random sample.
+        'SAMPLE_SCORE': 'silhouette',  # score to use to define 'best' if that sample method is in use.
+        # can be 'run_objective' in which case it uses the optimiser score
+        # defined in run_config.
+        'RUN_IDS_TO_INCLUDE': [1, 5]
+    },
 }
 
 ENSEMBLE = ENSEMBLE_DEFINITIONS[ENSEMBLE_ID]
@@ -147,6 +164,18 @@ os.makedirs(
 
 run_metadata = {
     'bayes_search': {
+        1: {
+            'run_path': 'rusty-chris/tune_shallow_clustering/runs/dbatkzah',
+            'results_path': 'results/bayes_search/umap_kmeans_silhouette_run_10/all_results.pickle'
+        },
+        3: {
+            'run_path': 'rusty-chris/tune_shallow_clustering/runs/ddgyhpw8',
+            'results_path': 'results/bayes_search/umap_hdbscan_silhouette_run_10/all_results.pickle'
+        },
+        5: {
+            'run_path': 'rusty-chris/tune_shallow_clustering/runs/eg0fld9h',
+            'results_path': 'results/bayes_search/pca_kmeans_silhouette_run_10/all_results.pickle'
+        },
         7: {
             'run_path': 'rusty-chris/tune_shallow_clustering/runs/umfnoehu',
             'results_path': 'results/bayes_search/pca_hdbscan_silhouette_run_10/all_results.pickle'
