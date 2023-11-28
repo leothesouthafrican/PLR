@@ -1,3 +1,4 @@
+import json
 import hdbscan
 import numpy as np
 from sklearn.metrics import silhouette_score, davies_bouldin_score, calinski_harabasz_score
@@ -29,9 +30,12 @@ def dbcv(data, labels, metric='euclidean', model=None):
         print("ValueError caught in dbcv, returning -1.")
         return fail_return_dict['dbcv']
 
-def rv(data, labels, metric='euclidean', model=None, pipeline_step=1):
+def rv(data, labels, metric='euclidean', model=None, pipeline_step=2):
     try:
         return model.steps[pipeline_step][1].relative_validity_
+    except AttributeError:
+        print("AttributeError caught in rv, returning -1.")
+        return fail_return_dict['rv']
     except ValueError:
         print("ValueError caught in rv, returning -1.")
         return fail_return_dict['rv']
@@ -91,3 +95,10 @@ def davies_bouldin(data, labels, model=None):
     except ValueError:
         print("ValueError caught in davies_bouldin, returning nan.")
         return fail_return_dict['davies_bouldin']
+
+def is_jsonable(x):
+    try:
+        json.dumps(x)
+        return True
+    except (TypeError, OverflowError):
+        return False

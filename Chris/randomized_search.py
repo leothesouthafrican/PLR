@@ -1,7 +1,10 @@
 """
 Code for running BayesSearchCV to optimise embedding + shallow classifier.
 """
+import os
 import pickle
+from pathlib import Path
+
 import hdbscan
 import time
 import sys
@@ -9,9 +12,11 @@ import wandb
 from sklearn.cluster import KMeans
 from sklearn.pipeline import Pipeline
 from sklearn.decomposition import PCA
+from sklearn.preprocessing import FunctionTransformer
 from utilities import RandomizedSearch
 from umap.parametric_umap import ParametricUMAP
 import umap
+import numpy as np
 
 from utilities import (
     load_symptom_data,
@@ -21,11 +26,18 @@ from utilities import (
     silhouette,
     davies_bouldin,
     cluster_count,
-    run_configs
+    run_configs,
+    rv,
+    fraction_clustered,
+    is_jsonable
 )
 from utilities import randomized_search_parameters as all_model_parameters
 
 GLOBALS = run_configs[int(sys.argv[1])]
+
+
+def cast_float(x):
+    return x.astype(np.double)
 
 
 def cv_score(model, X, score=GLOBALS['optimiser_score']):
@@ -39,25 +51,34 @@ def cv_score(model, X, score=GLOBALS['optimiser_score']):
     score_dict = {
         'silhouette': silhouette,
         'dbcv': dbcv,
+        'rv': rv,
         'calinski_harabasz': calinski_harabasz,
         'davies_bouldin': davies_bouldin,
         'dbcv_minkowski': dbcv_minkowski,
+        'fraction_clustered': fraction_clustered,
         'cluster_count': cluster_count
     }
 
     model.fit(X)
-    labels = model.steps[1][1].labels_
-    data = model.steps[0][1].transform(X)
+    labels = model.steps[2][1].labels_
+    data = pipe.steps[1][1].transform(pipe.steps[0][1].transform(X))
 
     if score == 'all':
         return_dict = {
-            score_name: score_func(data, labels)
+            score_name: score_func(data, labels, model=model)
             for score_name, score_func in score_dict.items()
         }
         return_dict.update({'labels': labels})
+
+        params = model.get_params()
+        keys = list(params.keys())
+        for p in keys:
+            if not is_jsonable(params[p]):
+                params.pop(p, None)
+        return_dict.update(params)
         return return_dict
     else:
-        return score_dict[score](data, labels)
+        return score_dict[score](data, labels, model=model)
 
 
 all_models = {
@@ -65,11 +86,13 @@ all_models = {
     'hdbscan': hdbscan.HDBSCAN(gen_min_span_tree=True, core_dist_n_jobs=1),
     'kmeans': KMeans(random_state=GLOBALS['random_seed']),
     'umap': umap.UMAP(random_state=GLOBALS['random_seed']),
-    'parametric_umap': ParametricUMAP(random_state=GLOBALS['random_seed'])
+    'parametric_umap': ParametricUMAP(random_state=GLOBALS['random_seed'])#, batch_size=250)
 }
 
 if __name__ == '__main__':
     df = load_symptom_data(GLOBALS['data_path'])
+
+    all_results = {}
 
     pipeline_params = {
         **all_model_parameters[GLOBALS['dim_reducer']],
@@ -80,6 +103,7 @@ if __name__ == '__main__':
     pipe = Pipeline(
         steps=[
             (GLOBALS['dim_reducer'], all_models[GLOBALS['dim_reducer']]),
+            ('cast', FunctionTransformer(cast_float)),
             (GLOBALS['clustering_algo'], all_models[GLOBALS['clustering_algo']])
         ]
     )
@@ -92,6 +116,9 @@ if __name__ == '__main__':
                 'run_%d' % GLOBALS['run_id']
             ]
         )
+    save_path = Path('./results') / run_name
+    os.makedirs(save_path, exist_ok=False)
+
     config = {
         **GLOBALS,
         **pipeline_params
@@ -124,11 +151,16 @@ if __name__ == '__main__':
         run.log(log_dict)
         print(log_dict)
 
+        all_results[iter] = log_dict
+        if iter % GLOBALS['save_freq'] == 0:
+            with open(save_path / 'all_results.pickle', 'wb') as outfile:
+                pickle.dump(all_results, outfile)
+
     start_time = time.time()
     search.fit(df.to_numpy(), callback=wandb_callback)
     elapsed_time = time.time() - start_time
     print(elapsed_time)
     print(search.results_)
 
-    with open('./results/results_%s.pickle' % run_name, 'wb') as out_file:
+    with open(save_path / 'search_cv_results_%s.pickle' % run_name, 'wb') as out_file:
         pickle.dump(search.results_, out_file)
