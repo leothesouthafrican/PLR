@@ -4,6 +4,7 @@ Implements the ensemble selection methods JC and CAS from Fern 2008.
 First produces a set of base results. Then re-runs the method N_REPEATS times,
 with different random seeds, comparing the output to the base results.
 # TODO: implement CAS method.
+# TODO: implement and run with hdbscan only - for noise clusters.
 """
 import pickle
 import pickle as pk
@@ -16,6 +17,7 @@ import os
 from pathlib import Path
 import networkx as nx
 from scipy.cluster import hierarchy
+from sklearn.cluster import SpectralClustering
 from sklearn.metrics.cluster import adjusted_rand_score, adjusted_mutual_info_score
 
 from utilities import run_configs, load_symptom_data, modularity, clustering_similarity
@@ -270,6 +272,50 @@ def criterion(ensemble, library_clustering, alpha=ALPHA):
     )
 
 
+def build_similarity_graph(ensemble):
+    pairwise_nmi = np.zeros([len(ensemble), len(ensemble)])
+    NMIG = nx.Graph()  # graph of similarity scores
+
+    for i, e in enumerate(ensemble):
+        NMIG.add_node(i)
+
+    pairs = list(combinations(range(len(ensemble)), 2))
+
+    for pi, pair in enumerate(pairs):
+
+        if pi % 10000 == 0:
+            print(pi)
+
+        _weight = clustering_similarity(
+            ensemble[pair[0]],
+            ensemble[pair[1]],
+            score=NMI_SCORE,
+            _replace_noise=REPLACE_NOISE,
+            ignore_label=IGNORE_LABEL
+        )
+
+        NMIG.add_edge(
+            u_of_edge=pair[0],
+            v_of_edge=pair[1],
+            weight=_weight
+        )
+
+        pairwise_nmi[pair[0], pair[1]] = _weight
+
+    return NMIG, pairwise_nmi
+
+
+def lables_to_partition(labels):
+    partition = {
+        i: []
+        for i in np.unique(labels)
+    }
+    for i, j in enumerate(labels):
+        partition[j].append(i)
+
+    return list(partition.values())
+
+
 def build_ensemble(library, library_clustering, k=ENSEMBLE_SIZE):
     ensemble_indices = []
     ensemble = []
@@ -307,6 +353,27 @@ def build_ensemble(library, library_clustering, k=ENSEMBLE_SIZE):
     return ensemble, ensemble_indices
 
 
+def build_cas_ensemble(partition, library, library_clusters=None, select_best=True):
+    ensemble_indices = []
+    ensemble = []
+
+    for com in partition:
+
+        if select_best and library_clusters is not None:
+            index = np.argmax([
+                quality([library[c]], library_clusters)
+                for c in com
+            ])
+        else:
+            index = np.random.choice(list(com))
+
+        ensemble_indices.append(index)
+        ensemble.append(
+            library[index]
+        )
+
+    return ensemble, ensemble_indices
+
 ensemble_outputs = {}
 
 for r in range(N_REPEATS):
@@ -329,7 +396,17 @@ for r in range(N_REPEATS):
     library_linkage_matrix = similarity_to_linkage(library_co_association_matrix)
     library_clusters = hierarchy.fcluster(library_linkage_matrix, t=LIBRARY_N_CLUSTER, criterion='maxclust')
 
-    ensemble, e_indices = build_ensemble(library.labels, library_clusters)
+    if ENSEMBLE_SELECTION_METHOD == 'JC':
+        ensemble, e_indices = build_ensemble(library.labels, library_clusters)
+
+    elif ENSEMBLE_SELECTION_METHOD == 'CAS':
+        NMIG, pairwise_nmi = build_similarity_graph(library.labels)
+        adj_mat = nx.to_numpy_array(NMIG)
+        sc = SpectralClustering(ENSEMBLE_SIZE, affinity='precomputed', n_init=100)
+        sc.fit(adj_mat)
+        sc_coms = lables_to_partition(sc.labels_)
+        ensemble, e_indices = build_ensemble(sc_coms, library.labels, library_clusters=library_clusters)
+
     final_co_association_matrix = ensemble_to_co_association(ensemble)
     final_linkage_matrix = similarity_to_linkage(final_co_association_matrix, plot_flag=False)
     final_clusters = [
