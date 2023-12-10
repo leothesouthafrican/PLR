@@ -22,14 +22,21 @@ from sklearn.metrics.cluster import adjusted_rand_score, adjusted_mutual_info_sc
 
 from utilities import run_configs, load_symptom_data, modularity, clustering_similarity
 
+ENSEMBLE_SELECTION_ID = int(sys.argv[1])
+CLUSTERING_ALGO = str(sys.argv[2])
+
 ENSEMBLE_SIZE = 20
 LIBRARY_N_CLUSTER = 3
 N_REPEATS = 10
 SEARCH_TYPE = 'randomized_search'  # we want random parameterisations for diversity.
-SAMPLE_SIZE = 15  # number of sample to take from each pipeline to build library
-#SAMPLE_SIZE = 200  # number of sample to take from each pipeline to build library
-#RUN_IDS_TO_INCLUDE = [1, 2, 5, 6]  # we will reproduce using only kmeans (and including p-umap)
-RUN_IDS_TO_INCLUDE = [3, 4, 7, 8]  # we will reproduce using only kmeans (and including p-umap)
+
+if CLUSTERING_ALGO == 'kmeans':
+    SAMPLE_SIZE = 200  # number of sample to take from each pipeline to build library
+    RUN_IDS_TO_INCLUDE = [1, 2, 5, 6]  # we will reproduce using only kmeans (and including p-umap)
+elif CLUSTERING_ALGO == 'hdbscan':
+    SAMPLE_SIZE = 15  # number of sample to take from each pipeline to build library
+    RUN_IDS_TO_INCLUDE = [3, 4, 7, 8]  # we will reproduce using only kmeans (and including p-umap)
+
 NMI_SCORE = 'mi'  # arg to pass to clustering_similarity method to use partial NMI (ignoring -1 labels from hdbscan)
 BASE_SEED = 0  # random seed for base results
 ENSEMBLE_SELECTION_METHODS = ['JC', 'CAS']
@@ -40,11 +47,13 @@ REPLACE_NOISE = False
 LINKAGE_METHOD = 'average'
 MAXCLUST = 15
 
-ENSEMBLE_SELECTION_ID = int(sys.argv[1])
 ENSEMBLE_SELECTION_METHOD = ENSEMBLE_SELECTION_METHODS[ENSEMBLE_SELECTION_ID]
 
-save_dir = Path('./fern_ensemble_outputs/Hhdbscan_%s_%d_%.1f' % (ENSEMBLE_SELECTION_METHOD, ENSEMBLE_SIZE, ALPHA))
-#save_dir = Path('./fern_ensemble_outputs/%s_%d_%.1f' % (ENSEMBLE_SELECTION_METHOD, ENSEMBLE_SIZE, ALPHA))
+save_dir = Path(
+    './fern_ensemble_outputs/%s_%s_%d_%.1f'
+    % (CLUSTERING_ALGO, ENSEMBLE_SELECTION_METHOD, ENSEMBLE_SIZE, ALPHA)
+)
+
 os.makedirs(
     save_dir,
     exist_ok=False
@@ -383,11 +392,17 @@ for r in range(N_REPEATS):
 
     print("Repeat: ", r)
     np.random.seed(BASE_SEED + r)
-    all_results = {
-        run_id: sample_results(filter_results(load_results(run_id)))
-  #      run_id: sample_results(load_results(run_id))
-        for run_id in run_metadata[SEARCH_TYPE].keys()
-    }
+
+    if CLUSTERING_ALGO == 'kmeans':
+        all_results = {
+            run_id: sample_results(load_results(run_id))
+            for run_id in run_metadata[SEARCH_TYPE].keys()
+        }
+    elif CLUSTERING_ALGO == 'hdbscan':
+        all_results = {
+            run_id: sample_results(filter_results(load_results(run_id)))
+            for run_id in run_metadata[SEARCH_TYPE].keys()
+        }
 
     library = all_results[RUN_IDS_TO_INCLUDE[0]]
     for run_id in RUN_IDS_TO_INCLUDE[1:]:
