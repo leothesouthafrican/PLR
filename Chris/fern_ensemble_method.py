@@ -46,6 +46,7 @@ IGNORE_LABEL = None  # ignore noise in hdbscan when building co-association matr
 REPLACE_NOISE = False
 LINKAGE_METHOD = 'average'
 MAXCLUST = 15
+FILTER_LIBRARY_SIZE = 100  # only used in JC to reduce overhead in Diversity calculations by select highest quality N.
 
 ENSEMBLE_SELECTION_METHOD = ENSEMBLE_SELECTION_METHODS[ENSEMBLE_SELECTION_ID]
 
@@ -328,11 +329,16 @@ def lables_to_partition(labels):
     return list(partition.values())
 
 
-def build_ensemble(library, library_clustering, k=ENSEMBLE_SIZE):
+def build_ensemble(library, library_clustering, k=ENSEMBLE_SIZE, filter_library_size=FILTER_LIBRARY_SIZE):
     ensemble_indices = []
     ensemble = []
 
-    # first we select the highest quality clustering
+    # first we filter the library and then select the highest quality clustering
+
+    library['quality'] = [quality([c], library_clustering) for c in library.labels]
+    library.sort_values('quality', ascending=False, inplace=True)
+    library = library.iloc[0:filter_library_size].labels
+
     all_quality = [
         quality([c], library_clustering)
         for c in library
@@ -415,7 +421,7 @@ for r in range(N_REPEATS):
     library_clusters = hierarchy.fcluster(library_linkage_matrix, t=LIBRARY_N_CLUSTER, criterion='maxclust')
 
     if ENSEMBLE_SELECTION_METHOD == 'JC':
-        ensemble, e_indices = build_ensemble(library.labels, library_clusters)
+        ensemble, e_indices = build_ensemble(library, library_clusters)
 
     elif ENSEMBLE_SELECTION_METHOD == 'CAS':
         NMIG, pairwise_nmi = build_similarity_graph(library.labels)
