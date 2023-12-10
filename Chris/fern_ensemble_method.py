@@ -3,6 +3,7 @@ Implements the ensemble selection methods JC and CAS from Fern 2008.
 
 First produces a set of base results. Then re-runs the method N_REPEATS times,
 with different random seeds, comparing the output to the base results.
+# TODO: implement CAS method.
 """
 import pickle
 import pickle as pk
@@ -107,8 +108,8 @@ run_metadata = {
     }
 }
 
-for key in run_metadata['SEARCH_TYPE'].keys():
-    run_configs[key].update(run_metadata['SEARCH_TYPE'][key])
+for key in run_metadata[SEARCH_TYPE].keys():
+    run_configs[key].update(run_metadata[SEARCH_TYPE][key])
 
 
 def load_results(run_id):
