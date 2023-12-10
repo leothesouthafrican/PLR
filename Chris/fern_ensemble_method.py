@@ -350,7 +350,7 @@ def build_ensemble(library, library_clustering, k=ENSEMBLE_SIZE, filter_library_
     best_index = np.argmax(all_quality)
 
     ensemble_indices.append(best_index)
-    ensemble.append(library[best_index])
+    ensemble.append(library.iloc[best_index])
 
     # now we greedily add the clustering that maximises the criterion
     old_best = 0
@@ -367,7 +367,7 @@ def build_ensemble(library, library_clustering, k=ENSEMBLE_SIZE, filter_library_
 
         old_best = new_best
         ensemble_indices.append(best_index)
-        ensemble.append(library[best_index])
+        ensemble.append(library.iloc[best_index])
 
         if len(ensemble) >= k:
             break
