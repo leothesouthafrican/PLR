@@ -36,6 +36,10 @@ if CLUSTERING_ALGO == 'kmeans':
 elif CLUSTERING_ALGO == 'hdbscan':
     SAMPLE_SIZE = 15  # number of sample to take from each pipeline to build library
     RUN_IDS_TO_INCLUDE = [3, 4, 7, 8]  # we will reproduce using only kmeans (and including p-umap)
+elif CLUSTERING_ALGO == 'both':
+    SAMPLE_SIZE = 15  # number of sample to take from each pipeline to build library
+    RUN_IDS_TO_INCLUDE = [1, 2, 3, 4, 5, 6, 7, 8]  # we will reproduce using only kmeans (and including p-umap)
+
 
 NMI_SCORE = 'mi'  # arg to pass to clustering_similarity method to use partial NMI (ignoring -1 labels from hdbscan)
 BASE_SEED = 0  # random seed for base results
@@ -404,7 +408,7 @@ for r in range(N_REPEATS):
             run_id: sample_results(load_results(run_id))
             for run_id in run_metadata[SEARCH_TYPE].keys()
         }
-    elif CLUSTERING_ALGO == 'hdbscan':
+    elif CLUSTERING_ALGO == 'hdbscan' or CLUSTERING_ALGO == 'both':
         all_results = {
             run_id: sample_results(filter_results(load_results(run_id)))
             for run_id in run_metadata[SEARCH_TYPE].keys()
@@ -471,4 +475,5 @@ for r in range(N_REPEATS):
         ]
     }
     print(ensemble_outputs)
-
+    with open(save_dir / 'ensemble_outputs.pickle', 'wb') as outfile:
+        pickle.dump(ensemble_outputs)
