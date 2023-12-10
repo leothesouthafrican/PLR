@@ -476,4 +476,4 @@ for r in range(N_REPEATS):
     }
     print(ensemble_outputs)
     with open(save_dir / 'ensemble_outputs.pickle', 'wb') as outfile:
-        pickle.dump(ensemble_outputs)
+        pickle.dump(ensemble_outputs, outfile)
