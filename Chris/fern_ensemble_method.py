@@ -221,7 +221,7 @@ def ensemble_to_co_association(ensemble):
     N = len(df)
 
     co_association_matrix = np.zeros([N, N])
-    n_estimators = len(library)
+    n_estimators = len(ensemble)
 
     for ri, row in df.iterrows():
 
