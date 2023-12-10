@@ -26,8 +26,10 @@ ENSEMBLE_SIZE = 20
 LIBRARY_N_CLUSTER = 3
 N_REPEATS = 10
 SEARCH_TYPE = 'randomized_search'  # we want random parameterisations for diversity.
-SAMPLE_SIZE = 200  # number of sample to take from each pipeline to build library
-RUN_IDS_TO_INCLUDE = [1, 2, 5, 6]  # we will reproduce using only kmeans (and including p-umap)
+SAMPLE_SIZE = 15  # number of sample to take from each pipeline to build library
+#SAMPLE_SIZE = 200  # number of sample to take from each pipeline to build library
+#RUN_IDS_TO_INCLUDE = [1, 2, 5, 6]  # we will reproduce using only kmeans (and including p-umap)
+RUN_IDS_TO_INCLUDE = [3, 4, 7, 8]  # we will reproduce using only kmeans (and including p-umap)
 NMI_SCORE = 'mi'  # arg to pass to clustering_similarity method to use partial NMI (ignoring -1 labels from hdbscan)
 BASE_SEED = 0  # random seed for base results
 ENSEMBLE_SELECTION_METHODS = ['JC', 'CAS']
@@ -41,7 +43,8 @@ MAXCLUST = 15
 ENSEMBLE_SELECTION_ID = int(sys.argv[1])
 ENSEMBLE_SELECTION_METHOD = ENSEMBLE_SELECTION_METHODS[ENSEMBLE_SELECTION_ID]
 
-save_dir = Path('./fern_ensemble_outputs/%s_%d_%.1f' % (ENSEMBLE_SELECTION_METHOD, ENSEMBLE_SIZE, ALPHA))
+save_dir = Path('./fern_ensemble_outputs/Hhdbscan_%s_%d_%.1f' % (ENSEMBLE_SELECTION_METHOD, ENSEMBLE_SIZE, ALPHA))
+#save_dir = Path('./fern_ensemble_outputs/%s_%d_%.1f' % (ENSEMBLE_SELECTION_METHOD, ENSEMBLE_SIZE, ALPHA))
 os.makedirs(
     save_dir,
     exist_ok=False
@@ -381,8 +384,8 @@ for r in range(N_REPEATS):
     print("Repeat: ", r)
     np.random.seed(BASE_SEED + r)
     all_results = {
-    #     run_id: sample_results(filter_results(load_results(run_id)))
-        run_id: sample_results(load_results(run_id))
+        run_id: sample_results(filter_results(load_results(run_id)))
+  #      run_id: sample_results(load_results(run_id))
         for run_id in run_metadata[SEARCH_TYPE].keys()
     }
 
@@ -405,12 +408,12 @@ for r in range(N_REPEATS):
         sc = SpectralClustering(ENSEMBLE_SIZE, affinity='precomputed', n_init=100)
         sc.fit(adj_mat)
         sc_coms = lables_to_partition(sc.labels_)
-        ensemble, e_indices = build_ensemble(sc_coms, library.labels, library_clusters=library_clusters)
+        ensemble, e_indices = build_cas_ensemble(sc_coms, library.labels, library_clusters=library_clusters)
 
     final_co_association_matrix = ensemble_to_co_association(ensemble)
     final_linkage_matrix = similarity_to_linkage(final_co_association_matrix, plot_flag=False)
     final_clusters = [
-        hierarchy.fcluster(final_linkage_matrix, t=nc, criterion='maxclust')
+        hierarchy.fcluster(final_linkage_matrix, t=nc+1, criterion='maxclust')
         for nc in range(MAXCLUST)
     ]
 
@@ -418,7 +421,7 @@ for r in range(N_REPEATS):
         base_clusters = final_clusters
         base_library_clusters = library_clusters
         for nc in range(MAXCLUST):
-            cs = build_cluster_summary(all_data, final_clusters)
+            cs = build_cluster_summary(all_data, final_clusters[nc])
             cs.to_csv(save_dir / ('cluster_summary_nc_%d.csv' % nc), sep=';')
 
     ensemble_outputs[r] = {
