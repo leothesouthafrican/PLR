@@ -25,14 +25,14 @@ from utilities import run_configs, load_symptom_data, modularity, clustering_sim
 ENSEMBLE_SELECTION_ID = int(sys.argv[1])
 CLUSTERING_ALGO = str(sys.argv[2])
 
-ENSEMBLE_SIZE = 50
-LIBRARY_N_CLUSTER = 3
+ENSEMBLE_SIZE = 20
+LIBRARY_N_CLUSTER = 5
 N_REPEATS = 10
 SEARCH_TYPE = 'randomized_search'  # we want random parameterisations for diversity.
 
 if CLUSTERING_ALGO == 'kmeans':
     SAMPLE_SIZE = 200  # number of sample to take from each pipeline to build library
-    RUN_IDS_TO_INCLUDE = [1, 2, 5, 6]  # we will reproduce using only kmeans (and including p-umap)
+    RUN_IDS_TO_INCLUDE = [1] #, 2, 5, 6]  # we will reproduce using only kmeans (and including p-umap)
 elif CLUSTERING_ALGO == 'hdbscan':
     SAMPLE_SIZE = 15  # number of sample to take from each pipeline to build library
     RUN_IDS_TO_INCLUDE = [3, 4, 7, 8]  # we will reproduce using only kmeans (and including p-umap)
