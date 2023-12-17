@@ -142,9 +142,10 @@ def load_results(run_id):
     return results
 
 
-def filter_results(_results, min_size=2, noise_threshold=0.66):
+def filter_results(_results, min_size=2, noise_threshold=0.66, max_dim=40):
     _results = _results[_results.cluster_count > min_size]
     _results = _results[_results.fraction_clustered > noise_threshold]
+    _results = _results[_results.umap__n_components <= max_dim]
 
     return _results
 
