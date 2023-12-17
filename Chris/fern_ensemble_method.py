@@ -25,7 +25,7 @@ from utilities import run_configs, load_symptom_data, modularity, clustering_sim
 ENSEMBLE_SELECTION_ID = int(sys.argv[1])
 CLUSTERING_ALGO = str(sys.argv[2])
 
-ENSEMBLE_SIZE = 20
+ENSEMBLE_SIZE = 50
 LIBRARY_N_CLUSTER = 5
 N_REPEATS = 10
 SEARCH_TYPE = 'randomized_search'  # we want random parameterisations for diversity.
