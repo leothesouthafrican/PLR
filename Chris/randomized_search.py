@@ -157,7 +157,7 @@ if __name__ == '__main__':
                 pickle.dump(all_results, outfile)
 
     start_time = time.time()
-    search.fit(df.to_numpy(), callback=wandb_callback)
+    search.fit(df, callback=wandb_callback)
     elapsed_time = time.time() - start_time
     print(elapsed_time)
     print(search.results_)

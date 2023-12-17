@@ -6,7 +6,10 @@ class RandomizedSearch:
     RandomizedSearchCV does not have a callback (as we used with BayesSearchCV) or easy workaround,
     so we implement our own basic random search class...
     """
-    def __init__(self, pipeline, param_distributions, scorer, scoring='dbcv', n_iter=10, random_seed=None):
+    def __init__(
+            self, pipeline, param_distributions, scorer, scoring='dbcv',
+            n_iter=10, random_seed=None, bootstrap=True, symptom_frac=1.0
+    ):
 
         if not isinstance(param_distributions, (Mapping, Iterable)):
             raise TypeError(
@@ -34,11 +37,14 @@ class RandomizedSearch:
                         f"or a distribution (value={dist[key]})"
                     )
 
+        self.bootstrap = bootstrap
+        self.symptom_frac = symptom_frac
         self.pipeline = pipeline
         self.param_distributions = param_distributions
         self.scoring = scoring
         self.scorer = scorer
         self.n_iter = n_iter
+        self.seed =random_seed
         self.rng = np.random.RandomState(random_seed)
         self.results_ = {
             'x_iters': [],
@@ -48,11 +54,19 @@ class RandomizedSearch:
 
     def fit(self, X, callback=None):
         for i in range(self.n_iter):
+
+            symptom_sample = X.copy().sample(n=self.symptom_frac*len(X), axis=1, random_state=self.rng)
+            if self.bootstrap:
+                bootstrap_sample = symptom_sample.sample(n=len(symptom_sample), replace=True, axis=0, random_state=self.rng)
+                _X = bootstrap_sample.to_numpy()
+            else:
+                _X = symptom_sample.to_numpy()
+
             params = self.choose_params()
             self.pipeline.set_params(**params)
 
             self.results_['x_iters'].append(params)
-            all_scores = self.scorer(self.pipeline, X, score='all')
+            all_scores = self.scorer(self.pipeline, _X, score='all')
             this_score = all_scores[self.scoring]
 
             if not np.isnan(this_score) and (
@@ -60,6 +74,9 @@ class RandomizedSearch:
             ):
                 self.results_['fun'] = this_score
                 self.results_['x'] = params
+                self.results_['symptom_sample'] = symptom_sample.columns
+                if self.bootstrap:
+                    self.results_['bootstrap_sample_index'] = bootstrap_sample.index
 
             callback(self.results_, params, all_scores)
 
