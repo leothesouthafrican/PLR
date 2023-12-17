@@ -135,6 +135,8 @@ if __name__ == '__main__':
         scorer=cv_score,
         scoring=GLOBALS['optimiser_score'],
         n_iter=GLOBALS['search_iter'],
+        bootstrap=GLOBALS['bootstrap'],
+        symptom_frac=GLOBALS['symptom_frac'],
     )
 
     def wandb_callback(result, current_params, all_scores):

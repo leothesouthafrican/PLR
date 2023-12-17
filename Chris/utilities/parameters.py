@@ -53,14 +53,14 @@ randomized_search_parameters = {
         'pca__n_components': dists.randint(2, 161),
     },
     'kmeans': {
-        'kmeans__n_clusters': dists.randint(2, 21),
-        'kmeans__n_init': dists.randint(1, 11),
+        'kmeans__n_clusters': dists.randint(3, 21),
+        'kmeans__n_init': ['auto'],
         'kmeans__init': ['k-means++', 'random'],
     },
     'umap': {
-        'umap__n_neighbors': dists.randint(2, 1001),
+        'umap__n_neighbors': dists.randint(2, 100),
         'umap__min_dist': dists.uniform(0, 1),
-        'umap__n_components': dists.randint(2, 161),
+        'umap__n_components': dists.randint(2, 40),
         'umap__metric': [
             'euclidean', 'manhattan'
                          #'minkowski',
@@ -241,5 +241,53 @@ run_configs = {
         'optimiser_score': 'dbcv',
         'search_iter': 1000000,
         'save_freq': 10
-    }
+    },
+    17: {
+        'run_id': 42,
+        'random_seed': None,
+        'dim_reducer': 'umap',
+        'clustering_algo': 'kmeans',
+        'data_path': '../data/cleaned_data_SYMPTOMS_9_13_23.csv',
+        'optimiser_score': 'silhouette',
+        'search_iter': 1000,
+        'save_freq': 50,
+        'symptom_frac': 1.0,
+        'bootstrap': False
+    },
+    18: {
+        'run_id': 42,
+        'random_seed': None,
+        'dim_reducer': 'umap',
+        'clustering_algo': 'kmeans',
+        'data_path': '../data/cleaned_data_SYMPTOMS_9_13_23.csv',
+        'optimiser_score': 'silhouette',
+        'search_iter': 1000,
+        'save_freq': 50,
+        'symptom_frac': 1.0,
+        'bootstrap': True
+    },
+    19: {
+        'run_id': 42,
+        'random_seed': None,
+        'dim_reducer': 'umap',
+        'clustering_algo': 'kmeans',
+        'data_path': '../data/cleaned_data_SYMPTOMS_9_13_23.csv',
+        'optimiser_score': 'silhouette',
+        'search_iter': 1000,
+        'save_freq': 50,
+        'symptom_frac': 0.8,
+        'bootstrap': False
+    },
+    20: {
+        'run_id': 42,
+        'random_seed': None,
+        'dim_reducer': 'umap',
+        'clustering_algo': 'kmeans',
+        'data_path': '../data/cleaned_data_SYMPTOMS_9_13_23.csv',
+        'optimiser_score': 'silhouette',
+        'search_iter': 1000,
+        'save_freq': 50,
+        'symptom_frac': 0.8,
+        'bootstrap': True
+    },
 }
