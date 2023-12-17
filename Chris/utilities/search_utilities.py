@@ -55,7 +55,7 @@ class RandomizedSearch:
     def fit(self, X, callback=None):
         for i in range(self.n_iter):
 
-            symptom_sample = X.copy().sample(n=self.symptom_frac*len(X), axis=1, random_state=self.rng)
+            symptom_sample = X.copy().sample(n=int(self.symptom_frac*len(X.columns)), axis=1, random_state=self.rng)
             if self.bootstrap:
                 bootstrap_sample = symptom_sample.sample(n=len(symptom_sample), replace=True, axis=0, random_state=self.rng)
                 _X = bootstrap_sample.to_numpy()

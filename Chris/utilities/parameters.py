@@ -54,7 +54,7 @@ randomized_search_parameters = {
     },
     'kmeans': {
         'kmeans__n_clusters': dists.randint(3, 21),
-        'kmeans__n_init': ['auto'],
+        'kmeans__n_init': dists.randint(1, 10),
         'kmeans__init': ['k-means++', 'random'],
     },
     'umap': {

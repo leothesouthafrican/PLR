@@ -14,7 +14,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import FunctionTransformer
 from utilities import RandomizedSearch
-from umap.parametric_umap import ParametricUMAP
+#from umap.parametric_umap import ParametricUMAP
 import umap
 import numpy as np
 
@@ -86,7 +86,7 @@ all_models = {
     'hdbscan': hdbscan.HDBSCAN(gen_min_span_tree=True, core_dist_n_jobs=1),
     'kmeans': KMeans(random_state=GLOBALS['random_seed']),
     'umap': umap.UMAP(random_state=GLOBALS['random_seed']),
-    'parametric_umap': ParametricUMAP(random_state=GLOBALS['random_seed'])#, batch_size=250)
+    #'parametric_umap': ParametricUMAP(random_state=GLOBALS['random_seed'])#, batch_size=250)
 }
 
 if __name__ == '__main__':
@@ -113,8 +113,8 @@ if __name__ == '__main__':
                 GLOBALS['dim_reducer'],
                 GLOBALS['clustering_algo'],
                 GLOBALS['optimiser_score'],
-                GLOBALS['bootstrap'],
-                GLOBALS['symptom_frac'],
+                str(GLOBALS['bootstrap']),
+                str(GLOBALS['symptom_frac']),
                 'run_%d' % GLOBALS['run_id']
             ]
         )
