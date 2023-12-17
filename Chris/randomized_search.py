@@ -113,6 +113,8 @@ if __name__ == '__main__':
                 GLOBALS['dim_reducer'],
                 GLOBALS['clustering_algo'],
                 GLOBALS['optimiser_score'],
+                GLOBALS['bootstrap'],
+                GLOBALS['symptom_frac'],
                 'run_%d' % GLOBALS['run_id']
             ]
         )
