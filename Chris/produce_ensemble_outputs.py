@@ -15,7 +15,7 @@ from sklearn.metrics.cluster import adjusted_rand_score, adjusted_mutual_info_sc
 
 from utilities import run_configs, load_symptom_data, modularity
 
-BUILD_GRAPH =False
+BUILD_GRAPH = False
 ENSEMBLE_ID = int(sys.argv[1])
 ENSEMBLE_DEFINITIONS = {
     1: {
@@ -146,12 +146,21 @@ ENSEMBLE_DEFINITIONS = {
     },
     15: {
         'SEARCH_TYPE': 'bayes_search',  # perhaps more complete (uniform) exploration of parameter space.
-        'SAMPLE_SIZE': 100,  # number of trained pipelines to sample from each run config
+        'SAMPLE_SIZE': 10,  # number of trained pipelines to sample from each run config
         'SAMPLE_METHOD': 'best',  # best or random sample.
         'SAMPLE_SCORE': 'silhouette',  # score to use to define 'best' if that sample method is in use.
         # can be 'run_objective' in which case it uses the optimiser score
         # defined in run_config.
         'RUN_IDS_TO_INCLUDE': [1, 5]
+    },
+    16: {
+        'SEARCH_TYPE': 'bayes_search',  # perhaps more complete (uniform) exploration of parameter space.
+        'SAMPLE_SIZE': 50,  # number of trained pipelines to sample from each run config
+        'SAMPLE_METHOD': 'best',  # best or random sample.
+        'SAMPLE_SCORE': 'silhouette',  # score to use to define 'best' if that sample method is in use.
+        # can be 'run_objective' in which case it uses the optimiser score
+        # defined in run_config.
+        'RUN_IDS_TO_INCLUDE': [1]
     },
 }
 
@@ -372,10 +381,11 @@ tessa.rename(columns={'Unnamed: 0': 'index'}, inplace=True)
 print("Running Louvain community detection...")
 #for gamma in [1.00014, 1.00015, 1.00016, 1.00017, 1.00018, 1.00019]:
 #for gamma in [1.0001, 1.00015, 1.0002, 1.00025, 1.0003, 1.00035, 1.0004]:
-for gamma in [1, 1.00005, 1.0001, 1.0005, 1.001]:
+#for gamma in [1, 1.00005, 1.0001, 1.0005, 1.001]:
 #for gamma in [1, 1.005, 1.01, 1.05, 1.1]:
 #for gamma in [1.15, 1.2, 1.25, 1.3, 1.35]:
 #for gamma in [1, 1.005, 1.01, 1.05, 1.1]:
+for gamma in [0.99, 0.9905, 0.991, 0.9915, 0.9920, 0.9925, 0.993]:
 
     print(gamma)
     #coms = nx.community.louvain_communities(E, seed=42, resolution=gamma)

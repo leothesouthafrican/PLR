@@ -12,6 +12,7 @@ from .scoring_utilities import calinski_harabasz
 from .scoring_utilities import davies_bouldin
 from .scoring_utilities import cluster_count
 from .scoring_utilities import is_jsonable
+from .scoring_utilities import clustering_similarity
 from .parameters import all_model_parameters
 from .parameters import randomized_search_parameters
 from .parameters import run_configs

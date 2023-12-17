@@ -2,6 +2,7 @@ import json
 import hdbscan
 import numpy as np
 from sklearn.metrics import silhouette_score, davies_bouldin_score, calinski_harabasz_score
+from sklearn.metrics.cluster import adjusted_rand_score, adjusted_mutual_info_score, normalized_mutual_info_score
 
 fail_return_dict = {
     'dbcv': -1,
@@ -102,3 +103,47 @@ def is_jsonable(x):
         return True
     except (TypeError, OverflowError):
         return False
+
+
+def replace_noise(labels, ignore_label):
+
+    max_l = np.max(labels)
+    _labels = []
+
+    for l in labels:
+        if l == ignore_label:
+            _labels.append(max_l + 1)
+            max_l += 1
+        else:
+            _labels.append(l)
+
+    return _labels
+
+
+def clustering_similarity(labels_1, labels_2, ignore_label=-1, score='rand', _replace_noise=True):
+    assert len(labels_1) == len(labels_2)
+
+    if ignore_label is not None:
+        if _replace_noise:
+            _labels_1 = replace_noise(labels_1, ignore_label)
+            _labels_2 = replace_noise(labels_2, ignore_label)
+        else:
+            keep_indices = list(set(
+                np.argwhere(labels_1 != ignore_label).flatten()
+            ).union(np.argwhere(labels_2 != ignore_label).flatten()))
+
+            _labels_1 = labels_1[keep_indices]
+            _labels_2 = labels_2[keep_indices]
+
+    else:
+        _labels_1 = labels_1
+        _labels_2 = labels_2
+
+    if score == 'rand':
+        score = adjusted_rand_score
+    elif score == 'mi':
+        score = adjusted_mutual_info_score
+    elif score == 'norm':
+        score = normalized_mutual_info_score
+
+    return score(_labels_1, _labels_2)
