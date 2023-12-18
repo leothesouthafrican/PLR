@@ -115,6 +115,7 @@ if __name__ == '__main__':
                 GLOBALS['optimiser_score'],
                 str(GLOBALS['bootstrap']),
                 str(GLOBALS['symptom_frac']),
+                str(GLOBALS['patient_frac']),
                 'run_%d' % GLOBALS['run_id']
             ]
         )
@@ -139,6 +140,7 @@ if __name__ == '__main__':
         n_iter=GLOBALS['search_iter'],
         bootstrap=GLOBALS['bootstrap'],
         symptom_frac=GLOBALS['symptom_frac'],
+        patient_frac=GLOBALS['patient_frac']
     )
 
     def wandb_callback(result, current_params, all_scores):

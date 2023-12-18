@@ -290,4 +290,30 @@ run_configs = {
         'symptom_frac': 0.8,
         'bootstrap': True
     },
+    21: {
+        'run_id': 42,
+        'random_seed': None,
+        'dim_reducer': 'umap',
+        'clustering_algo': 'kmeans',
+        'data_path': '../data/cleaned_data_SYMPTOMS_9_13_23.csv',
+        'optimiser_score': 'silhouette',
+        'search_iter': 1000,
+        'save_freq': 50,
+        'symptom_frac': 1.0,
+        'bootstrap': False,
+        'patient_frac': 0.8
+    },
+    22: {
+        'run_id': 42,
+        'random_seed': None,
+        'dim_reducer': 'umap',
+        'clustering_algo': 'kmeans',
+        'data_path': '../data/cleaned_data_SYMPTOMS_9_13_23.csv',
+        'optimiser_score': 'silhouette',
+        'search_iter': 1000,
+        'save_freq': 50,
+        'symptom_frac': 0.8,
+        'bootstrap': False,
+        'patient_frac': 0.8
+    },
 }
