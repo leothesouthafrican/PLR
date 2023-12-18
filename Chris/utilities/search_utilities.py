@@ -8,7 +8,8 @@ class RandomizedSearch:
     """
     def __init__(
             self, pipeline, param_distributions, scorer, scoring='dbcv',
-            n_iter=10, random_seed=None, bootstrap=True, symptom_frac=1.0
+            n_iter=10, random_seed=None, bootstrap=True, symptom_frac=1.0,
+            patient_frac=1.0
     ):
 
         if not isinstance(param_distributions, (Mapping, Iterable)):
@@ -39,6 +40,7 @@ class RandomizedSearch:
 
         self.bootstrap = bootstrap
         self.symptom_frac = symptom_frac
+        self.patient_frac = patient_frac
         self.pipeline = pipeline
         self.param_distributions = param_distributions
         self.scoring = scoring
@@ -59,6 +61,9 @@ class RandomizedSearch:
             if self.bootstrap:
                 bootstrap_sample = symptom_sample.sample(n=len(symptom_sample), replace=True, axis=0, random_state=self.rng)
                 _X = bootstrap_sample.to_numpy()
+            elif self.patient_frac < 1.0:
+                patient_sample = symptom_sample.sample(n=int(self.patient_frac * len(X)), axis=0, random_state=self.rng)
+                _X = patient_sample.to_numpy()
             else:
                 _X = symptom_sample.to_numpy()
 
@@ -77,6 +82,8 @@ class RandomizedSearch:
                 self.results_['symptom_sample'] = symptom_sample.columns
                 if self.bootstrap:
                     self.results_['bootstrap_sample_index'] = bootstrap_sample.index
+                elif self.patient_frac < 1.0:
+                    self.results_['patient_sample_index'] = patient_sample.index
 
             callback(self.results_, params, all_scores)
 
