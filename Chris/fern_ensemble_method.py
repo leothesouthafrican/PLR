@@ -25,14 +25,14 @@ from utilities import run_configs, load_symptom_data, modularity, clustering_sim
 ENSEMBLE_SELECTION_ID = int(sys.argv[1])
 CLUSTERING_ALGO = str(sys.argv[2])
 
-ENSEMBLE_SIZE = 20
-LIBRARY_N_CLUSTER = 3
+ENSEMBLE_SIZE = 50
+LIBRARY_N_CLUSTER = 5
 N_REPEATS = 10
 SEARCH_TYPE = 'randomized_search'  # we want random parameterisations for diversity.
 
 if CLUSTERING_ALGO == 'kmeans':
     SAMPLE_SIZE = 200  # number of sample to take from each pipeline to build library
-    RUN_IDS_TO_INCLUDE = [1, 2, 5, 6]  # we will reproduce using only kmeans (and including p-umap)
+    RUN_IDS_TO_INCLUDE = [1] #, 2, 5, 6]  # we will reproduce using only kmeans (and including p-umap)
 elif CLUSTERING_ALGO == 'hdbscan':
     SAMPLE_SIZE = 15  # number of sample to take from each pipeline to build library
     RUN_IDS_TO_INCLUDE = [3, 4, 7, 8]  # we will reproduce using only kmeans (and including p-umap)
@@ -142,9 +142,10 @@ def load_results(run_id):
     return results
 
 
-def filter_results(_results, min_size=2, noise_threshold=0.66):
+def filter_results(_results, min_size=2, noise_threshold=0.66, max_dim=40):
     _results = _results[_results.cluster_count > min_size]
     _results = _results[_results.fraction_clustered > noise_threshold]
+    _results = _results[_results.umap__n_components <= max_dim]
 
     return _results
 
@@ -476,4 +477,4 @@ for r in range(N_REPEATS):
     }
     print(ensemble_outputs)
     with open(save_dir / 'ensemble_outputs.pickle', 'wb') as outfile:
-        pickle.dump(ensemble_outputs)
+        pickle.dump(ensemble_outputs, outfile)

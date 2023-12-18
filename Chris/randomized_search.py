@@ -14,7 +14,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import FunctionTransformer
 from utilities import RandomizedSearch
-from umap.parametric_umap import ParametricUMAP
+#from umap.parametric_umap import ParametricUMAP
 import umap
 import numpy as np
 
@@ -86,7 +86,7 @@ all_models = {
     'hdbscan': hdbscan.HDBSCAN(gen_min_span_tree=True, core_dist_n_jobs=1),
     'kmeans': KMeans(random_state=GLOBALS['random_seed']),
     'umap': umap.UMAP(random_state=GLOBALS['random_seed']),
-    'parametric_umap': ParametricUMAP(random_state=GLOBALS['random_seed'])#, batch_size=250)
+    #'parametric_umap': ParametricUMAP(random_state=GLOBALS['random_seed'])#, batch_size=250)
 }
 
 if __name__ == '__main__':
@@ -113,6 +113,8 @@ if __name__ == '__main__':
                 GLOBALS['dim_reducer'],
                 GLOBALS['clustering_algo'],
                 GLOBALS['optimiser_score'],
+                str(GLOBALS['bootstrap']),
+                str(GLOBALS['symptom_frac']),
                 'run_%d' % GLOBALS['run_id']
             ]
         )
@@ -135,6 +137,8 @@ if __name__ == '__main__':
         scorer=cv_score,
         scoring=GLOBALS['optimiser_score'],
         n_iter=GLOBALS['search_iter'],
+        bootstrap=GLOBALS['bootstrap'],
+        symptom_frac=GLOBALS['symptom_frac'],
     )
 
     def wandb_callback(result, current_params, all_scores):
@@ -157,7 +161,7 @@ if __name__ == '__main__':
                 pickle.dump(all_results, outfile)
 
     start_time = time.time()
-    search.fit(df.to_numpy(), callback=wandb_callback)
+    search.fit(df, callback=wandb_callback)
     elapsed_time = time.time() - start_time
     print(elapsed_time)
     print(search.results_)
