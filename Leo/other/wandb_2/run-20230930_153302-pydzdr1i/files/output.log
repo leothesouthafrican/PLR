@@ -1,0 +1,42 @@
+Generations:   0%|                                                                                                                                                                         | 0/20 [00:00<?, ?it/s]
+Eval Fitness Gen 1 - Best Fitness: 0.2803:   4%|█████▏                                                                                                                            | 4/100 [00:01<00:34,  2.80it/s]
+
+Eval Fitness Gen 1 - Best Fitness: 0.2803:   9%|███████████▋                                                                                                                      | 9/100 [00:03<00:38,  2.36it/s]
+
+Eval Fitness Gen 1 - Best Fitness: 0.2803:  14%|██████████████████                                                                                                               | 14/100 [00:05<00:35,  2.39it/s]
+Flipped feature 66
+Flipped feature 77
+Flipped feature 79
+Flipped feature 81
+Flipped feature 94
+Flipped feature 135
+Mutated latent dimension
+
+Eval Fitness Gen 1 - Best Fitness: 0.2803:  21%|███████████████████████████                                                                                                      | 21/100 [00:07<00:23,  3.38it/s]
+Mutated clustering hyperparameter
+
+Traceback (most recent call last):
+  File "/Users/leo/Programming/PLR/Leo/gen_algo_opt_folder/genetic_algorithm.py", line 281, in <module>
+    best_individual, best_fitness = ga.run()
+                                    ^^^^^^^^
+  File "/Users/leo/Programming/PLR/Leo/gen_algo_opt_folder/genetic_algorithm.py", line 208, in run
+    fitness_val = self.fitness(individual)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/leo/Programming/PLR/Leo/gen_algo_opt_folder/genetic_algorithm.py", line 84, in fitness
+    labels = perform_hdbscan(latent_data, min_cluster_size=cluster_param)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/leo/Programming/PLR/Leo/gen_algo_opt_folder/cluster_comparison.py", line 19, in perform_hdbscan
+    hdbscan_model.fit(umap_result)
+  File "/Users/leo/Programming/PLR/Leo/env/lib/python3.11/site-packages/hdbscan/hdbscan_.py", line 1205, in fit
+    ) = hdbscan(clean_data, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/leo/Programming/PLR/Leo/env/lib/python3.11/site-packages/hdbscan/hdbscan_.py", line 837, in hdbscan
+    (single_linkage_tree, result_min_span_tree) = memory.cache(
+                                                  ^^^^^^^^^^^^^
+  File "/Users/leo/Programming/PLR/Leo/env/lib/python3.11/site-packages/joblib/memory.py", line 353, in __call__
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/leo/Programming/PLR/Leo/env/lib/python3.11/site-packages/hdbscan/hdbscan_.py", line 354, in _hdbscan_boruvka_kdtree
+    single_linkage_tree = label(min_spanning_tree)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

@@ -1,0 +1,111 @@
+Generations:   0%|                                                                                                                                                                         | 0/20 [00:00<?, ?it/s]
+Eval Fitness Gen 1 - Best Fitness: 0.0863:   4%|█████▏                                                                                                                            | 4/100 [00:01<00:40,  2.38it/s]
+Mutated depth
+Mutated clustering hyperparameter
+
+Eval Fitness Gen 1 - Best Fitness: 0.4135:   9%|███████████▋                                                                                                                      | 9/100 [00:03<00:37,  2.40it/s]
+
+Eval Fitness Gen 1 - Best Fitness: 0.4135:  13%|████████████████▊                                                                                                                | 13/100 [00:05<00:42,  2.02it/s]
+Mutated depth
+Flipped feature 18
+Flipped feature 26
+Flipped feature 44
+Flipped feature 100
+Flipped feature 109
+Flipped feature 117
+
+Eval Fitness Gen 1 - Best Fitness: 0.4235:  18%|███████████████████████▏                                                                                                         | 18/100 [00:07<00:32,  2.52it/s]
+Mutated clustering hyperparameter
+Flipped feature 44
+Flipped feature 45
+Flipped feature 55
+Flipped feature 72
+Flipped feature 104
+Flipped feature 139
+
+Eval Fitness Gen 1 - Best Fitness: 0.4235:  23%|█████████████████████████████▋                                                                                                   | 23/100 [00:09<00:31,  2.46it/s]
+Mutated clustering hyperparameter
+
+Eval Fitness Gen 1 - Best Fitness: 0.4235:  28%|████████████████████████████████████                                                                                             | 28/100 [00:11<00:30,  2.32it/s]
+
+Eval Fitness Gen 1 - Best Fitness: 0.6275:  33%|██████████████████████████████████████████▌                                                                                      | 33/100 [00:13<00:29,  2.31it/s]
+
+Eval Fitness Gen 1 - Best Fitness: 0.8488:  38%|█████████████████████████████████████████████████                                                                                | 38/100 [00:15<00:24,  2.50it/s]
+Mutated depth
+
+Eval Fitness Gen 1 - Best Fitness: 0.8488:  42%|██████████████████████████████████████████████████████▏                                                                          | 42/100 [00:17<00:23,  2.42it/s]
+Flipped feature 10
+Flipped feature 81
+Flipped feature 99
+Flipped feature 108
+Flipped feature 109
+Flipped feature 122
+Flipped feature 126
+
+
+
+Eval Fitness Gen 1 - Best Fitness: 0.8488:  57%|█████████████████████████████████████████████████████████████████████████▌                                                       | 57/100 [00:23<00:16,  2.65it/s]
+Mutated clustering hyperparameter
+Flipped feature 29
+Flipped feature 46
+Flipped feature 55
+Flipped feature 125
+Flipped feature 134
+
+
+Eval Fitness Gen 1 - Best Fitness: 0.8488:  66%|█████████████████████████████████████████████████████████████████████████████████████▏                                           | 66/100 [00:27<00:15,  2.13it/s]
+
+
+Eval Fitness Gen 1 - Best Fitness: 0.8488:  77%|███████████████████████████████████████████████████████████████████████████████████████████████████▎                             | 77/100 [00:31<00:09,  2.35it/s]
+
+Eval Fitness Gen 1 - Best Fitness: 0.8488:  82%|█████████████████████████████████████████████████████████████████████████████████████████████████████████▊                       | 82/100 [00:33<00:06,  2.63it/s]
+Flipped feature 6
+Flipped feature 8
+Flipped feature 10
+Flipped feature 54
+Flipped feature 79
+Flipped feature 138
+
+Eval Fitness Gen 1 - Best Fitness: 0.8488:  87%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████▏                | 87/100 [00:35<00:05,  2.43it/s]
+
+
+Eval Fitness Gen 1 - Best Fitness: 0.8488:  96%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▊     | 96/100 [00:39<00:01,  2.16it/s]
+Mutated depth
+Mutated depth
+Mutated clustering hyperparameter
+Mutated clustering hyperparameter
+Mutated depth
+Mutated clustering hyperparameter
+Mutated clustering hyperparameter
+Mutated clustering hyperparameter
+Flipped feature 19
+Flipped feature 35
+Flipped feature 54
+Flipped feature 87
+Flipped feature 128
+Flipped feature 134
+Flipped feature 136
+Flipped feature 137
+Mutated latent dimension
+Mutated clustering hyperparameter
+Flipped feature 8
+Flipped feature 12
+Flipped feature 49
+Flipped feature 71
+Flipped feature 97
+Flipped feature 114
+Flipped feature 135
+Mutated depth
+Mutated clustering hyperparameter
+Traceback (most recent call last):
+  File "/Users/leo/Programming/PLR/Leo/gen_algo_opt_folder/genetic_algorithm.py", line 281, in <module>
+    best_individual, best_fitness = ga.run()
+                                    ^^^^^^^^
+  File "/Users/leo/Programming/PLR/Leo/gen_algo_opt_folder/genetic_algorithm.py", line 208, in run
+    fitness_val = self.fitness(individual)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/leo/Programming/PLR/Leo/gen_algo_opt_folder/genetic_algorithm.py", line 53, in fitness
+    latent_dim = max(2, int(params[self.n_features + 1]))
+                            ~~~~~~^^^^^^^^^^^^^^^^^^^^^
+IndexError: tuple index out of range
+Mutated depth

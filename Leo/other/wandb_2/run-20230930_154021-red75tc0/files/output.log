@@ -1,0 +1,131 @@
+Generations:   0%|                                                                                                                                                                         | 0/20 [00:00<?, ?it/s]
+Eval Fitness Gen 1 - Best Fitness: 0.3505:   3%|███▉                                                                                                                              | 3/100 [00:01<00:53,  1.80it/s]
+Mutated clustering hyperparameter
+Mutated clustering hyperparameter
+Flipped feature 3
+Flipped feature 10
+Flipped feature 14
+Flipped feature 23
+Flipped feature 52
+Flipped feature 57
+Flipped feature 66
+Flipped feature 71
+Flipped feature 72
+Flipped feature 112
+Flipped feature 119
+
+
+
+
+Eval Fitness Gen 1 - Best Fitness: 0.7771:  21%|███████████████████████████                                                                                                      | 21/100 [00:09<00:38,  2.07it/s]
+
+
+Eval Fitness Gen 1 - Best Fitness: 0.7771:  30%|██████████████████████████████████████▋                                                                                          | 30/100 [00:13<00:30,  2.28it/s]
+
+Eval Fitness Gen 1 - Best Fitness: 0.7771:  34%|███████████████████████████████████████████▊                                                                                     | 34/100 [00:15<00:31,  2.12it/s]
+Flipped feature 28
+Flipped feature 57
+Flipped feature 69
+Flipped feature 72
+Flipped feature 90
+Flipped feature 116
+Flipped feature 119
+
+Eval Fitness Gen 1 - Best Fitness: 0.7771:  39%|██████████████████████████████████████████████████▎                                                                              | 39/100 [00:17<00:25,  2.37it/s]
+Mutated latent dimension
+Flipped feature 49
+Flipped feature 55
+Flipped feature 78
+Flipped feature 92
+Flipped feature 98
+Flipped feature 100
+Flipped feature 119
+Flipped feature 131
+
+
+Eval Fitness Gen 1 - Best Fitness: 0.7771:  47%|████████████████████████████████████████████████████████████▋                                                                    | 47/100 [00:21<00:26,  2.03it/s]
+
+Eval Fitness Gen 1 - Best Fitness: 0.7771:  52%|███████████████████████████████████████████████████████████████████                                                              | 52/100 [00:23<00:20,  2.31it/s]
+Flipped feature 5
+Flipped feature 31
+Flipped feature 34
+Flipped feature 51
+Flipped feature 99
+Flipped feature 102
+Flipped feature 130
+
+Eval Fitness Gen 1 - Best Fitness: 0.7771:  56%|████████████████████████████████████████████████████████████████████████▏                                                        | 56/100 [00:25<00:21,  2.07it/s]
+Flipped feature 5
+Flipped feature 46
+Flipped feature 59
+Flipped feature 76
+Flipped feature 107
+
+Eval Fitness Gen 1 - Best Fitness: 0.7771:  61%|██████████████████████████████████████████████████████████████████████████████▋                                                  | 61/100 [00:27<00:18,  2.14it/s]
+Mutated depth
+
+
+Eval Fitness Gen 1 - Best Fitness: 0.8061:  70%|██████████████████████████████████████████████████████████████████████████████████████████▎                                      | 70/100 [00:31<00:11,  2.52it/s]
+Mutated latent dimension
+Flipped feature 58
+Flipped feature 69
+Flipped feature 72
+Flipped feature 99
+Flipped feature 100
+
+Eval Fitness Gen 1 - Best Fitness: 0.8061:  74%|███████████████████████████████████████████████████████████████████████████████████████████████▍                                 | 74/100 [00:33<00:11,  2.34it/s]
+
+
+Eval Fitness Gen 1 - Best Fitness: 0.8061:  82%|█████████████████████████████████████████████████████████████████████████████████████████████████████████▊                       | 82/100 [00:37<00:09,  1.86it/s]
+Mutated latent dimension
+
+
+Eval Fitness Gen 1 - Best Fitness: 0.8061:  91%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▍           | 91/100 [00:41<00:04,  2.18it/s]
+
+Eval Fitness Gen 1 - Best Fitness: 0.8061:  96%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▊     | 96/100 [00:43<00:01,  2.51it/s]
+Mutated clustering hyperparameter
+Mutated clustering hyperparameter
+Mutated depth
+Mutated clustering hyperparameter
+Mutated depth
+Mutated clustering hyperparameter
+Mutated depth
+Mutated clustering hyperparameter
+Mutated clustering hyperparameter
+Mutated depth
+Flipped feature 1
+Flipped feature 47
+Flipped feature 56
+Flipped feature 100
+Flipped feature 108
+Flipped feature 120
+Flipped feature 121
+Flipped feature 128
+Mutated clustering hyperparameter
+Mutated clustering hyperparameter
+Mutated clustering hyperparameter
+Mutated clustering hyperparameter
+Mutated latent dimension
+Mutated clustering hyperparameter
+Mutated latent dimension
+Flipped feature 4
+Flipped feature 55
+Flipped feature 64
+Flipped feature 74
+Flipped feature 91
+Flipped feature 113
+Flipped feature 128
+Mutated depth
+Mutated clustering hyperparameter
+Mutated latent dimension
+Traceback (most recent call last):
+  File "/Users/leo/Programming/PLR/Leo/gen_algo_opt_folder/genetic_algorithm.py", line 281, in <module>
+    best_individual, best_fitness = ga.run()
+                                    ^^^^^^^^
+  File "/Users/leo/Programming/PLR/Leo/gen_algo_opt_folder/genetic_algorithm.py", line 208, in run
+    fitness_val = self.fitness(individual)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/leo/Programming/PLR/Leo/gen_algo_opt_folder/genetic_algorithm.py", line 53, in fitness
+    latent_dim = max(2, int(params[self.n_features + 1]))
+                            ~~~~~~^^^^^^^^^^^^^^^^^^^^^
+IndexError: tuple index out of range

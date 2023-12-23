@@ -1,0 +1,350 @@
+2023-09-30 14:37:01,303 INFO    StreamThr :10011 [internal.py:wandb_internal():86] W&B internal server running at pid: 10011, started at: 2023-09-30 14:37:01.302860
+2023-09-30 14:37:01,305 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: status
+2023-09-30 14:37:01,310 INFO    WriterThread:10011 [datastore.py:open_for_write():85] open: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/run-ey0icugy.wandb
+2023-09-30 14:37:01,310 DEBUG   SenderThread:10011 [sender.py:send():379] send: header
+2023-09-30 14:37:01,337 DEBUG   SenderThread:10011 [sender.py:send():379] send: run
+2023-09-30 14:37:01,705 INFO    SenderThread:10011 [dir_watcher.py:__init__():211] watching files in: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files
+2023-09-30 14:37:01,705 INFO    SenderThread:10011 [sender.py:_start_run_threads():1121] run started: ey0icugy with start time 1696081021.305148
+2023-09-30 14:37:01,719 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: check_version
+2023-09-30 14:37:01,719 DEBUG   SenderThread:10011 [sender.py:send_request():406] send_request: check_version
+2023-09-30 14:37:01,770 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: run_start
+2023-09-30 14:37:01,782 DEBUG   HandlerThread:10011 [system_info.py:__init__():32] System info init
+2023-09-30 14:37:01,782 DEBUG   HandlerThread:10011 [system_info.py:__init__():47] System info init done
+2023-09-30 14:37:01,782 INFO    HandlerThread:10011 [system_monitor.py:start():181] Starting system monitor
+2023-09-30 14:37:01,782 INFO    SystemMonitor:10011 [system_monitor.py:_start():145] Starting system asset monitoring threads
+2023-09-30 14:37:01,782 INFO    HandlerThread:10011 [system_monitor.py:probe():201] Collecting system info
+2023-09-30 14:37:01,783 INFO    SystemMonitor:10011 [interfaces.py:start():190] Started cpu monitoring
+2023-09-30 14:37:01,783 DEBUG   HandlerThread:10011 [system_info.py:probe():196] Probing system
+2023-09-30 14:37:01,785 INFO    SystemMonitor:10011 [interfaces.py:start():190] Started disk monitoring
+2023-09-30 14:37:01,787 INFO    SystemMonitor:10011 [interfaces.py:start():190] Started gpuapple monitoring
+2023-09-30 14:37:01,788 INFO    SystemMonitor:10011 [interfaces.py:start():190] Started memory monitoring
+2023-09-30 14:37:01,789 INFO    SystemMonitor:10011 [interfaces.py:start():190] Started network monitoring
+2023-09-30 14:37:01,792 DEBUG   HandlerThread:10011 [system_info.py:_probe_git():181] Probing git
+2023-09-30 14:37:01,804 DEBUG   HandlerThread:10011 [system_info.py:_probe_git():189] Probing git done
+2023-09-30 14:37:01,804 DEBUG   HandlerThread:10011 [system_info.py:probe():244] Probing system done
+2023-09-30 14:37:01,804 DEBUG   HandlerThread:10011 [system_monitor.py:probe():210] {'os': 'macOS-14.0-arm64-arm-64bit', 'python': '3.11.4', 'heartbeatAt': '2023-09-30T13:37:01.783936', 'startedAt': '2023-09-30T13:37:01.294466', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': '/Users/leo/Programming/PLR/Leo/gen_algo_opt_folder/genetic_algorithm.py', 'codePathLocal': 'Leo/gen_algo_opt_folder/genetic_algorithm.py', 'codePath': 'Leo/gen_algo_opt_folder/genetic_algorithm.py', 'git': {'remote': 'https://github.com/leothesouthafrican/PLR.git', 'commit': '7589be778cebd92f972ede671c501681bad7604d'}, 'email': '38779415+leothesouthafrican@users.noreply.github.com', 'root': '/Users/leo/Programming/PLR', 'host': 'Leos-MacBook-Pro.local', 'username': 'leo', 'executable': '/Users/leo/Programming/PLR/Leo/env/bin/python3', 'cpu_count': 10, 'cpu_count_logical': 10, 'disk': {'/': {'total': 855.9619140625, 'used': 12.108589172363281}}, 'gpuapple': {'type': 'arm', 'vendor': 'Apple'}, 'memory': {'total': 32.0}}
+2023-09-30 14:37:01,804 INFO    HandlerThread:10011 [system_monitor.py:probe():211] Finished collecting system info
+2023-09-30 14:37:01,804 INFO    HandlerThread:10011 [system_monitor.py:probe():214] Publishing system info
+2023-09-30 14:37:01,805 DEBUG   HandlerThread:10011 [system_info.py:_save_pip():52] Saving list of pip packages installed into the current environment
+2023-09-30 14:37:01,805 DEBUG   HandlerThread:10011 [system_info.py:_save_pip():68] Saving pip packages done
+2023-09-30 14:37:01,805 INFO    HandlerThread:10011 [system_monitor.py:probe():216] Finished publishing system info
+2023-09-30 14:37:01,807 DEBUG   SenderThread:10011 [sender.py:send():379] send: files
+2023-09-30 14:37:01,807 INFO    SenderThread:10011 [sender.py:_save_file():1375] saving file wandb-metadata.json with policy now
+2023-09-30 14:37:01,810 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-30 14:37:01,810 DEBUG   SenderThread:10011 [sender.py:send():379] send: telemetry
+2023-09-30 14:37:01,810 DEBUG   SenderThread:10011 [sender.py:send_request():406] send_request: stop_status
+2023-09-30 14:37:01,811 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: internal_messages
+2023-09-30 14:37:02,393 INFO    wandb-upload_0:10011 [upload_job.py:push():131] Uploaded file /var/folders/dt/bgs1hq3d2k3dvhpt3llvs4rw0000gn/T/tmpnqbz3tojwandb/n4cl8w3i-wandb-metadata.json
+2023-09-30 14:37:02,711 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/wandb-metadata.json
+2023-09-30 14:37:02,711 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:37:02,711 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/requirements.txt
+2023-09-30 14:37:04,765 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:37:06,664 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 14:37:06,777 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:37:08,785 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:37:10,795 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:37:11,990 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 14:37:12,806 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:37:14,836 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:37:16,821 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-30 14:37:16,821 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: internal_messages
+2023-09-30 14:37:16,822 DEBUG   SenderThread:10011 [sender.py:send_request():406] send_request: stop_status
+2023-09-30 14:37:16,834 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:37:17,120 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 14:37:18,844 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:37:20,854 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:37:22,399 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 14:37:22,866 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:37:24,878 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:37:26,915 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:37:27,495 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 14:37:28,912 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:37:30,919 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:37:31,820 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-30 14:37:31,820 DEBUG   SenderThread:10011 [sender.py:send_request():406] send_request: stop_status
+2023-09-30 14:37:31,822 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: internal_messages
+2023-09-30 14:37:32,761 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 14:37:32,928 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:37:33,930 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/config.yaml
+2023-09-30 14:37:34,935 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:37:36,943 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:37:38,247 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 14:37:38,950 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:37:40,960 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:37:42,970 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:37:43,555 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 14:37:44,978 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:37:46,824 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-30 14:37:46,825 DEBUG   SenderThread:10011 [sender.py:send_request():406] send_request: stop_status
+2023-09-30 14:37:46,828 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: internal_messages
+2023-09-30 14:37:47,041 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:37:48,937 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 14:37:48,948 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-30 14:37:48,954 DEBUG   SenderThread:10011 [sender.py:send():379] send: history
+2023-09-30 14:37:48,954 DEBUG   SenderThread:10011 [sender.py:send_request():406] send_request: summary_record
+2023-09-30 14:37:48,955 INFO    SenderThread:10011 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-09-30 14:37:49,049 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:37:49,049 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/wandb-summary.json
+2023-09-30 14:37:51,057 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:37:53,063 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:37:54,171 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 14:37:55,069 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:37:57,072 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:37:59,082 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:37:59,570 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 14:38:01,086 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:38:01,794 DEBUG   SystemMonitor:10011 [system_monitor.py:_start():159] Starting system metrics aggregation loop
+2023-09-30 14:38:01,795 DEBUG   SenderThread:10011 [sender.py:send():379] send: telemetry
+2023-09-30 14:38:01,795 DEBUG   SenderThread:10011 [sender.py:send():379] send: stats
+2023-09-30 14:38:01,864 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-30 14:38:01,878 DEBUG   SenderThread:10011 [sender.py:send_request():406] send_request: stop_status
+2023-09-30 14:38:01,889 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: internal_messages
+2023-09-30 14:38:03,095 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:38:04,684 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 14:38:05,108 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/config.yaml
+2023-09-30 14:38:05,108 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:38:07,108 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:38:09,118 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:38:10,109 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 14:38:11,122 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:38:13,132 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:38:15,141 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:38:15,444 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 14:38:16,836 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-30 14:38:16,836 DEBUG   SenderThread:10011 [sender.py:send_request():406] send_request: stop_status
+2023-09-30 14:38:16,853 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: internal_messages
+2023-09-30 14:38:17,150 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:38:19,177 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:38:20,906 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 14:38:21,179 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:38:23,189 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:38:25,203 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:38:26,164 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 14:38:27,214 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:38:29,222 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:38:31,232 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:38:31,253 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 14:38:31,801 DEBUG   SenderThread:10011 [sender.py:send():379] send: stats
+2023-09-30 14:38:31,838 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-30 14:38:31,838 DEBUG   SenderThread:10011 [sender.py:send_request():406] send_request: stop_status
+2023-09-30 14:38:31,861 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: internal_messages
+2023-09-30 14:38:33,234 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:38:34,667 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-30 14:38:34,670 DEBUG   SenderThread:10011 [sender.py:send():379] send: history
+2023-09-30 14:38:34,670 DEBUG   SenderThread:10011 [sender.py:send_request():406] send_request: summary_record
+2023-09-30 14:38:34,670 INFO    SenderThread:10011 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-09-30 14:38:35,253 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/wandb-summary.json
+2023-09-30 14:38:35,253 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:38:36,647 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 14:38:37,260 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:38:39,270 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:38:41,281 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:38:41,817 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 14:38:43,288 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:38:45,299 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:38:46,843 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-30 14:38:46,843 DEBUG   SenderThread:10011 [sender.py:send_request():406] send_request: stop_status
+2023-09-30 14:38:46,865 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: internal_messages
+2023-09-30 14:38:47,155 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 14:38:47,308 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:38:49,318 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:38:51,337 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:38:52,343 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 14:38:53,351 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:38:55,373 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:38:57,378 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:38:57,503 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 14:38:59,390 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:39:01,400 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:39:01,802 DEBUG   SenderThread:10011 [sender.py:send():379] send: stats
+2023-09-30 14:39:01,848 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-30 14:39:01,848 DEBUG   SenderThread:10011 [sender.py:send_request():406] send_request: stop_status
+2023-09-30 14:39:01,869 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: internal_messages
+2023-09-30 14:39:02,846 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 14:39:03,412 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:39:05,443 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:39:07,445 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:39:08,279 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 14:39:08,452 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:39:09,458 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:39:10,475 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:39:11,474 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:39:12,476 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:39:13,517 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:39:13,563 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 14:39:14,504 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:39:15,509 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:39:16,515 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:39:16,853 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-30 14:39:16,853 DEBUG   SenderThread:10011 [sender.py:send_request():406] send_request: stop_status
+2023-09-30 14:39:16,874 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: internal_messages
+2023-09-30 14:39:17,516 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:39:18,521 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:39:18,688 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 14:39:19,526 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:39:19,647 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-30 14:39:19,674 DEBUG   SenderThread:10011 [sender.py:send():379] send: history
+2023-09-30 14:39:19,674 DEBUG   SenderThread:10011 [sender.py:send_request():406] send_request: summary_record
+2023-09-30 14:39:19,675 INFO    SenderThread:10011 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-09-30 14:39:20,532 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/wandb-summary.json
+2023-09-30 14:39:20,532 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:39:21,537 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:39:22,548 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:39:23,554 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:39:24,057 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 14:39:24,557 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:39:25,562 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:39:26,567 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:39:27,572 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:39:28,577 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:39:29,187 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 14:39:29,586 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:39:30,585 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:39:31,591 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:39:31,808 DEBUG   SenderThread:10011 [sender.py:send():379] send: stats
+2023-09-30 14:39:31,858 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-30 14:39:31,858 DEBUG   SenderThread:10011 [sender.py:send_request():406] send_request: stop_status
+2023-09-30 14:39:31,890 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: internal_messages
+2023-09-30 14:39:32,595 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:39:32,825 DEBUG   SenderThread:10011 [sender.py:send():379] send: exit
+2023-09-30 14:39:32,825 INFO    SenderThread:10011 [sender.py:send_exit():584] handling exit code: 255
+2023-09-30 14:39:32,826 INFO    SenderThread:10011 [sender.py:send_exit():586] handling runtime: 151
+2023-09-30 14:39:32,831 INFO    SenderThread:10011 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-09-30 14:39:32,831 INFO    SenderThread:10011 [sender.py:send_exit():592] send defer
+2023-09-30 14:39:32,833 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: defer
+2023-09-30 14:39:32,833 INFO    HandlerThread:10011 [handler.py:handle_request_defer():170] handle defer: 0
+2023-09-30 14:39:32,838 DEBUG   SenderThread:10011 [sender.py:send_request():406] send_request: defer
+2023-09-30 14:39:32,838 INFO    SenderThread:10011 [sender.py:send_request_defer():608] handle sender defer: 0
+2023-09-30 14:39:32,838 INFO    SenderThread:10011 [sender.py:transition_state():612] send defer: 1
+2023-09-30 14:39:32,838 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: defer
+2023-09-30 14:39:32,838 INFO    HandlerThread:10011 [handler.py:handle_request_defer():170] handle defer: 1
+2023-09-30 14:39:32,839 DEBUG   SenderThread:10011 [sender.py:send_request():406] send_request: defer
+2023-09-30 14:39:32,839 INFO    SenderThread:10011 [sender.py:send_request_defer():608] handle sender defer: 1
+2023-09-30 14:39:32,839 INFO    SenderThread:10011 [sender.py:transition_state():612] send defer: 2
+2023-09-30 14:39:32,839 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: defer
+2023-09-30 14:39:32,839 INFO    HandlerThread:10011 [handler.py:handle_request_defer():170] handle defer: 2
+2023-09-30 14:39:32,839 INFO    HandlerThread:10011 [system_monitor.py:finish():190] Stopping system monitor
+2023-09-30 14:39:32,840 DEBUG   SystemMonitor:10011 [system_monitor.py:_start():166] Finished system metrics aggregation loop
+2023-09-30 14:39:32,840 DEBUG   SystemMonitor:10011 [system_monitor.py:_start():170] Publishing last batch of metrics
+2023-09-30 14:39:32,841 INFO    HandlerThread:10011 [interfaces.py:finish():202] Joined cpu monitor
+2023-09-30 14:39:32,841 INFO    HandlerThread:10011 [interfaces.py:finish():202] Joined disk monitor
+2023-09-30 14:39:33,601 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/wandb-summary.json
+2023-09-30 14:39:33,601 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:39:34,113 INFO    HandlerThread:10011 [interfaces.py:finish():202] Joined gpuapple monitor
+2023-09-30 14:39:34,113 INFO    HandlerThread:10011 [interfaces.py:finish():202] Joined memory monitor
+2023-09-30 14:39:34,113 INFO    HandlerThread:10011 [interfaces.py:finish():202] Joined network monitor
+2023-09-30 14:39:34,113 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: poll_exit
+2023-09-30 14:39:34,113 DEBUG   SenderThread:10011 [sender.py:send_request():406] send_request: defer
+2023-09-30 14:39:34,113 INFO    SenderThread:10011 [sender.py:send_request_defer():608] handle sender defer: 2
+2023-09-30 14:39:34,113 INFO    SenderThread:10011 [sender.py:transition_state():612] send defer: 3
+2023-09-30 14:39:34,114 DEBUG   SenderThread:10011 [sender.py:send():379] send: stats
+2023-09-30 14:39:34,114 DEBUG   SenderThread:10011 [sender.py:send_request():406] send_request: poll_exit
+2023-09-30 14:39:34,114 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: defer
+2023-09-30 14:39:34,114 INFO    HandlerThread:10011 [handler.py:handle_request_defer():170] handle defer: 3
+2023-09-30 14:39:34,114 DEBUG   SenderThread:10011 [sender.py:send_request():406] send_request: defer
+2023-09-30 14:39:34,114 INFO    SenderThread:10011 [sender.py:send_request_defer():608] handle sender defer: 3
+2023-09-30 14:39:34,114 INFO    SenderThread:10011 [sender.py:transition_state():612] send defer: 4
+2023-09-30 14:39:34,114 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: defer
+2023-09-30 14:39:34,114 INFO    HandlerThread:10011 [handler.py:handle_request_defer():170] handle defer: 4
+2023-09-30 14:39:34,114 DEBUG   SenderThread:10011 [sender.py:send_request():406] send_request: defer
+2023-09-30 14:39:34,114 INFO    SenderThread:10011 [sender.py:send_request_defer():608] handle sender defer: 4
+2023-09-30 14:39:34,114 INFO    SenderThread:10011 [sender.py:transition_state():612] send defer: 5
+2023-09-30 14:39:34,114 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: defer
+2023-09-30 14:39:34,114 INFO    HandlerThread:10011 [handler.py:handle_request_defer():170] handle defer: 5
+2023-09-30 14:39:34,114 DEBUG   SenderThread:10011 [sender.py:send():379] send: summary
+2023-09-30 14:39:34,114 INFO    SenderThread:10011 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-09-30 14:39:34,115 DEBUG   SenderThread:10011 [sender.py:send_request():406] send_request: defer
+2023-09-30 14:39:34,115 INFO    SenderThread:10011 [sender.py:send_request_defer():608] handle sender defer: 5
+2023-09-30 14:39:34,115 INFO    SenderThread:10011 [sender.py:transition_state():612] send defer: 6
+2023-09-30 14:39:34,115 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: defer
+2023-09-30 14:39:34,115 INFO    HandlerThread:10011 [handler.py:handle_request_defer():170] handle defer: 6
+2023-09-30 14:39:34,115 DEBUG   SenderThread:10011 [sender.py:send_request():406] send_request: defer
+2023-09-30 14:39:34,115 INFO    SenderThread:10011 [sender.py:send_request_defer():608] handle sender defer: 6
+2023-09-30 14:39:34,115 INFO    SenderThread:10011 [sender.py:transition_state():612] send defer: 7
+2023-09-30 14:39:34,115 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 14:39:34,115 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: defer
+2023-09-30 14:39:34,115 INFO    HandlerThread:10011 [handler.py:handle_request_defer():170] handle defer: 7
+2023-09-30 14:39:34,115 DEBUG   SenderThread:10011 [sender.py:send_request():406] send_request: defer
+2023-09-30 14:39:34,115 INFO    SenderThread:10011 [sender.py:send_request_defer():608] handle sender defer: 7
+2023-09-30 14:39:34,601 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/wandb-summary.json
+2023-09-30 14:39:34,602 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:39:34,773 INFO    SenderThread:10011 [sender.py:transition_state():612] send defer: 8
+2023-09-30 14:39:34,773 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: defer
+2023-09-30 14:39:34,773 INFO    HandlerThread:10011 [handler.py:handle_request_defer():170] handle defer: 8
+2023-09-30 14:39:34,774 DEBUG   SenderThread:10011 [sender.py:send_request():406] send_request: defer
+2023-09-30 14:39:34,774 INFO    SenderThread:10011 [sender.py:send_request_defer():608] handle sender defer: 8
+2023-09-30 14:39:34,774 INFO    SenderThread:10011 [job_builder.py:build():281] Attempting to build job artifact
+2023-09-30 14:39:34,775 INFO    SenderThread:10011 [job_builder.py:_get_source_type():393] is repo sourced job
+2023-09-30 14:39:34,778 INFO    SenderThread:10011 [job_builder.py:build():369] adding wandb-job metadata file
+2023-09-30 14:39:34,783 INFO    SenderThread:10011 [sender.py:transition_state():612] send defer: 9
+2023-09-30 14:39:34,784 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: defer
+2023-09-30 14:39:34,784 DEBUG   SenderThread:10011 [sender.py:send():379] send: artifact
+2023-09-30 14:39:34,784 INFO    HandlerThread:10011 [handler.py:handle_request_defer():170] handle defer: 9
+2023-09-30 14:39:34,825 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: poll_exit
+2023-09-30 14:39:35,608 INFO    Thread-12 :10011 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:39:35,833 INFO    wandb-upload_1:10011 [upload_job.py:push():86] Skipped uploading /Users/leo/Library/Application Support/wandb/artifacts/staging/tmphnmcpmob
+2023-09-30 14:39:36,147 INFO    wandb-upload_0:10011 [upload_job.py:push():89] Uploaded file /Users/leo/Library/Application Support/wandb/artifacts/staging/tmpqqmu1luq
+2023-09-30 14:39:37,398 INFO    SenderThread:10011 [sender.py:send_artifact():1453] sent artifact job-https___github.com_leothesouthafrican_PLR.git_Leo_gen_algo_opt_folder_genetic_algorithm.py - {'id': 'QXJ0aWZhY3Q6NTg5NzcyODg5', 'state': 'PENDING', 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjEwMjY3Mjc5OA==', 'latestArtifact': {'id': 'QXJ0aWZhY3Q6NTg5NzUxNzY1', 'versionIndex': 3}}}
+2023-09-30 14:39:37,399 DEBUG   SenderThread:10011 [sender.py:send_request():406] send_request: defer
+2023-09-30 14:39:37,399 INFO    SenderThread:10011 [sender.py:send_request_defer():608] handle sender defer: 9
+2023-09-30 14:39:37,399 INFO    SenderThread:10011 [dir_watcher.py:finish():358] shutting down directory watcher
+2023-09-30 14:39:37,624 INFO    SenderThread:10011 [dir_watcher.py:finish():388] scan: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files
+2023-09-30 14:39:37,626 INFO    SenderThread:10011 [dir_watcher.py:finish():402] scan save: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/requirements.txt requirements.txt
+2023-09-30 14:39:37,626 INFO    SenderThread:10011 [dir_watcher.py:finish():402] scan save: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log output.log
+2023-09-30 14:39:37,626 INFO    SenderThread:10011 [dir_watcher.py:finish():402] scan save: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/config.yaml config.yaml
+2023-09-30 14:39:37,627 INFO    SenderThread:10011 [dir_watcher.py:finish():402] scan save: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/wandb-summary.json wandb-summary.json
+2023-09-30 14:39:37,627 INFO    SenderThread:10011 [dir_watcher.py:finish():402] scan save: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/wandb-metadata.json wandb-metadata.json
+2023-09-30 14:39:37,627 INFO    SenderThread:10011 [sender.py:transition_state():612] send defer: 10
+2023-09-30 14:39:37,628 DEBUG   SenderThread:10011 [sender.py:send_request():406] send_request: poll_exit
+2023-09-30 14:39:37,628 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: defer
+2023-09-30 14:39:37,630 INFO    HandlerThread:10011 [handler.py:handle_request_defer():170] handle defer: 10
+2023-09-30 14:39:37,631 DEBUG   SenderThread:10011 [sender.py:send_request():406] send_request: defer
+2023-09-30 14:39:37,632 INFO    SenderThread:10011 [sender.py:send_request_defer():608] handle sender defer: 10
+2023-09-30 14:39:37,632 INFO    SenderThread:10011 [file_pusher.py:finish():175] shutting down file pusher
+2023-09-30 14:39:38,026 INFO    wandb-upload_0:10011 [upload_job.py:push():131] Uploaded file /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/output.log
+2023-09-30 14:39:38,036 INFO    wandb-upload_2:10011 [upload_job.py:push():131] Uploaded file /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/config.yaml
+2023-09-30 14:39:38,074 INFO    wandb-upload_1:10011 [upload_job.py:push():131] Uploaded file /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/requirements.txt
+2023-09-30 14:39:38,076 INFO    wandb-upload_3:10011 [upload_job.py:push():131] Uploaded file /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/files/wandb-summary.json
+2023-09-30 14:39:38,277 INFO    Thread-11 (_thread_body):10011 [sender.py:transition_state():612] send defer: 11
+2023-09-30 14:39:38,278 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: defer
+2023-09-30 14:39:38,278 INFO    HandlerThread:10011 [handler.py:handle_request_defer():170] handle defer: 11
+2023-09-30 14:39:38,279 DEBUG   SenderThread:10011 [sender.py:send_request():406] send_request: defer
+2023-09-30 14:39:38,279 INFO    SenderThread:10011 [sender.py:send_request_defer():608] handle sender defer: 11
+2023-09-30 14:39:38,279 INFO    SenderThread:10011 [file_pusher.py:join():181] waiting for file pusher
+2023-09-30 14:39:38,280 INFO    SenderThread:10011 [sender.py:transition_state():612] send defer: 12
+2023-09-30 14:39:38,280 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: defer
+2023-09-30 14:39:38,280 INFO    HandlerThread:10011 [handler.py:handle_request_defer():170] handle defer: 12
+2023-09-30 14:39:38,284 DEBUG   SenderThread:10011 [sender.py:send_request():406] send_request: defer
+2023-09-30 14:39:38,284 INFO    SenderThread:10011 [sender.py:send_request_defer():608] handle sender defer: 12
+2023-09-30 14:39:38,284 INFO    SenderThread:10011 [file_stream.py:finish():594] file stream finish called
+2023-09-30 14:39:38,946 INFO    SenderThread:10011 [file_stream.py:finish():598] file stream finish is done
+2023-09-30 14:39:38,947 INFO    SenderThread:10011 [sender.py:transition_state():612] send defer: 13
+2023-09-30 14:39:38,947 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: defer
+2023-09-30 14:39:38,947 INFO    HandlerThread:10011 [handler.py:handle_request_defer():170] handle defer: 13
+2023-09-30 14:39:38,949 DEBUG   SenderThread:10011 [sender.py:send_request():406] send_request: defer
+2023-09-30 14:39:38,949 INFO    SenderThread:10011 [sender.py:send_request_defer():608] handle sender defer: 13
+2023-09-30 14:39:38,949 INFO    SenderThread:10011 [sender.py:transition_state():612] send defer: 14
+2023-09-30 14:39:38,950 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: defer
+2023-09-30 14:39:38,950 DEBUG   SenderThread:10011 [sender.py:send():379] send: final
+2023-09-30 14:39:38,950 INFO    HandlerThread:10011 [handler.py:handle_request_defer():170] handle defer: 14
+2023-09-30 14:39:38,950 DEBUG   SenderThread:10011 [sender.py:send():379] send: footer
+2023-09-30 14:39:38,950 DEBUG   SenderThread:10011 [sender.py:send_request():406] send_request: defer
+2023-09-30 14:39:38,950 INFO    SenderThread:10011 [sender.py:send_request_defer():608] handle sender defer: 14
+2023-09-30 14:39:38,951 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: poll_exit
+2023-09-30 14:39:38,952 DEBUG   SenderThread:10011 [sender.py:send_request():406] send_request: poll_exit
+2023-09-30 14:39:38,952 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: server_info
+2023-09-30 14:39:38,952 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: get_summary
+2023-09-30 14:39:38,953 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: sampled_history
+2023-09-30 14:39:38,953 DEBUG   SenderThread:10011 [sender.py:send_request():406] send_request: server_info
+2023-09-30 14:39:38,954 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: internal_messages
+2023-09-30 14:39:38,955 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: job_info
+2023-09-30 14:39:39,095 DEBUG   SenderThread:10011 [sender.py:send_request():406] send_request: job_info
+2023-09-30 14:39:39,096 INFO    MainThread:10011 [wandb_run.py:_footer_history_summary_info():3557] rendering history
+2023-09-30 14:39:39,096 INFO    MainThread:10011 [wandb_run.py:_footer_history_summary_info():3589] rendering summary
+2023-09-30 14:39:39,097 INFO    MainThread:10011 [wandb_run.py:_footer_sync_info():3516] logging synced files
+2023-09-30 14:39:39,098 DEBUG   HandlerThread:10011 [handler.py:handle_request():144] handle_request: shutdown
+2023-09-30 14:39:39,098 INFO    HandlerThread:10011 [handler.py:finish():840] shutting down handler
+2023-09-30 14:39:39,961 INFO    WriterThread:10011 [datastore.py:close():294] close: /Users/leo/Programming/PLR/wandb/run-20230930_143701-ey0icugy/run-ey0icugy.wandb
+2023-09-30 14:39:40,097 INFO    SenderThread:10011 [sender.py:finish():1531] shutting down sender
+2023-09-30 14:39:40,097 INFO    SenderThread:10011 [file_pusher.py:finish():175] shutting down file pusher
+2023-09-30 14:39:40,097 INFO    SenderThread:10011 [file_pusher.py:join():181] waiting for file pusher

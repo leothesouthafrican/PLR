@@ -1,0 +1,12 @@
+Generations:   0%|                                                                                                                                                                          | 0/5 [00:00<?, ?it/s]
+
+
+Generations:   0%|                                                                                                                                                                          | 0/5 [00:06<?, ?it/s]
+Traceback (most recent call last):
+  File "/Users/leo/Programming/PLR/Leo/gen_algo_opt_folder/genetic_algorithm.py", line 286, in <module>
+    best_individual, best_fitness = ga.run()
+                                    ^^^^^^^^
+  File "/Users/leo/Programming/PLR/Leo/gen_algo_opt_folder/genetic_algorithm.py", line 216, in run
+    if fitness_val > best_fitness_this_gen:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: '>' not supported between instances of 'tuple' and 'float'
