@@ -157,6 +157,9 @@ def plot_cluster_averages(data, cluster_labels):
         cluster_averages[label] = cluster_avg
         cluster_sizes[label] = len(cluster_data)
 
+    # Sort clusters by size in descending order
+    sorted_labels = sorted(unique_labels, key=lambda label: cluster_sizes[label], reverse=True)
+
     # Determine the top 10 unique features across all clusters
     all_features = set()
     for averages in cluster_averages.values():
@@ -169,13 +172,13 @@ def plot_cluster_averages(data, cluster_labels):
     global_max = max(average.max() for average in cluster_averages.values())
 
     # Number of rows and columns for the subplots
-    num_clusters = len(unique_labels)
+    num_clusters = len(sorted_labels)
     num_columns = 3
     num_rows = np.ceil(num_clusters / num_columns).astype(int)
 
     plt.figure(figsize=(25, num_rows * 4))
 
-    for i, label in enumerate(unique_labels):
+    for i, label in enumerate(sorted_labels):
         cluster_data = pd.DataFrame(index=[f'Cluster {label}'], columns=top_features)
         for feature in top_features:
             cluster_data[feature] = cluster_averages[label].get(feature, np.nan)
@@ -188,6 +191,7 @@ def plot_cluster_averages(data, cluster_labels):
 
     plt.tight_layout()
     plt.show()
+
 
 
 
