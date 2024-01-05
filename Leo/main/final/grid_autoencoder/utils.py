@@ -140,36 +140,54 @@ def aggregate_columns(data, group_dict):
     return aggregated_data
 
 def plot_cluster_averages(data, cluster_labels):
-    # Determine unique labels and exclude noise points
+    # Ensure 'cluster' column is not in the DataFrame
+    data = data.copy()
+    if 'cluster' in data.columns:
+        data = data.drop(columns=['cluster'])
+
     unique_labels = np.unique(cluster_labels)
     unique_labels = unique_labels[unique_labels != -1]
 
-    # Calculate cluster sizes
-    cluster_sizes = {label: (cluster_labels == label).sum() for label in unique_labels}
-    
-    # Sort clusters by size
-    sorted_labels = sorted(cluster_sizes, key=cluster_sizes.get, reverse=True)
+    # Calculate cluster sizes and cluster averages
+    cluster_averages = {}
+    cluster_sizes = {}
+    for label in unique_labels:
+        cluster_data = data[cluster_labels == label]
+        cluster_avg = cluster_data.mean().sort_values(ascending=False)
+        cluster_averages[label] = cluster_avg
+        cluster_sizes[label] = len(cluster_data)
 
-    num_clusters = len(sorted_labels)
-    num_columns = 3 
-    num_rows = np.ceil(num_clusters / num_columns).astype(int) 
+    # Determine the top 10 unique features across all clusters
+    all_features = set()
+    for averages in cluster_averages.values():
+        top_features = averages.head(10).index
+        all_features.update(top_features)
+    top_features = sorted(list(all_features))
+
+    # Determine the global min and max values for the color scale
+    global_min = min(average.min() for average in cluster_averages.values())
+    global_max = max(average.max() for average in cluster_averages.values())
+
+    # Number of rows and columns for the subplots
+    num_clusters = len(unique_labels)
+    num_columns = 3
+    num_rows = np.ceil(num_clusters / num_columns).astype(int)
 
     plt.figure(figsize=(25, num_rows * 4))
 
-    for i, label in enumerate(sorted_labels):
-        # Filter out 'Grouped' columns and the 'cluster' column
-        filtered_columns = [col for col in data.columns if not col.startswith('Grouped') and col != 'cluster']
-        cluster_data = data[data['cluster'] == label][filtered_columns]
+    for i, label in enumerate(unique_labels):
+        cluster_data = pd.DataFrame(index=[f'Cluster {label}'], columns=top_features)
+        for feature in top_features:
+            cluster_data[feature] = cluster_averages[label].get(feature, np.nan)
 
-        cluster_avg = cluster_data.mean().sort_values(ascending=False).head(10)  # Limit to top 10
-        cluster_averages = pd.DataFrame(cluster_avg).transpose()
-
-        # Create a subplot for each sorted cluster in a grid of num_rows x num_columns
         plt.subplot(num_rows, num_columns, i + 1)
-        sns.heatmap(cluster_averages, annot=True, fmt=".2f", cmap="YlGnBu")
-        plt.title(f"Cluster {label} Feature Values (Top 10) - Samples: {cluster_sizes[label]}")
+        sns.heatmap(cluster_data, annot=True, fmt=".2f", cmap="YlGnBu", vmin=global_min, vmax=global_max)
+        plt.title(f"Cluster {label} Feature Values - Samples: {cluster_sizes[label]}")
         plt.ylabel("Feature")
         plt.xlabel("Average Value")
 
     plt.tight_layout()
     plt.show()
+
+
+
