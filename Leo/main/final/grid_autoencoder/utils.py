@@ -9,7 +9,7 @@ import seaborn as sns
 
 # Revised function to parse a single result line
 def parse_result_line(line, dataset_number):
-    pattern = r"Silhouette Score: (.*), Number of Clusters: (\d+), Skew Threshold: (.*), Correlation Threshold: (.*), (.*) Parameters: ({.*}), HDBSCAN Parameters: ({.*})"
+    pattern = r"Silhouette Score: (.*), Number of Clusters: (\d+), Skew Threshold: (.*), Correlation Threshold: (.*), Hidden Size: (\d+), Latent Dim: (\d+), Learning Rate: (.*), Epochs: (\d+), HDBSCAN Params: ({.*})"
     match = re.match(pattern, line)
     if match:
         return {
@@ -17,12 +17,15 @@ def parse_result_line(line, dataset_number):
             'num_clusters': int(match.group(2)),
             'skew_threshold': float(match.group(3)),
             'corr_threshold': float(match.group(4)),
-            'method': match.group(5),
-            'method_params': eval(match.group(6)),
-            'hdbscan_params': eval(match.group(7)),
+            'hidden_size': int(match.group(5)),
+            'latent_dim': int(match.group(6)),
+            'learning_rate': float(match.group(7)),
+            'epochs': int(match.group(8)),
+            'hdbscan_params': eval(match.group(9)),
             'dataset': dataset_number
         }
     return None
+
 
 #Drop skewed features
 def drop_skewed_features(df, threshold=0.5):
