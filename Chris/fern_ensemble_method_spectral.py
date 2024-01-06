@@ -50,7 +50,7 @@ FILTER_LIBRARY_SIZE = 100  # only used in JC to reduce overhead in Diversity cal
 ENSEMBLE_SELECTION_METHOD = ENSEMBLE_SELECTION_METHODS[ENSEMBLE_SELECTION_ID]
 
 save_dir = Path(
-    './fern_ensembles/run_%d_%s_%s_%d_%.1f'
+    './fern_ensemble_outputs_spectral/run_%d_%s_%s_%d_%.1f'
     % (RUN_IDS_TO_INCLUDE[0], CLUSTERING_ALGO, ENSEMBLE_SELECTION_METHOD, ENSEMBLE_SIZE, ALPHA)
 )
 
@@ -426,7 +426,7 @@ for r in range(N_REPEATS):
     if CLUSTERING_ALGO == 'kmeans':
         all_results = {
             run_id: sample_results(filter_results(load_results(run_id)))
-            for run_id in run_metadata[SEARCH_TYPE].keys()
+            for run_id in RUN_IDS_TO_INCLUDE #run_metadata[SEARCH_TYPE].keys()
         }
     elif CLUSTERING_ALGO == 'hdbscan' or CLUSTERING_ALGO == 'both':
         all_results = {
@@ -456,9 +456,8 @@ for r in range(N_REPEATS):
         ensemble, e_indices = build_cas_ensemble(sc_coms, library.labels, library_clusters=library_clusters)
 
     final_co_association_matrix = ensemble_to_co_association(ensemble)
-    final_linkage_matrix = similarity_to_linkage(final_co_association_matrix, plot_flag=False)
     final_clusters = [
-        hierarchy.fcluster(final_linkage_matrix, t=nc + 1, criterion='maxclust')
+        SpectralClustering(nc, affinity='precomputed', n_init=100, random_state=BASE_SEED).fit(final_co_association_matrix).labels_        
         for nc in range(MAXCLUST)
     ]
 
