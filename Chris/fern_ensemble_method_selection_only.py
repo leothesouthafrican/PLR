@@ -50,8 +50,8 @@ FILTER_LIBRARY_SIZE = 100  # only used in JC to reduce overhead in Diversity cal
 ENSEMBLE_SELECTION_METHOD = ENSEMBLE_SELECTION_METHODS[ENSEMBLE_SELECTION_ID]
 
 save_dir = Path(
-    './fern_ensembles/%s_%s_%d_%.1f'
-    % (CLUSTERING_ALGO, ENSEMBLE_SELECTION_METHOD, ENSEMBLE_SIZE, ALPHA)
+    './fern_ensembles/run_%d_%s_%s_%d_%.1f'
+    % (RUN_IDS_TO_INCLUDE[0], CLUSTERING_ALGO, ENSEMBLE_SELECTION_METHOD, ENSEMBLE_SIZE, ALPHA)
 )
 
 os.makedirs(
@@ -456,13 +456,45 @@ for r in range(N_REPEATS):
         ensemble, e_indices = build_cas_ensemble(sc_coms, library.labels, library_clusters=library_clusters)
 
     final_co_association_matrix = ensemble_to_co_association(ensemble)
+    final_linkage_matrix = similarity_to_linkage(final_co_association_matrix, plot_flag=False)
+    final_clusters = [
+        hierarchy.fcluster(final_linkage_matrix, t=nc + 1, criterion='maxclust')
+        for nc in range(MAXCLUST)
+    ]
 
-    # We curtail the method here and save the ensemble and co-association matrix for post-processing.
-    R = {
-        'ensemble': ensemble,
-        'e_indices': e_indices,
-        'co_association_matrix': final_co_association_matrix
+    if r == 0:
+        base_clusters = final_clusters
+        base_library_clusters = library_clusters
+        for nc in range(MAXCLUST):
+            cs = build_cluster_summary(all_data, final_clusters[nc])
+            cs.to_csv(save_dir / ('cluster_summary_nc_%d.csv' % nc), sep=';')
+
+    ensemble_outputs[r] = {
+        'seed': BASE_SEED + r,
+        'library_clusters': library_clusters,
+        'final_clusters': final_clusters,
+        'final_co_association_matrix': final_co_association_matrix,
+        'library': library,
+        'ensemble_indices': e_indices,
+        'ari_with_base_final': [
+            adjusted_rand_score(final_clusters[nc], base_clusters[nc])
+            for nc in range(MAXCLUST)
+        ],
+        'ami_with_base_final': [
+            adjusted_mutual_info_score(final_clusters[nc], base_clusters[nc])
+            for nc in range(MAXCLUST)
+        ],
+        'ari_with_base_library': adjusted_rand_score(library_clusters, base_library_clusters),
+        'ami_with_base_library': adjusted_mutual_info_score(library_clusters, base_library_clusters),
+        'ari_with_tessa': [
+            adjusted_rand_score(final_clusters[nc], tessa.cluster)
+            for nc in range(MAXCLUST)
+        ],
+        'ami_with_tessa': [
+            adjusted_mutual_info_score(final_clusters[nc], tessa.cluster)
+            for nc in range(MAXCLUST)
+        ]
     }
-
-    with open(save_dir / 'ensemble_and_coassociation.pickle', 'wb') as outfile:
-        pickle.dump(R, outfile)
+    print(ensemble_outputs)
+    with open(save_dir / 'ensemble_outputs.pickle', 'wb') as outfile:
+        pickle.dump(ensemble_outputs, outfile)
