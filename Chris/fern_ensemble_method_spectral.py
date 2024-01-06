@@ -1,5 +1,7 @@
 """
-Just the ensemble selection part, to run different clusterings afterwards.
+Using spectral clustering instead of hierarchical for final clusters.
+
+Also, commenting out some metrics when only using a subset of patients...
 """
 import pickle
 import pickle as pk
@@ -464,9 +466,9 @@ for r in range(N_REPEATS):
     if r == 0:
         base_clusters = final_clusters
         base_library_clusters = library_clusters
-        for nc in range(MAXCLUST):
-            cs = build_cluster_summary(all_data, final_clusters[nc])
-            cs.to_csv(save_dir / ('cluster_summary_nc_%d.csv' % nc), sep=';')
+        # for nc in range(MAXCLUST):
+        #     cs = build_cluster_summary(all_data, final_clusters[nc])
+        #     cs.to_csv(save_dir / ('cluster_summary_nc_%d.csv' % nc), sep=';')
 
     ensemble_outputs[r] = {
         'seed': BASE_SEED + r,
@@ -485,14 +487,14 @@ for r in range(N_REPEATS):
         ],
         'ari_with_base_library': adjusted_rand_score(library_clusters, base_library_clusters),
         'ami_with_base_library': adjusted_mutual_info_score(library_clusters, base_library_clusters),
-        'ari_with_tessa': [
-            adjusted_rand_score(final_clusters[nc], tessa.cluster)
-            for nc in range(MAXCLUST)
-        ],
-        'ami_with_tessa': [
-            adjusted_mutual_info_score(final_clusters[nc], tessa.cluster)
-            for nc in range(MAXCLUST)
-        ]
+        # 'ari_with_tessa': [
+        #     adjusted_rand_score(final_clusters[nc], tessa.cluster)
+        #     for nc in range(MAXCLUST)
+        # ],
+        # 'ami_with_tessa': [
+        #     adjusted_mutual_info_score(final_clusters[nc], tessa.cluster)
+        #     for nc in range(MAXCLUST)
+        # ]
     }
     print(ensemble_outputs)
     with open(save_dir / 'ensemble_outputs.pickle', 'wb') as outfile:
