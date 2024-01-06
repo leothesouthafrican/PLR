@@ -20,14 +20,15 @@ from utilities import run_configs, load_symptom_data, modularity, clustering_sim
 ENSEMBLE_SELECTION_ID = int(sys.argv[1])
 CLUSTERING_ALGO = str(sys.argv[2])
 
-ENSEMBLE_SIZE = 20
+ENSEMBLE_SIZE = 50
 LIBRARY_N_CLUSTER = 5
 N_REPEATS = 10
 SEARCH_TYPE = 'randomized_search'  # we want random parameterisations for diversity.
 
 if CLUSTERING_ALGO == 'kmeans':
     SAMPLE_SIZE = 500  # number of sample to take from each pipeline to build library
-    RUN_IDS_TO_INCLUDE = [1]  # using only UMAP+kmeans
+    #RUN_IDS_TO_INCLUDE = [1]  # using only UMAP+kmeans
+    RUN_IDS_TO_INCLUDE = [19]  # using only UMAP+kmeans
 # elif CLUSTERING_ALGO == 'hdbscan':
 #     SAMPLE_SIZE = 15  # number of sample to take from each pipeline to build library
 #     RUN_IDS_TO_INCLUDE = [3, 4, 7, 8]  # we will reproduce using only kmeans (and including p-umap)
@@ -39,7 +40,7 @@ if CLUSTERING_ALGO == 'kmeans':
 NMI_SCORE = 'mi'  # arg to pass to clustering_similarity method to use partial NMI (ignoring -1 labels from hdbscan)
 BASE_SEED = 0  # random seed for base results
 ENSEMBLE_SELECTION_METHODS = ['JC', 'CAS']
-ALPHA = 0.5  # JC objective weighting
+ALPHA = 0.0  # JC objective weighting
 # Note: set IGNORE_LABEL to None for speed, unless in use:
 IGNORE_LABEL = None  # ignore noise in hdbscan when building co-association matrix and computing similarity scores.
 REPLACE_NOISE = False
@@ -457,7 +458,7 @@ for r in range(N_REPEATS):
 
     final_co_association_matrix = ensemble_to_co_association(ensemble)
     final_clusters = [
-        SpectralClustering(nc, affinity='precomputed', n_init=100, random_state=BASE_SEED).fit(final_co_association_matrix).labels_        
+        SpectralClustering(nc+1, affinity='precomputed', n_init=100, random_state=BASE_SEED).fit(final_co_association_matrix).labels_        
         for nc in range(MAXCLUST)
     ]
 
