@@ -191,7 +191,43 @@ def plot_cluster_averages(data, cluster_labels):
 
     plt.tight_layout()
     plt.show()
+    
 
+def plot_solution_correlations(data, cluster_labels):
+    # Ensure 'cluster' column is not in the DataFrame
+    data = data.copy()
+    if 'cluster' in data.columns:
+        data = data.drop(columns=['cluster'])
+
+    # Calculate cluster sizes and cluster averages to determine top features
+    cluster_averages = {}
+    unique_labels = np.unique(cluster_labels)
+    unique_labels = unique_labels[unique_labels != -1]  # Exclude noise cluster
+    for label in unique_labels:
+        cluster_data = data[cluster_labels == label]
+        cluster_avg = cluster_data.mean().sort_values(ascending=False)
+        cluster_averages[label] = cluster_avg
+
+    # Determine the top 10 unique features across all clusters
+    all_features = set()
+    for averages in cluster_averages.values():
+        top_features = averages.head(10).index
+        all_features.update(top_features)
+    top_features = sorted(list(all_features))
+
+    # Filter data to include only the top features
+    filtered_data = data[top_features]
+
+    # Calculate correlation matrix
+    correlation_matrix = filtered_data.corr()
+
+    # Plot heatmap
+    plt.figure(figsize=(12, 10))
+    sns.heatmap(correlation_matrix, annot=True, fmt=".2f", cmap="coolwarm", vmin=-1, vmax=1)
+    plt.title("Correlation Matrix Across All Clusters for Selected Features")
+    plt.xlabel("Symptom Group")
+    plt.ylabel("Symptom Group")
+    plt.show()
 
 
 
