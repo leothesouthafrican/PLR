@@ -79,11 +79,11 @@ class RandomizedSearch:
             ):
                 self.results_['fun'] = this_score
                 self.results_['x'] = params
-                self.results_['symptom_sample'] = symptom_sample.columns
+                self.results_['symptom_sample'] = list(symptom_sample.columns)
                 if self.bootstrap:
-                    self.results_['bootstrap_sample_index'] = bootstrap_sample.index
+                    self.results_['bootstrap_sample_index'] = list(bootstrap_sample.index)
                 elif self.patient_frac < 1.0:
-                    self.results_['patient_sample_index'] = patient_sample.index
+                    self.results_['patient_sample_index'] = list(patient_sample.index)
 
             callback(self.results_, params, all_scores)
 
