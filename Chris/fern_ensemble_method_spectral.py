@@ -30,7 +30,7 @@ SEARCH_TYPE = 'randomized_search'  # we want random parameterisations for divers
 if CLUSTERING_ALGO == 'kmeans':
     SAMPLE_SIZE = 500  # number of sample to take from each pipeline to build library
     #RUN_IDS_TO_INCLUDE = [1]  # using only UMAP+kmeans
-    RUN_IDS_TO_INCLUDE = [22]  # using only UMAP+kmeans
+    RUN_IDS_TO_INCLUDE = [21]  # using only UMAP+kmeans
 # elif CLUSTERING_ALGO == 'hdbscan':
 #     SAMPLE_SIZE = 15  # number of sample to take from each pipeline to build library
 #     RUN_IDS_TO_INCLUDE = [3, 4, 7, 8]  # we will reproduce using only kmeans (and including p-umap)
