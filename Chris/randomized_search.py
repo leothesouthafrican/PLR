@@ -148,11 +148,10 @@ if __name__ == '__main__':
         print('Iteration %d' % iter)
 
         log_dict = {
-            'best_score': result['fun'],
-            'best_params': result['x'],
             'current_params': current_params
         }
         log_dict.update(all_scores)
+        log_dict.update(result)
 
         run.log(log_dict)
         print(log_dict)
