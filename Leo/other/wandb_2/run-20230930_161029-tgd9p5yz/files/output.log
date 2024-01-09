@@ -1,0 +1,34 @@
+Generations:   0%|                                                                                                                                                                         | 0/20 [00:00<?, ?it/s]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Traceback (most recent call last):
+  File "/Users/leo/Programming/PLR/Leo/gen_algo_opt_folder/genetic_algorithm.py", line 276, in <module>
+    best_individual, best_fitness = ga.run()
+                                    ^^^^^^^^
+  File "/Users/leo/Programming/PLR/Leo/gen_algo_opt_folder/genetic_algorithm.py", line 203, in run
+    fitness_val = self.fitness(individual)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/leo/Programming/PLR/Leo/gen_algo_opt_folder/genetic_algorithm.py", line 53, in fitness
+    min_cluster_size = int(params[self.n_features + 2])
+                           ~~~~~~^^^^^^^^^^^^^^^^^^^^^
+IndexError: tuple index out of range

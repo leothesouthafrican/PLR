@@ -1,0 +1,37 @@
+{
+    "os": "macOS-14.0-arm64-arm-64bit",
+    "python": "3.11.4",
+    "heartbeatAt": "2023-09-30T14:33:03.461077",
+    "startedAt": "2023-09-30T14:33:02.916951",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "/Users/leo/Programming/PLR/Leo/gen_algo_opt_folder/genetic_algorithm.py",
+    "codePathLocal": "Leo/gen_algo_opt_folder/genetic_algorithm.py",
+    "codePath": "Leo/gen_algo_opt_folder/genetic_algorithm.py",
+    "git": {
+        "remote": "https://github.com/leothesouthafrican/PLR.git",
+        "commit": "7589be778cebd92f972ede671c501681bad7604d"
+    },
+    "email": "38779415+leothesouthafrican@users.noreply.github.com",
+    "root": "/Users/leo/Programming/PLR",
+    "host": "Leos-MacBook-Pro.local",
+    "username": "leo",
+    "executable": "/Users/leo/Programming/PLR/Leo/env/bin/python3",
+    "cpu_count": 10,
+    "cpu_count_logical": 10,
+    "disk": {
+        "/": {
+            "total": 855.9619140625,
+            "used": 12.108589172363281
+        }
+    },
+    "gpuapple": {
+        "type": "arm",
+        "vendor": "Apple"
+    },
+    "memory": {
+        "total": 32.0
+    }
+}

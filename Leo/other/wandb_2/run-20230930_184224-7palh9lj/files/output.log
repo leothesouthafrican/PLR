@@ -1,0 +1,161 @@
+Generations:   0%|                                                                                                                                                                         | 0/25 [00:00<?, ?it/s]
+
+
+
+
+
+
+
+
+Generations:   4%|██████▍                                                                                                                                                          | 1/25 [00:19<07:51, 19.64s/it]
+
+
+
+
+
+
+
+
+
+Generations:   8%|████████████▉                                                                                                                                                    | 2/25 [00:38<07:20, 19.15s/it]
+
+
+
+
+
+
+
+
+Generations:  12%|███████████████████▎                                                                                                                                             | 3/25 [00:57<07:04, 19.30s/it]
+
+
+
+
+
+
+
+
+
+Generations:  16%|█████████████████████████▊                                                                                                                                       | 4/25 [01:16<06:42, 19.16s/it]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Generations:  24%|██████████████████████████████████████▋                                                                                                                          | 6/25 [01:51<05:44, 18.11s/it]
+
+
+
+
+
+
+
+
+Generations:  28%|█████████████████████████████████████████████                                                                                                                    | 7/25 [02:09<05:22, 17.90s/it]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Generations:  36%|█████████████████████████████████████████████████████████▉                                                                                                       | 9/25 [02:43<04:39, 17.50s/it]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Generations:  44%|██████████████████████████████████████████████████████████████████████▍                                                                                         | 11/25 [03:17<04:02, 17.29s/it]
+
+
+
+
+
+
+
+
+Generations:  48%|████████████████████████████████████████████████████████████████████████████▊                                                                                   | 12/25 [03:35<03:48, 17.54s/it]
+
+
+
+
+
+
+
+
+Generations:  52%|███████████████████████████████████████████████████████████████████████████████████▏                                                                            | 13/25 [03:53<03:29, 17.50s/it]
+
+
+
+
+
+
+
+Generations:  56%|█████████████████████████████████████████████████████████████████████████████████████████▌                                                                      | 14/25 [04:10<03:11, 17.40s/it]
+
+
+
+
+
+
+
+
+Generations:  60%|████████████████████████████████████████████████████████████████████████████████████████████████                                                                | 15/25 [04:27<02:53, 17.33s/it]
+
+
+
+
+
+
+
+Generations:  64%|██████████████████████████████████████████████████████████████████████████████████████████████████████▍                                                         | 16/25 [04:44<02:35, 17.30s/it]
+
+
+
+
+Traceback (most recent call last):: 0.9321929812431335:  62%|███████████████████████████████████████████████████████████████████████▉                                           | 100/160 [00:09<00:06,  9.01it/s]
+  File "/Users/leo/Programming/PLR/Leo/gen_algo_opt_folder/genetic_algorithm.py", line 322, in <module>
+    best_individual, best_fitness = ga.run()
+                                    ^^^^^^^^
+  File "/Users/leo/Programming/PLR/Leo/gen_algo_opt_folder/genetic_algorithm.py", line 213, in run
+    fitness_values = Parallel(n_jobs=self.n_jobs)(delayed(self.fitness)(individual) for individual in fitness_eval_pbar)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/leo/Programming/PLR/Leo/env/lib/python3.11/site-packages/joblib/parallel.py", line 1952, in __call__
+    return output if self.return_generator else list(output)
+                                                ^^^^^^^^^^^^
+  File "/Users/leo/Programming/PLR/Leo/env/lib/python3.11/site-packages/joblib/parallel.py", line 1595, in _get_outputs
+    yield from self._retrieve()
+  File "/Users/leo/Programming/PLR/Leo/env/lib/python3.11/site-packages/joblib/parallel.py", line 1707, in _retrieve
+    time.sleep(0.01)
+KeyboardInterrupt
