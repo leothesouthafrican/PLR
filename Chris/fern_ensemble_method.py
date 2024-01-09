@@ -123,6 +123,30 @@ run_metadata = {
         15: {
             'run_path': 'rusty-chris/tune_shallow_clustering/tv9hnbnn',
             'results_path': 'results/parametric_umap_hdbscan_silhouette_run_10/all_results.pickle'
+        },
+        17: {
+            'run_path': 'rusty-chris/tune_shallow_clustering/runs/x42hq5ez',
+            'results_path': 'results/umap_kmeans_silhouette_False_1.0_run_42/all_results.pickle'
+        },
+        18: {
+            'run_path': 'rusty-chris/tune_shallow_clustering/runs/qgy8ifuf',
+            'results_path': 'results/umap_kmeans_silhouette_True_1.0_run_42/all_results.pickle'
+        },
+        19: {
+            'run_path': 'rusty-chris/tune_shallow_clustering/runs/en968oqc',
+            'results_path': 'results/umap_kmeans_silhouette_False_0.8_run_42/all_results.pickle'
+        },
+        20: {
+            'run_path': 'rusty-chris/tune_shallow_clustering/runs/ocncbqca',
+            'results_path': 'results/umap_kmeans_silhouette_True_0.8_run_42/all_results.pickle'
+        },
+        21: {
+            'run_path': 'rusty-chris/tune_shallow_clustering/runs/lo5r07or',
+            'results_path': 'results/umap_kmeans_silhouette_False_1.0_0.8_run_42/all_results.pickle'
+        },
+        22: {
+            'run_path': 'rusty-chris/tune_shallow_clustering/tv9hnbnn',
+            'results_path': 'results/umap_kmeans_silhouette_False_0.8_0.8_run_42/all_results.pickle'
         }
     }
 }
