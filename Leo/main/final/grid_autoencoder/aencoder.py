@@ -1,9 +1,16 @@
 import torch
+import numpy as np
 import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import DataLoader, TensorDataset
 
-torch.manual_seed(42) # For reproducibility
+# Setting seeds for reproducibility
+torch.manual_seed(42)
+np.random.seed(42)
+if torch.cuda.is_available():
+    torch.cuda.manual_seed_all(42)
+torch.backends.cudnn.deterministic = True
+torch.backends.cudnn.benchmark = False
 
 class Autoencoder(nn.Module):
     def __init__(self, input_size, hidden_size, latent_dim):
