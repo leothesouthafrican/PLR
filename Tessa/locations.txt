@@ -1,0 +1,3 @@
+
+combined clustering performed in test-consistency-112923.ipynb
+main clustering performed in stepmix-111023-gridsearch.ipynb
