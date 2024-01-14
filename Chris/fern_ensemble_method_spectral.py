@@ -139,11 +139,11 @@ run_metadata = {
         },
         21: {
             'run_path': 'rusty-chris/tune_shallow_clustering/runs/lo5r07or',
-            'results_path': 'results/umap_kmeans_silhouette_False_1.0_0.8_run_42/all_results.pickle'
+            'results_path': 'results/umap_kmeans_silhouette_False_1.0_0.8_run_43/all_results.pickle'
         },
         22: {
             'run_path': 'rusty-chris/tune_shallow_clustering/tv9hnbnn',
-            'results_path': 'results/umap_kmeans_silhouette_False_0.8_0.8_run_42/all_results.pickle'
+            'results_path': 'results/umap_kmeans_silhouette_False_0.8_0.8_run_43/all_results.pickle'
         }
     }
 }
@@ -441,6 +441,9 @@ for r in range(N_REPEATS):
         library = pd.concat(
             [library, all_results[run_id]], ignore_index=True
         )
+
+    ## TODO: insert code here to handle incomplete libraries
+    ## Note: this could be knn-imputation, but in the first instance we will try -1
 
     library_co_association_matrix = ensemble_to_co_association(library)
     library_linkage_matrix = similarity_to_linkage(library_co_association_matrix)
