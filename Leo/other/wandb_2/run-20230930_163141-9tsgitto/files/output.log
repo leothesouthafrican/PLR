@@ -1,0 +1,72 @@
+Generations:   0%|                                                                                                                                                                          | 0/5 [00:00<?, ?it/s]
+Eval Fitness Gen 1 - Best Fitness: 0.8519:   4%|████▉                                                                                                                              | 3/80 [00:01<00:32,  2.35it/s]
+Length of params: 144
+params: 0
+params: 1
+params: 74
+params: 23
+Length of params: 144
+params: 1
+params: 4
+params: 9
+params: 4
+Length of params: 144
+params: 1
+params: 4
+params: 57
+params: 15
+Length of params: 144
+params: 0
+params: 2
+params: 106
+Traceback (most recent call last):
+  File "/Users/leo/Programming/PLR/Leo/gen_algo_opt_folder/genetic_algorithm.py", line 283, in <module>
+    best_individual, best_fitness = ga.run()
+                                    ^^^^^^^^
+  File "/Users/leo/Programming/PLR/Leo/gen_algo_opt_folder/genetic_algorithm.py", line 208, in run
+    fitness_val = self.fitness(individual)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/leo/Programming/PLR/Leo/gen_algo_opt_folder/genetic_algorithm.py", line 77, in fitness
+    outputs = autoencoder(batch_data)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/leo/Programming/PLR/Leo/env/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/leo/Programming/PLR/Leo/gen_algo_opt_folder/autoencoder.py", line 39, in forward
+    x = self.encode(x)
+        ^^^^^^^^^^^^^^
+  File "/Users/leo/Programming/PLR/Leo/gen_algo_opt_folder/autoencoder.py", line 30, in encode
+    x = self.relu(layer(x))
+                  ^^^^^^^^
+  File "/Users/leo/Programming/PLR/Leo/env/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/leo/Programming/PLR/Leo/env/lib/python3.11/site-packages/torch/nn/modules/linear.py", line 114, in forward
+    return F.linear(input, self.weight, self.bias)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+Length of params: 144
+params: 1
+params: 1
+params: 78
+params: 11
+Length of params: 144
+params: 1
+params: 2
+params: 107
+params: 40
+Length of params: 144
+params: 0
+params: 2
+params: 3
+params: 26
+Length of params: 144
+params: 0
+params: 1
+params: 84
+params: 47
+Length of params: 144
+params: 0
+params: 3
+params: 92
+params: 6

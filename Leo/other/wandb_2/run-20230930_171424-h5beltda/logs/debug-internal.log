@@ -1,0 +1,246 @@
+2023-09-30 17:14:24,111 INFO    StreamThr :15206 [internal.py:wandb_internal():86] W&B internal server running at pid: 15206, started at: 2023-09-30 17:14:24.110388
+2023-09-30 17:14:24,112 DEBUG   HandlerThread:15206 [handler.py:handle_request():144] handle_request: status
+2023-09-30 17:14:24,115 INFO    WriterThread:15206 [datastore.py:open_for_write():85] open: /Users/leo/Programming/PLR/wandb/run-20230930_171424-h5beltda/run-h5beltda.wandb
+2023-09-30 17:14:24,115 DEBUG   SenderThread:15206 [sender.py:send():379] send: header
+2023-09-30 17:14:24,142 DEBUG   SenderThread:15206 [sender.py:send():379] send: run
+2023-09-30 17:14:24,626 INFO    SenderThread:15206 [dir_watcher.py:__init__():211] watching files in: /Users/leo/Programming/PLR/wandb/run-20230930_171424-h5beltda/files
+2023-09-30 17:14:24,626 INFO    SenderThread:15206 [sender.py:_start_run_threads():1121] run started: h5beltda with start time 1696090464.110749
+2023-09-30 17:14:24,635 DEBUG   HandlerThread:15206 [handler.py:handle_request():144] handle_request: check_version
+2023-09-30 17:14:24,635 DEBUG   SenderThread:15206 [sender.py:send_request():406] send_request: check_version
+2023-09-30 17:14:24,690 DEBUG   HandlerThread:15206 [handler.py:handle_request():144] handle_request: run_start
+2023-09-30 17:14:24,701 DEBUG   HandlerThread:15206 [system_info.py:__init__():32] System info init
+2023-09-30 17:14:24,701 DEBUG   HandlerThread:15206 [system_info.py:__init__():47] System info init done
+2023-09-30 17:14:24,701 INFO    HandlerThread:15206 [system_monitor.py:start():181] Starting system monitor
+2023-09-30 17:14:24,702 INFO    SystemMonitor:15206 [system_monitor.py:_start():145] Starting system asset monitoring threads
+2023-09-30 17:14:24,702 INFO    HandlerThread:15206 [system_monitor.py:probe():201] Collecting system info
+2023-09-30 17:14:24,703 INFO    SystemMonitor:15206 [interfaces.py:start():190] Started cpu monitoring
+2023-09-30 17:14:24,704 DEBUG   HandlerThread:15206 [system_info.py:probe():196] Probing system
+2023-09-30 17:14:24,704 INFO    SystemMonitor:15206 [interfaces.py:start():190] Started disk monitoring
+2023-09-30 17:14:24,707 INFO    SystemMonitor:15206 [interfaces.py:start():190] Started gpuapple monitoring
+2023-09-30 17:14:24,708 INFO    SystemMonitor:15206 [interfaces.py:start():190] Started memory monitoring
+2023-09-30 17:14:24,708 INFO    SystemMonitor:15206 [interfaces.py:start():190] Started network monitoring
+2023-09-30 17:14:24,712 DEBUG   HandlerThread:15206 [system_info.py:_probe_git():181] Probing git
+2023-09-30 17:14:24,724 DEBUG   HandlerThread:15206 [system_info.py:_probe_git():189] Probing git done
+2023-09-30 17:14:24,724 DEBUG   HandlerThread:15206 [system_info.py:probe():244] Probing system done
+2023-09-30 17:14:24,724 DEBUG   HandlerThread:15206 [system_monitor.py:probe():210] {'os': 'macOS-14.0-arm64-arm-64bit', 'python': '3.11.4', 'heartbeatAt': '2023-09-30T16:14:24.704797', 'startedAt': '2023-09-30T16:14:24.103662', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': '/Users/leo/Programming/PLR/Leo/gen_algo_opt_folder/genetic_algorithm.py', 'codePathLocal': 'Leo/gen_algo_opt_folder/genetic_algorithm.py', 'codePath': 'Leo/gen_algo_opt_folder/genetic_algorithm.py', 'git': {'remote': 'https://github.com/leothesouthafrican/PLR.git', 'commit': 'bec2f024e2b8e60afe525aa69b8e8817db98ae1c'}, 'email': '38779415+leothesouthafrican@users.noreply.github.com', 'root': '/Users/leo/Programming/PLR', 'host': 'Leos-MacBook-Pro.local', 'username': 'leo', 'executable': '/Users/leo/Programming/PLR/Leo/env/bin/python3', 'cpu_count': 10, 'cpu_count_logical': 10, 'disk': {'/': {'total': 855.9619140625, 'used': 12.108589172363281}}, 'gpuapple': {'type': 'arm', 'vendor': 'Apple'}, 'memory': {'total': 32.0}}
+2023-09-30 17:14:24,724 INFO    HandlerThread:15206 [system_monitor.py:probe():211] Finished collecting system info
+2023-09-30 17:14:24,724 INFO    HandlerThread:15206 [system_monitor.py:probe():214] Publishing system info
+2023-09-30 17:14:24,725 DEBUG   HandlerThread:15206 [system_info.py:_save_pip():52] Saving list of pip packages installed into the current environment
+2023-09-30 17:14:24,725 DEBUG   HandlerThread:15206 [system_info.py:_save_pip():68] Saving pip packages done
+2023-09-30 17:14:24,725 INFO    HandlerThread:15206 [system_monitor.py:probe():216] Finished publishing system info
+2023-09-30 17:14:24,726 DEBUG   SenderThread:15206 [sender.py:send():379] send: files
+2023-09-30 17:14:24,726 INFO    SenderThread:15206 [sender.py:_save_file():1375] saving file wandb-metadata.json with policy now
+2023-09-30 17:14:24,729 DEBUG   HandlerThread:15206 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-30 17:14:24,729 DEBUG   HandlerThread:15206 [handler.py:handle_request():144] handle_request: internal_messages
+2023-09-30 17:14:24,729 DEBUG   SenderThread:15206 [sender.py:send_request():406] send_request: stop_status
+2023-09-30 17:14:25,146 DEBUG   SenderThread:15206 [sender.py:send():379] send: telemetry
+2023-09-30 17:14:25,146 DEBUG   SenderThread:15206 [sender.py:send():379] send: config
+2023-09-30 17:14:25,412 INFO    wandb-upload_0:15206 [upload_job.py:push():131] Uploaded file /var/folders/dt/bgs1hq3d2k3dvhpt3llvs4rw0000gn/T/tmpso6lif8kwandb/y46xypoc-wandb-metadata.json
+2023-09-30 17:14:25,634 INFO    Thread-12 :15206 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/leo/Programming/PLR/wandb/run-20230930_171424-h5beltda/files/wandb-metadata.json
+2023-09-30 17:14:25,635 INFO    Thread-12 :15206 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/leo/Programming/PLR/wandb/run-20230930_171424-h5beltda/files/requirements.txt
+2023-09-30 17:14:25,635 INFO    Thread-12 :15206 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/leo/Programming/PLR/wandb/run-20230930_171424-h5beltda/files/output.log
+2023-09-30 17:14:27,631 INFO    Thread-12 :15206 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_171424-h5beltda/files/output.log
+2023-09-30 17:14:29,166 DEBUG   HandlerThread:15206 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 17:14:29,642 INFO    Thread-12 :15206 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_171424-h5beltda/files/output.log
+2023-09-30 17:14:30,891 DEBUG   HandlerThread:15206 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-30 17:14:30,893 DEBUG   SenderThread:15206 [sender.py:send():379] send: history
+2023-09-30 17:14:30,893 DEBUG   SenderThread:15206 [sender.py:send_request():406] send_request: summary_record
+2023-09-30 17:14:30,893 INFO    SenderThread:15206 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-09-30 17:14:31,652 INFO    Thread-12 :15206 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_171424-h5beltda/files/output.log
+2023-09-30 17:14:31,652 INFO    Thread-12 :15206 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/leo/Programming/PLR/wandb/run-20230930_171424-h5beltda/files/wandb-summary.json
+2023-09-30 17:14:33,665 INFO    Thread-12 :15206 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_171424-h5beltda/files/output.log
+2023-09-30 17:14:34,551 DEBUG   HandlerThread:15206 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-30 17:14:34,552 DEBUG   SenderThread:15206 [sender.py:send():379] send: history
+2023-09-30 17:14:34,552 DEBUG   SenderThread:15206 [sender.py:send_request():406] send_request: summary_record
+2023-09-30 17:14:34,552 DEBUG   HandlerThread:15206 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 17:14:34,553 INFO    SenderThread:15206 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-09-30 17:14:34,673 INFO    Thread-12 :15206 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_171424-h5beltda/files/wandb-summary.json
+2023-09-30 17:14:35,677 INFO    Thread-12 :15206 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_171424-h5beltda/files/output.log
+2023-09-30 17:14:37,684 INFO    Thread-12 :15206 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_171424-h5beltda/files/output.log
+2023-09-30 17:14:38,179 DEBUG   HandlerThread:15206 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-30 17:14:38,180 DEBUG   SenderThread:15206 [sender.py:send():379] send: history
+2023-09-30 17:14:38,180 DEBUG   SenderThread:15206 [sender.py:send_request():406] send_request: summary_record
+2023-09-30 17:14:38,181 INFO    SenderThread:15206 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-09-30 17:14:38,687 INFO    Thread-12 :15206 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_171424-h5beltda/files/wandb-summary.json
+2023-09-30 17:14:39,691 INFO    Thread-12 :15206 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_171424-h5beltda/files/output.log
+2023-09-30 17:14:39,734 DEBUG   HandlerThread:15206 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-30 17:14:39,734 DEBUG   HandlerThread:15206 [handler.py:handle_request():144] handle_request: internal_messages
+2023-09-30 17:14:39,735 DEBUG   SenderThread:15206 [sender.py:send_request():406] send_request: stop_status
+2023-09-30 17:14:40,036 DEBUG   HandlerThread:15206 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 17:14:41,701 INFO    Thread-12 :15206 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_171424-h5beltda/files/output.log
+2023-09-30 17:14:41,707 DEBUG   HandlerThread:15206 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-30 17:14:41,709 DEBUG   SenderThread:15206 [sender.py:send():379] send: history
+2023-09-30 17:14:41,709 DEBUG   SenderThread:15206 [sender.py:send_request():406] send_request: summary_record
+2023-09-30 17:14:41,709 INFO    SenderThread:15206 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-09-30 17:14:42,710 INFO    Thread-12 :15206 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_171424-h5beltda/files/wandb-summary.json
+2023-09-30 17:14:43,715 INFO    Thread-12 :15206 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_171424-h5beltda/files/output.log
+2023-09-30 17:14:45,367 DEBUG   HandlerThread:15206 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-30 17:14:45,368 DEBUG   SenderThread:15206 [sender.py:send():379] send: history
+2023-09-30 17:14:45,368 DEBUG   SenderThread:15206 [sender.py:send_request():406] send_request: summary_record
+2023-09-30 17:14:45,369 DEBUG   HandlerThread:15206 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 17:14:45,369 INFO    SenderThread:15206 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-09-30 17:14:45,726 INFO    Thread-12 :15206 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_171424-h5beltda/files/wandb-summary.json
+2023-09-30 17:14:45,726 INFO    Thread-12 :15206 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_171424-h5beltda/files/output.log
+2023-09-30 17:14:47,752 INFO    Thread-12 :15206 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_171424-h5beltda/files/output.log
+2023-09-30 17:14:49,266 DEBUG   HandlerThread:15206 [handler.py:handle_request():144] handle_request: log_artifact
+2023-09-30 17:14:49,267 DEBUG   SenderThread:15206 [sender.py:send_request():406] send_request: log_artifact
+2023-09-30 17:14:49,622 DEBUG   HandlerThread:15206 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-30 17:14:49,756 INFO    Thread-12 :15206 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_171424-h5beltda/files/output.log
+2023-09-30 17:14:49,757 INFO    Thread-12 :15206 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/leo/Programming/PLR/wandb/run-20230930_171424-h5beltda/files/media/table/Generations Table_5_2527be330a0b9786375a.table.json
+2023-09-30 17:14:49,757 INFO    Thread-12 :15206 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/leo/Programming/PLR/wandb/run-20230930_171424-h5beltda/files/media
+2023-09-30 17:14:49,757 INFO    Thread-12 :15206 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/leo/Programming/PLR/wandb/run-20230930_171424-h5beltda/files/media/table
+2023-09-30 17:14:50,204 INFO    wandb-upload_0:15206 [upload_job.py:push():131] Uploaded file /var/folders/dt/bgs1hq3d2k3dvhpt3llvs4rw0000gn/T/tmpso6lif8kwandb/adp3tzft-media/table/Generations Table_5_2527be330a0b9786375a.table.json
+2023-09-30 17:14:50,582 INFO    wandb-upload_1:15206 [upload_job.py:push():89] Uploaded file /Users/leo/Library/Application Support/wandb/artifacts/staging/tmpb85yg9n4
+2023-09-30 17:14:50,633 DEBUG   HandlerThread:15206 [handler.py:handle_request():144] handle_request: poll_exit
+2023-09-30 17:14:51,362 INFO    SenderThread:15206 [sender.py:send_request_log_artifact():1441] logged artifact run-h5beltda-GenerationsTable - {'id': 'QXJ0aWZhY3Q6NTg5ODg4NTgz', 'state': 'PENDING', 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjEwMjc2MzA0Nw==', 'latestArtifact': None}}
+2023-09-30 17:14:51,363 DEBUG   SenderThread:15206 [sender.py:send():379] send: files
+2023-09-30 17:14:51,363 INFO    SenderThread:15206 [sender.py:_save_file():1375] saving file media/table/Generations Table_5_2527be330a0b9786375a.table.json with policy now
+2023-09-30 17:14:51,363 DEBUG   HandlerThread:15206 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 17:14:51,364 DEBUG   SenderThread:15206 [sender.py:send():379] send: history
+2023-09-30 17:14:51,364 DEBUG   SenderThread:15206 [sender.py:send_request():406] send_request: summary_record
+2023-09-30 17:14:51,366 INFO    SenderThread:15206 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-09-30 17:14:51,366 DEBUG   SenderThread:15206 [sender.py:send():379] send: telemetry
+2023-09-30 17:14:51,366 DEBUG   SenderThread:15206 [sender.py:send():379] send: exit
+2023-09-30 17:14:51,366 INFO    SenderThread:15206 [sender.py:send_exit():584] handling exit code: 0
+2023-09-30 17:14:51,366 INFO    SenderThread:15206 [sender.py:send_exit():586] handling runtime: 24
+2023-09-30 17:14:51,367 INFO    SenderThread:15206 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-09-30 17:14:51,367 INFO    SenderThread:15206 [sender.py:send_exit():592] send defer
+2023-09-30 17:14:51,367 DEBUG   SenderThread:15206 [sender.py:send_request():406] send_request: poll_exit
+2023-09-30 17:14:51,367 DEBUG   HandlerThread:15206 [handler.py:handle_request():144] handle_request: defer
+2023-09-30 17:14:51,368 INFO    HandlerThread:15206 [handler.py:handle_request_defer():170] handle defer: 0
+2023-09-30 17:14:51,368 DEBUG   SenderThread:15206 [sender.py:send_request():406] send_request: defer
+2023-09-30 17:14:51,368 INFO    SenderThread:15206 [sender.py:send_request_defer():608] handle sender defer: 0
+2023-09-30 17:14:51,368 INFO    SenderThread:15206 [sender.py:transition_state():612] send defer: 1
+2023-09-30 17:14:51,368 DEBUG   HandlerThread:15206 [handler.py:handle_request():144] handle_request: defer
+2023-09-30 17:14:51,368 INFO    HandlerThread:15206 [handler.py:handle_request_defer():170] handle defer: 1
+2023-09-30 17:14:51,369 DEBUG   SenderThread:15206 [sender.py:send_request():406] send_request: defer
+2023-09-30 17:14:51,369 INFO    SenderThread:15206 [sender.py:send_request_defer():608] handle sender defer: 1
+2023-09-30 17:14:51,369 INFO    SenderThread:15206 [sender.py:transition_state():612] send defer: 2
+2023-09-30 17:14:51,369 DEBUG   HandlerThread:15206 [handler.py:handle_request():144] handle_request: defer
+2023-09-30 17:14:51,369 INFO    HandlerThread:15206 [handler.py:handle_request_defer():170] handle defer: 2
+2023-09-30 17:14:51,369 INFO    HandlerThread:15206 [system_monitor.py:finish():190] Stopping system monitor
+2023-09-30 17:14:51,371 DEBUG   SystemMonitor:15206 [system_monitor.py:_start():159] Starting system metrics aggregation loop
+2023-09-30 17:14:51,371 DEBUG   SystemMonitor:15206 [system_monitor.py:_start():166] Finished system metrics aggregation loop
+2023-09-30 17:14:51,371 DEBUG   SystemMonitor:15206 [system_monitor.py:_start():170] Publishing last batch of metrics
+2023-09-30 17:14:51,371 INFO    HandlerThread:15206 [interfaces.py:finish():202] Joined cpu monitor
+2023-09-30 17:14:51,371 INFO    HandlerThread:15206 [interfaces.py:finish():202] Joined disk monitor
+2023-09-30 17:14:51,766 INFO    Thread-12 :15206 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_171424-h5beltda/files/wandb-summary.json
+2023-09-30 17:14:51,881 INFO    wandb-upload_0:15206 [upload_job.py:push():131] Uploaded file /var/folders/dt/bgs1hq3d2k3dvhpt3llvs4rw0000gn/T/tmpso6lif8kwandb/7j81pjdt-media/table/Generations Table_5_2527be330a0b9786375a.table.json
+2023-09-30 17:14:52,327 INFO    HandlerThread:15206 [interfaces.py:finish():202] Joined gpuapple monitor
+2023-09-30 17:14:52,327 INFO    HandlerThread:15206 [interfaces.py:finish():202] Joined memory monitor
+2023-09-30 17:14:52,327 INFO    HandlerThread:15206 [interfaces.py:finish():202] Joined network monitor
+2023-09-30 17:14:52,327 DEBUG   HandlerThread:15206 [handler.py:handle_request():144] handle_request: poll_exit
+2023-09-30 17:14:52,327 DEBUG   SenderThread:15206 [sender.py:send_request():406] send_request: defer
+2023-09-30 17:14:52,327 INFO    SenderThread:15206 [sender.py:send_request_defer():608] handle sender defer: 2
+2023-09-30 17:14:52,327 INFO    SenderThread:15206 [sender.py:transition_state():612] send defer: 3
+2023-09-30 17:14:52,327 DEBUG   SenderThread:15206 [sender.py:send():379] send: telemetry
+2023-09-30 17:14:52,327 DEBUG   SenderThread:15206 [sender.py:send_request():406] send_request: poll_exit
+2023-09-30 17:14:52,327 DEBUG   HandlerThread:15206 [handler.py:handle_request():144] handle_request: defer
+2023-09-30 17:14:52,327 INFO    HandlerThread:15206 [handler.py:handle_request_defer():170] handle defer: 3
+2023-09-30 17:14:52,327 DEBUG   SenderThread:15206 [sender.py:send_request():406] send_request: defer
+2023-09-30 17:14:52,328 INFO    SenderThread:15206 [sender.py:send_request_defer():608] handle sender defer: 3
+2023-09-30 17:14:52,328 INFO    SenderThread:15206 [sender.py:transition_state():612] send defer: 4
+2023-09-30 17:14:52,328 DEBUG   HandlerThread:15206 [handler.py:handle_request():144] handle_request: defer
+2023-09-30 17:14:52,328 INFO    HandlerThread:15206 [handler.py:handle_request_defer():170] handle defer: 4
+2023-09-30 17:14:52,328 DEBUG   SenderThread:15206 [sender.py:send_request():406] send_request: defer
+2023-09-30 17:14:52,328 INFO    SenderThread:15206 [sender.py:send_request_defer():608] handle sender defer: 4
+2023-09-30 17:14:52,328 INFO    SenderThread:15206 [sender.py:transition_state():612] send defer: 5
+2023-09-30 17:14:52,328 DEBUG   HandlerThread:15206 [handler.py:handle_request():144] handle_request: defer
+2023-09-30 17:14:52,328 INFO    HandlerThread:15206 [handler.py:handle_request_defer():170] handle defer: 5
+2023-09-30 17:14:52,328 DEBUG   SenderThread:15206 [sender.py:send():379] send: summary
+2023-09-30 17:14:52,328 INFO    SenderThread:15206 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-09-30 17:14:52,328 DEBUG   SenderThread:15206 [sender.py:send_request():406] send_request: defer
+2023-09-30 17:14:52,328 INFO    SenderThread:15206 [sender.py:send_request_defer():608] handle sender defer: 5
+2023-09-30 17:14:52,328 INFO    SenderThread:15206 [sender.py:transition_state():612] send defer: 6
+2023-09-30 17:14:52,328 DEBUG   HandlerThread:15206 [handler.py:handle_request():144] handle_request: defer
+2023-09-30 17:14:52,328 INFO    HandlerThread:15206 [handler.py:handle_request_defer():170] handle defer: 6
+2023-09-30 17:14:52,328 DEBUG   SenderThread:15206 [sender.py:send_request():406] send_request: defer
+2023-09-30 17:14:52,328 INFO    SenderThread:15206 [sender.py:send_request_defer():608] handle sender defer: 6
+2023-09-30 17:14:52,330 DEBUG   HandlerThread:15206 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 17:14:52,600 INFO    SenderThread:15206 [sender.py:transition_state():612] send defer: 7
+2023-09-30 17:14:52,600 DEBUG   HandlerThread:15206 [handler.py:handle_request():144] handle_request: defer
+2023-09-30 17:14:52,600 INFO    HandlerThread:15206 [handler.py:handle_request_defer():170] handle defer: 7
+2023-09-30 17:14:52,600 DEBUG   SenderThread:15206 [sender.py:send_request():406] send_request: defer
+2023-09-30 17:14:52,600 INFO    SenderThread:15206 [sender.py:send_request_defer():608] handle sender defer: 7
+2023-09-30 17:14:52,639 DEBUG   HandlerThread:15206 [handler.py:handle_request():144] handle_request: poll_exit
+2023-09-30 17:14:52,770 INFO    Thread-12 :15206 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_171424-h5beltda/files/config.yaml
+2023-09-30 17:14:52,771 INFO    Thread-12 :15206 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_171424-h5beltda/files/wandb-summary.json
+2023-09-30 17:14:53,255 INFO    SenderThread:15206 [sender.py:transition_state():612] send defer: 8
+2023-09-30 17:14:53,255 DEBUG   SenderThread:15206 [sender.py:send_request():406] send_request: poll_exit
+2023-09-30 17:14:53,255 DEBUG   HandlerThread:15206 [handler.py:handle_request():144] handle_request: defer
+2023-09-30 17:14:53,255 INFO    HandlerThread:15206 [handler.py:handle_request_defer():170] handle defer: 8
+2023-09-30 17:14:53,255 DEBUG   SenderThread:15206 [sender.py:send_request():406] send_request: defer
+2023-09-30 17:14:53,256 INFO    SenderThread:15206 [sender.py:send_request_defer():608] handle sender defer: 8
+2023-09-30 17:14:53,256 INFO    SenderThread:15206 [job_builder.py:build():281] Attempting to build job artifact
+2023-09-30 17:14:53,257 INFO    SenderThread:15206 [job_builder.py:_get_source_type():393] is repo sourced job
+2023-09-30 17:14:53,258 INFO    SenderThread:15206 [job_builder.py:build():369] adding wandb-job metadata file
+2023-09-30 17:14:53,263 INFO    SenderThread:15206 [sender.py:transition_state():612] send defer: 9
+2023-09-30 17:14:53,264 DEBUG   HandlerThread:15206 [handler.py:handle_request():144] handle_request: defer
+2023-09-30 17:14:53,264 INFO    HandlerThread:15206 [handler.py:handle_request_defer():170] handle defer: 9
+2023-09-30 17:14:53,264 DEBUG   SenderThread:15206 [sender.py:send():379] send: artifact
+2023-09-30 17:14:53,649 DEBUG   HandlerThread:15206 [handler.py:handle_request():144] handle_request: poll_exit
+2023-09-30 17:14:53,784 INFO    Thread-12 :15206 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_171424-h5beltda/files/output.log
+2023-09-30 17:14:54,205 INFO    wandb-upload_1:15206 [upload_job.py:push():86] Skipped uploading /Users/leo/Library/Application Support/wandb/artifacts/staging/tmprr4did22
+2023-09-30 17:14:54,507 INFO    wandb-upload_0:15206 [upload_job.py:push():89] Uploaded file /Users/leo/Library/Application Support/wandb/artifacts/staging/tmpkkt0kwbq
+2023-09-30 17:14:56,081 INFO    SenderThread:15206 [sender.py:send_artifact():1453] sent artifact job-https___github.com_leothesouthafrican_PLR.git_Leo_gen_algo_opt_folder_genetic_algorithm.py - {'id': 'QXJ0aWZhY3Q6NTg5ODg4NjI0', 'state': 'PENDING', 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjEwMjY3Mjc5OA==', 'latestArtifact': {'id': 'QXJ0aWZhY3Q6NTg5ODc4NzIz', 'versionIndex': 6}}}
+2023-09-30 17:14:56,081 DEBUG   SenderThread:15206 [sender.py:send_request():406] send_request: defer
+2023-09-30 17:14:56,081 INFO    SenderThread:15206 [sender.py:send_request_defer():608] handle sender defer: 9
+2023-09-30 17:14:56,081 INFO    SenderThread:15206 [dir_watcher.py:finish():358] shutting down directory watcher
+2023-09-30 17:14:56,793 INFO    SenderThread:15206 [dir_watcher.py:finish():388] scan: /Users/leo/Programming/PLR/wandb/run-20230930_171424-h5beltda/files
+2023-09-30 17:14:56,793 INFO    SenderThread:15206 [dir_watcher.py:finish():402] scan save: /Users/leo/Programming/PLR/wandb/run-20230930_171424-h5beltda/files/requirements.txt requirements.txt
+2023-09-30 17:14:56,793 INFO    SenderThread:15206 [dir_watcher.py:finish():402] scan save: /Users/leo/Programming/PLR/wandb/run-20230930_171424-h5beltda/files/output.log output.log
+2023-09-30 17:14:56,794 INFO    SenderThread:15206 [dir_watcher.py:finish():402] scan save: /Users/leo/Programming/PLR/wandb/run-20230930_171424-h5beltda/files/config.yaml config.yaml
+2023-09-30 17:14:56,794 INFO    SenderThread:15206 [dir_watcher.py:finish():402] scan save: /Users/leo/Programming/PLR/wandb/run-20230930_171424-h5beltda/files/wandb-summary.json wandb-summary.json
+2023-09-30 17:14:56,795 INFO    SenderThread:15206 [dir_watcher.py:finish():402] scan save: /Users/leo/Programming/PLR/wandb/run-20230930_171424-h5beltda/files/wandb-metadata.json wandb-metadata.json
+2023-09-30 17:14:56,798 INFO    SenderThread:15206 [dir_watcher.py:finish():402] scan save: /Users/leo/Programming/PLR/wandb/run-20230930_171424-h5beltda/files/media/table/Generations Table_5_2527be330a0b9786375a.table.json media/table/Generations Table_5_2527be330a0b9786375a.table.json
+2023-09-30 17:14:56,798 INFO    SenderThread:15206 [sender.py:transition_state():612] send defer: 10
+2023-09-30 17:14:56,798 DEBUG   SenderThread:15206 [sender.py:send_request():406] send_request: poll_exit
+2023-09-30 17:14:56,798 DEBUG   HandlerThread:15206 [handler.py:handle_request():144] handle_request: defer
+2023-09-30 17:14:56,798 INFO    HandlerThread:15206 [handler.py:handle_request_defer():170] handle defer: 10
+2023-09-30 17:14:56,799 DEBUG   SenderThread:15206 [sender.py:send_request():406] send_request: defer
+2023-09-30 17:14:56,799 INFO    SenderThread:15206 [sender.py:send_request_defer():608] handle sender defer: 10
+2023-09-30 17:14:56,799 INFO    SenderThread:15206 [file_pusher.py:finish():175] shutting down file pusher
+2023-09-30 17:14:57,196 INFO    wandb-upload_0:15206 [upload_job.py:push():131] Uploaded file /Users/leo/Programming/PLR/wandb/run-20230930_171424-h5beltda/files/output.log
+2023-09-30 17:14:57,217 INFO    wandb-upload_1:15206 [upload_job.py:push():131] Uploaded file /Users/leo/Programming/PLR/wandb/run-20230930_171424-h5beltda/files/requirements.txt
+2023-09-30 17:14:57,315 INFO    wandb-upload_2:15206 [upload_job.py:push():131] Uploaded file /Users/leo/Programming/PLR/wandb/run-20230930_171424-h5beltda/files/config.yaml
+2023-09-30 17:14:57,315 INFO    wandb-upload_3:15206 [upload_job.py:push():131] Uploaded file /Users/leo/Programming/PLR/wandb/run-20230930_171424-h5beltda/files/wandb-summary.json
+2023-09-30 17:14:57,519 INFO    Thread-11 (_thread_body):15206 [sender.py:transition_state():612] send defer: 11
+2023-09-30 17:14:57,521 DEBUG   HandlerThread:15206 [handler.py:handle_request():144] handle_request: defer
+2023-09-30 17:14:57,521 INFO    HandlerThread:15206 [handler.py:handle_request_defer():170] handle defer: 11
+2023-09-30 17:14:57,521 DEBUG   SenderThread:15206 [sender.py:send_request():406] send_request: defer
+2023-09-30 17:14:57,522 INFO    SenderThread:15206 [sender.py:send_request_defer():608] handle sender defer: 11
+2023-09-30 17:14:57,522 INFO    SenderThread:15206 [file_pusher.py:join():181] waiting for file pusher
+2023-09-30 17:14:57,522 INFO    SenderThread:15206 [sender.py:transition_state():612] send defer: 12
+2023-09-30 17:14:57,522 DEBUG   HandlerThread:15206 [handler.py:handle_request():144] handle_request: defer
+2023-09-30 17:14:57,522 INFO    HandlerThread:15206 [handler.py:handle_request_defer():170] handle defer: 12
+2023-09-30 17:14:57,522 DEBUG   SenderThread:15206 [sender.py:send_request():406] send_request: defer
+2023-09-30 17:14:57,522 INFO    SenderThread:15206 [sender.py:send_request_defer():608] handle sender defer: 12
+2023-09-30 17:14:57,522 INFO    SenderThread:15206 [file_stream.py:finish():594] file stream finish called
+2023-09-30 17:14:57,680 INFO    SenderThread:15206 [file_stream.py:finish():598] file stream finish is done
+2023-09-30 17:14:57,681 INFO    SenderThread:15206 [sender.py:transition_state():612] send defer: 13
+2023-09-30 17:14:57,681 DEBUG   HandlerThread:15206 [handler.py:handle_request():144] handle_request: defer
+2023-09-30 17:14:57,681 INFO    HandlerThread:15206 [handler.py:handle_request_defer():170] handle defer: 13
+2023-09-30 17:14:57,681 DEBUG   SenderThread:15206 [sender.py:send_request():406] send_request: defer
+2023-09-30 17:14:57,681 INFO    SenderThread:15206 [sender.py:send_request_defer():608] handle sender defer: 13
+2023-09-30 17:14:57,681 INFO    SenderThread:15206 [sender.py:transition_state():612] send defer: 14
+2023-09-30 17:14:57,681 DEBUG   HandlerThread:15206 [handler.py:handle_request():144] handle_request: defer
+2023-09-30 17:14:57,681 INFO    HandlerThread:15206 [handler.py:handle_request_defer():170] handle defer: 14
+2023-09-30 17:14:57,682 DEBUG   SenderThread:15206 [sender.py:send():379] send: final
+2023-09-30 17:14:57,682 DEBUG   SenderThread:15206 [sender.py:send():379] send: footer
+2023-09-30 17:14:57,682 DEBUG   SenderThread:15206 [sender.py:send_request():406] send_request: defer
+2023-09-30 17:14:57,682 INFO    SenderThread:15206 [sender.py:send_request_defer():608] handle sender defer: 14
+2023-09-30 17:14:57,682 DEBUG   HandlerThread:15206 [handler.py:handle_request():144] handle_request: internal_messages
+2023-09-30 17:14:57,683 DEBUG   HandlerThread:15206 [handler.py:handle_request():144] handle_request: poll_exit
+2023-09-30 17:14:57,683 DEBUG   HandlerThread:15206 [handler.py:handle_request():144] handle_request: server_info
+2023-09-30 17:14:57,683 DEBUG   HandlerThread:15206 [handler.py:handle_request():144] handle_request: get_summary
+2023-09-30 17:14:57,683 DEBUG   HandlerThread:15206 [handler.py:handle_request():144] handle_request: sampled_history
+2023-09-30 17:14:57,684 DEBUG   HandlerThread:15206 [handler.py:handle_request():144] handle_request: job_info
+2023-09-30 17:14:57,684 DEBUG   SenderThread:15206 [sender.py:send_request():406] send_request: poll_exit
+2023-09-30 17:14:57,684 DEBUG   SenderThread:15206 [sender.py:send_request():406] send_request: server_info
+2023-09-30 17:14:57,903 DEBUG   SenderThread:15206 [sender.py:send_request():406] send_request: job_info
+2023-09-30 17:14:57,904 DEBUG   HandlerThread:15206 [handler.py:handle_request():144] handle_request: shutdown
+2023-09-30 17:14:57,904 INFO    HandlerThread:15206 [handler.py:finish():840] shutting down handler
+2023-09-30 17:14:58,691 INFO    WriterThread:15206 [datastore.py:close():294] close: /Users/leo/Programming/PLR/wandb/run-20230930_171424-h5beltda/run-h5beltda.wandb
+2023-09-30 17:14:58,906 INFO    SenderThread:15206 [sender.py:finish():1531] shutting down sender
+2023-09-30 17:14:58,906 INFO    SenderThread:15206 [file_pusher.py:finish():175] shutting down file pusher
+2023-09-30 17:14:58,906 INFO    SenderThread:15206 [file_pusher.py:join():181] waiting for file pusher

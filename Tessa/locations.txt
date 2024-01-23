@@ -1,0 +1,11 @@
+
+combined clustering performed in test-consistency-112923.ipynb
+main clustering performed in stepmix-111023-gridsearch.ipynb
+
+table generated for main clustering in stepmix-analyze-112923.ipynb
+
+robustness to symptom removal in stepmix-120723-gridsearch-sympsubsets
+
+trio fig in stepmix_sympgroup_compare_010224.ipynb
+
+overlap trio fig in 

@@ -1,0 +1,723 @@
+2023-09-30 19:03:43,644 INFO    StreamThr :17925 [internal.py:wandb_internal():86] W&B internal server running at pid: 17925, started at: 2023-09-30 19:03:43.643853
+2023-09-30 19:03:43,645 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status
+2023-09-30 19:03:43,647 INFO    WriterThread:17925 [datastore.py:open_for_write():85] open: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/run-c54jskrz.wandb
+2023-09-30 19:03:43,648 DEBUG   SenderThread:17925 [sender.py:send():379] send: header
+2023-09-30 19:03:43,648 DEBUG   SenderThread:17925 [sender.py:send():379] send: run
+2023-09-30 19:03:44,021 INFO    SenderThread:17925 [dir_watcher.py:__init__():211] watching files in: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files
+2023-09-30 19:03:44,021 INFO    SenderThread:17925 [sender.py:_start_run_threads():1121] run started: c54jskrz with start time 1696097022.711152
+2023-09-30 19:03:44,039 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: check_version
+2023-09-30 19:03:44,039 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: check_version
+2023-09-30 19:03:44,091 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: run_start
+2023-09-30 19:03:44,091 DEBUG   HandlerThread:17925 [system_info.py:__init__():32] System info init
+2023-09-30 19:03:44,091 DEBUG   HandlerThread:17925 [system_info.py:__init__():47] System info init done
+2023-09-30 19:03:44,092 INFO    HandlerThread:17925 [system_monitor.py:start():181] Starting system monitor
+2023-09-30 19:03:44,092 INFO    SystemMonitor:17925 [system_monitor.py:_start():145] Starting system asset monitoring threads
+2023-09-30 19:03:44,092 INFO    HandlerThread:17925 [system_monitor.py:probe():201] Collecting system info
+2023-09-30 19:03:44,092 INFO    SystemMonitor:17925 [interfaces.py:start():190] Started cpu monitoring
+2023-09-30 19:03:44,092 INFO    SystemMonitor:17925 [interfaces.py:start():190] Started disk monitoring
+2023-09-30 19:03:44,093 DEBUG   HandlerThread:17925 [system_info.py:probe():196] Probing system
+2023-09-30 19:03:44,093 INFO    SystemMonitor:17925 [interfaces.py:start():190] Started gpuapple monitoring
+2023-09-30 19:03:44,098 INFO    SystemMonitor:17925 [interfaces.py:start():190] Started memory monitoring
+2023-09-30 19:03:44,098 DEBUG   HandlerThread:17925 [system_info.py:_probe_git():181] Probing git
+2023-09-30 19:03:44,099 INFO    SystemMonitor:17925 [interfaces.py:start():190] Started network monitoring
+2023-09-30 19:03:44,114 DEBUG   HandlerThread:17925 [system_info.py:_probe_git():189] Probing git done
+2023-09-30 19:03:44,114 DEBUG   HandlerThread:17925 [system_info.py:probe():244] Probing system done
+2023-09-30 19:03:44,114 DEBUG   HandlerThread:17925 [system_monitor.py:probe():210] {'os': 'macOS-14.0-arm64-arm-64bit', 'python': '3.11.4', 'heartbeatAt': '2023-09-30T18:03:44.096276', 'startedAt': '2023-09-30T18:03:42.705166', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': '/Users/leo/Programming/PLR/Leo/gen_algo_opt_folder/genetic_algorithm.py', 'codePathLocal': 'Leo/gen_algo_opt_folder/genetic_algorithm.py', 'codePath': 'Leo/gen_algo_opt_folder/genetic_algorithm.py', 'git': {'remote': 'https://github.com/leothesouthafrican/PLR.git', 'commit': '5fd3a4eb908a10330b25120a123e86d552235212'}, 'email': '38779415+leothesouthafrican@users.noreply.github.com', 'root': '/Users/leo/Programming/PLR', 'host': 'Leos-MacBook-Pro.local', 'username': 'leo', 'executable': '/Users/leo/Programming/PLR/Leo/env/bin/python3', 'cpu_count': 10, 'cpu_count_logical': 10, 'disk': {'/': {'total': 855.9619140625, 'used': 12.108589172363281}}, 'gpuapple': {'type': 'arm', 'vendor': 'Apple'}, 'memory': {'total': 32.0}}
+2023-09-30 19:03:44,114 INFO    HandlerThread:17925 [system_monitor.py:probe():211] Finished collecting system info
+2023-09-30 19:03:44,114 INFO    HandlerThread:17925 [system_monitor.py:probe():214] Publishing system info
+2023-09-30 19:03:44,114 DEBUG   HandlerThread:17925 [system_info.py:_save_pip():52] Saving list of pip packages installed into the current environment
+2023-09-30 19:03:44,115 DEBUG   HandlerThread:17925 [system_info.py:_save_pip():68] Saving pip packages done
+2023-09-30 19:03:44,115 INFO    HandlerThread:17925 [system_monitor.py:probe():216] Finished publishing system info
+2023-09-30 19:03:44,115 DEBUG   SenderThread:17925 [sender.py:send():379] send: files
+2023-09-30 19:03:44,116 INFO    SenderThread:17925 [sender.py:_save_file():1375] saving file wandb-metadata.json with policy now
+2023-09-30 19:03:44,120 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-30 19:03:44,120 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: internal_messages
+2023-09-30 19:03:44,120 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: stop_status
+2023-09-30 19:03:44,381 DEBUG   SenderThread:17925 [sender.py:send():379] send: telemetry
+2023-09-30 19:03:44,384 DEBUG   SenderThread:17925 [sender.py:send():379] send: config
+2023-09-30 19:03:44,677 INFO    wandb-upload_0:17925 [upload_job.py:push():131] Uploaded file /var/folders/dt/bgs1hq3d2k3dvhpt3llvs4rw0000gn/T/tmp50jcr8fswandb/jjl4jr94-wandb-metadata.json
+2023-09-30 19:03:45,023 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:03:45,023 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/wandb-metadata.json
+2023-09-30 19:03:45,023 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/requirements.txt
+2023-09-30 19:03:47,037 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:03:49,042 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:03:49,094 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:03:51,049 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:03:53,055 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:03:54,479 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:03:55,073 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:03:57,082 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:03:59,105 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:03:59,140 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-30 19:03:59,141 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: internal_messages
+2023-09-30 19:03:59,147 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: stop_status
+2023-09-30 19:03:59,702 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:04:01,113 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:04:03,121 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:04:04,773 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-30 19:04:04,775 DEBUG   SenderThread:17925 [sender.py:send():379] send: history
+2023-09-30 19:04:04,775 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: summary_record
+2023-09-30 19:04:04,775 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:04:04,776 INFO    SenderThread:17925 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-09-30 19:04:05,145 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:04:05,145 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/wandb-summary.json
+2023-09-30 19:04:07,146 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:04:09,169 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:04:10,112 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:04:11,211 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:04:13,243 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:04:14,145 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-30 19:04:14,145 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: internal_messages
+2023-09-30 19:04:14,145 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: stop_status
+2023-09-30 19:04:15,258 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:04:15,324 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:04:16,276 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/config.yaml
+2023-09-30 19:04:17,278 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:04:19,292 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:04:20,517 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:04:21,296 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:04:21,792 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-30 19:04:21,792 DEBUG   SenderThread:17925 [sender.py:send():379] send: history
+2023-09-30 19:04:21,792 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: summary_record
+2023-09-30 19:04:21,793 INFO    SenderThread:17925 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-09-30 19:04:22,303 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/wandb-summary.json
+2023-09-30 19:04:23,307 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:04:25,315 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:04:26,203 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:04:27,326 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:04:29,149 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: internal_messages
+2023-09-30 19:04:29,152 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-30 19:04:29,152 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: stop_status
+2023-09-30 19:04:29,342 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:04:31,339 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:04:31,594 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:04:33,344 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:04:35,395 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:04:36,810 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:04:37,406 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:04:38,845 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-30 19:04:38,846 DEBUG   SenderThread:17925 [sender.py:send():379] send: history
+2023-09-30 19:04:38,846 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: summary_record
+2023-09-30 19:04:38,846 INFO    SenderThread:17925 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-09-30 19:04:39,416 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:04:39,417 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/wandb-summary.json
+2023-09-30 19:04:41,442 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:04:42,456 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:04:43,468 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:04:44,103 DEBUG   SystemMonitor:17925 [system_monitor.py:_start():159] Starting system metrics aggregation loop
+2023-09-30 19:04:44,107 DEBUG   SenderThread:17925 [sender.py:send():379] send: telemetry
+2023-09-30 19:04:44,110 DEBUG   SenderThread:17925 [sender.py:send():379] send: stats
+2023-09-30 19:04:44,153 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: internal_messages
+2023-09-30 19:04:44,157 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-30 19:04:44,158 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: stop_status
+2023-09-30 19:04:45,497 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:04:47,507 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:04:48,445 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:04:49,553 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:04:49,554 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/config.yaml
+2023-09-30 19:04:51,562 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:04:53,580 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:04:53,983 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:04:55,586 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:04:55,848 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-30 19:04:55,849 DEBUG   SenderThread:17925 [sender.py:send():379] send: history
+2023-09-30 19:04:55,849 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: summary_record
+2023-09-30 19:04:55,850 INFO    SenderThread:17925 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-09-30 19:04:56,596 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/wandb-summary.json
+2023-09-30 19:04:57,596 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:04:59,156 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: internal_messages
+2023-09-30 19:04:59,160 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-30 19:04:59,161 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: stop_status
+2023-09-30 19:04:59,308 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:04:59,608 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:05:01,620 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:05:03,628 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:05:04,658 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:05:05,638 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:05:07,648 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:05:09,658 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:05:09,859 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:05:11,667 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:05:12,852 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-30 19:05:12,853 DEBUG   SenderThread:17925 [sender.py:send():379] send: history
+2023-09-30 19:05:12,853 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: summary_record
+2023-09-30 19:05:12,853 INFO    SenderThread:17925 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-09-30 19:05:13,694 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:05:13,694 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/wandb-summary.json
+2023-09-30 19:05:14,115 DEBUG   SenderThread:17925 [sender.py:send():379] send: stats
+2023-09-30 19:05:14,176 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: internal_messages
+2023-09-30 19:05:14,186 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-30 19:05:14,210 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: stop_status
+2023-09-30 19:05:15,458 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:05:15,698 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:05:17,715 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:05:19,726 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:05:21,339 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:05:21,753 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:05:23,753 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:05:25,760 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:05:26,593 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:05:27,774 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:05:29,160 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: internal_messages
+2023-09-30 19:05:29,177 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-30 19:05:29,178 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: stop_status
+2023-09-30 19:05:29,559 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-30 19:05:29,559 DEBUG   SenderThread:17925 [sender.py:send():379] send: history
+2023-09-30 19:05:29,560 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: summary_record
+2023-09-30 19:05:29,561 INFO    SenderThread:17925 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-09-30 19:05:29,786 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:05:29,786 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/wandb-summary.json
+2023-09-30 19:05:31,791 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:05:32,317 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:05:33,807 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:05:35,830 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:05:37,839 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:05:38,119 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:05:39,850 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:05:41,860 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:05:43,395 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:05:43,886 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:05:44,122 DEBUG   SenderThread:17925 [sender.py:send():379] send: stats
+2023-09-30 19:05:44,171 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: internal_messages
+2023-09-30 19:05:44,180 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-30 19:05:44,181 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: stop_status
+2023-09-30 19:05:45,882 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:05:46,346 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-30 19:05:46,347 DEBUG   SenderThread:17925 [sender.py:send():379] send: history
+2023-09-30 19:05:46,347 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: summary_record
+2023-09-30 19:05:46,347 INFO    SenderThread:17925 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-09-30 19:05:46,886 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/wandb-summary.json
+2023-09-30 19:05:47,890 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:05:48,986 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:05:49,904 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:05:51,920 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:05:53,931 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:05:54,889 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:05:55,938 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:05:57,944 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:05:59,172 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: internal_messages
+2023-09-30 19:05:59,195 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-30 19:05:59,206 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: stop_status
+2023-09-30 19:05:59,957 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:06:00,134 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:06:01,960 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:06:03,171 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-30 19:06:03,172 DEBUG   SenderThread:17925 [sender.py:send():379] send: history
+2023-09-30 19:06:03,172 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: summary_record
+2023-09-30 19:06:03,173 INFO    SenderThread:17925 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-09-30 19:06:03,972 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:06:03,972 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/wandb-summary.json
+2023-09-30 19:06:05,931 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:06:05,981 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:06:07,994 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:06:10,010 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:06:10,972 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:06:12,035 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:06:14,047 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:06:14,121 DEBUG   SenderThread:17925 [sender.py:send():379] send: stats
+2023-09-30 19:06:14,174 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: internal_messages
+2023-09-30 19:06:14,201 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-30 19:06:14,201 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: stop_status
+2023-09-30 19:06:16,056 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:06:16,091 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:06:18,063 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:06:20,069 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:06:20,126 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-30 19:06:20,126 DEBUG   SenderThread:17925 [sender.py:send():379] send: history
+2023-09-30 19:06:20,127 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: summary_record
+2023-09-30 19:06:20,127 INFO    SenderThread:17925 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-09-30 19:06:21,075 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/wandb-summary.json
+2023-09-30 19:06:21,777 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:06:22,082 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:06:24,101 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:06:26,130 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:06:27,599 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:06:28,139 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:06:29,177 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: internal_messages
+2023-09-30 19:06:29,207 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-30 19:06:29,207 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: stop_status
+2023-09-30 19:06:30,158 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:06:32,168 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:06:32,926 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:06:34,177 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:06:36,189 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:06:36,972 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-30 19:06:36,973 DEBUG   SenderThread:17925 [sender.py:send():379] send: history
+2023-09-30 19:06:36,973 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: summary_record
+2023-09-30 19:06:36,974 INFO    SenderThread:17925 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-09-30 19:06:37,192 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/wandb-summary.json
+2023-09-30 19:06:38,196 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:06:38,739 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:06:40,226 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:06:42,351 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:06:44,122 DEBUG   SenderThread:17925 [sender.py:send():379] send: stats
+2023-09-30 19:06:44,122 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:06:44,180 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: internal_messages
+2023-09-30 19:06:44,221 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-30 19:06:44,223 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: stop_status
+2023-09-30 19:06:44,356 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:06:46,370 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:06:48,378 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:06:49,781 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:06:50,393 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:06:52,417 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:06:53,826 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-30 19:06:53,827 DEBUG   SenderThread:17925 [sender.py:send():379] send: history
+2023-09-30 19:06:53,827 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: summary_record
+2023-09-30 19:06:53,827 INFO    SenderThread:17925 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-09-30 19:06:54,431 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:06:54,433 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/wandb-summary.json
+2023-09-30 19:06:55,683 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:06:56,458 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:06:58,473 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:06:59,192 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: internal_messages
+2023-09-30 19:06:59,226 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-30 19:06:59,227 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: stop_status
+2023-09-30 19:07:00,507 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:07:01,369 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:07:02,528 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:07:04,568 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:07:06,534 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:07:06,565 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:07:08,579 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:07:10,553 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-30 19:07:10,554 DEBUG   SenderThread:17925 [sender.py:send():379] send: history
+2023-09-30 19:07:10,554 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: summary_record
+2023-09-30 19:07:10,555 INFO    SenderThread:17925 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-09-30 19:07:10,589 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:07:10,589 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/wandb-summary.json
+2023-09-30 19:07:12,259 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:07:12,600 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:07:14,127 DEBUG   SenderThread:17925 [sender.py:send():379] send: stats
+2023-09-30 19:07:14,194 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: internal_messages
+2023-09-30 19:07:14,225 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-30 19:07:14,226 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: stop_status
+2023-09-30 19:07:14,666 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:07:15,686 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:07:17,692 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:07:18,049 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:07:19,703 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:07:21,717 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:07:23,295 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:07:23,725 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:07:25,756 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:07:27,281 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-30 19:07:27,282 DEBUG   SenderThread:17925 [sender.py:send():379] send: history
+2023-09-30 19:07:27,282 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: summary_record
+2023-09-30 19:07:27,283 INFO    SenderThread:17925 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-09-30 19:07:27,763 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:07:27,763 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/wandb-summary.json
+2023-09-30 19:07:28,995 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:07:29,203 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: internal_messages
+2023-09-30 19:07:29,229 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-30 19:07:29,229 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: stop_status
+2023-09-30 19:07:29,775 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:07:31,790 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:07:33,820 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:07:34,652 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:07:35,829 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:07:37,843 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:07:39,808 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:07:39,860 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:07:41,897 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:07:43,925 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-30 19:07:43,925 DEBUG   SenderThread:17925 [sender.py:send():379] send: history
+2023-09-30 19:07:43,926 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: summary_record
+2023-09-30 19:07:43,926 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:07:43,926 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/wandb-summary.json
+2023-09-30 19:07:43,926 INFO    SenderThread:17925 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-09-30 19:07:44,156 DEBUG   SenderThread:17925 [sender.py:send():379] send: stats
+2023-09-30 19:07:44,206 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: internal_messages
+2023-09-30 19:07:44,230 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-30 19:07:44,233 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: stop_status
+2023-09-30 19:07:44,830 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:07:44,929 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/wandb-summary.json
+2023-09-30 19:07:45,982 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:07:47,988 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:07:50,001 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:07:50,300 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:07:52,016 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:07:54,035 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:07:55,509 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:07:56,045 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:07:58,055 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:07:59,208 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: internal_messages
+2023-09-30 19:07:59,235 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-30 19:07:59,236 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: stop_status
+2023-09-30 19:08:00,065 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:08:00,575 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-30 19:08:00,575 DEBUG   SenderThread:17925 [sender.py:send():379] send: history
+2023-09-30 19:08:00,575 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: summary_record
+2023-09-30 19:08:00,575 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:08:00,576 INFO    SenderThread:17925 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-09-30 19:08:01,071 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/wandb-summary.json
+2023-09-30 19:08:02,090 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:08:04,110 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:08:05,871 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:08:06,119 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:08:08,139 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:08:10,172 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:08:11,075 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:08:12,199 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:08:14,139 DEBUG   SenderThread:17925 [sender.py:send():379] send: stats
+2023-09-30 19:08:14,212 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:08:14,223 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: internal_messages
+2023-09-30 19:08:14,240 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-30 19:08:14,247 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: stop_status
+2023-09-30 19:08:16,227 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:08:16,331 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:08:17,215 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-30 19:08:17,215 DEBUG   SenderThread:17925 [sender.py:send():379] send: history
+2023-09-30 19:08:17,215 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: summary_record
+2023-09-30 19:08:17,216 INFO    SenderThread:17925 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-09-30 19:08:17,232 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/wandb-summary.json
+2023-09-30 19:08:18,239 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:08:20,248 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:08:21,638 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:08:22,259 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:08:24,283 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:08:26,292 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:08:26,945 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:08:28,306 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:08:29,218 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: internal_messages
+2023-09-30 19:08:29,242 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-30 19:08:29,245 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: stop_status
+2023-09-30 19:08:30,316 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:08:32,102 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:08:32,332 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:08:34,060 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-30 19:08:34,061 DEBUG   SenderThread:17925 [sender.py:send():379] send: history
+2023-09-30 19:08:34,061 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: summary_record
+2023-09-30 19:08:34,062 INFO    SenderThread:17925 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-09-30 19:08:34,345 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:08:34,345 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/wandb-summary.json
+2023-09-30 19:08:36,349 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:08:37,584 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:08:38,360 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:08:40,381 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:08:42,389 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:08:42,609 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:08:44,144 DEBUG   SenderThread:17925 [sender.py:send():379] send: stats
+2023-09-30 19:08:44,222 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: internal_messages
+2023-09-30 19:08:44,263 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-30 19:08:44,270 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: stop_status
+2023-09-30 19:08:44,400 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:08:46,410 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:08:47,811 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:08:48,421 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:08:50,432 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:08:50,817 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-30 19:08:50,818 DEBUG   SenderThread:17925 [sender.py:send():379] send: history
+2023-09-30 19:08:50,818 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: summary_record
+2023-09-30 19:08:50,819 INFO    SenderThread:17925 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-09-30 19:08:51,435 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/wandb-summary.json
+2023-09-30 19:08:52,441 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:08:53,462 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:08:54,460 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:08:56,471 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:08:58,483 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:08:59,226 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: internal_messages
+2023-09-30 19:08:59,240 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:08:59,269 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-30 19:08:59,271 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: stop_status
+2023-09-30 19:09:00,511 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:09:02,545 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:09:04,536 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:09:04,558 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:09:06,571 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:09:07,493 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-30 19:09:07,494 DEBUG   SenderThread:17925 [sender.py:send():379] send: history
+2023-09-30 19:09:07,494 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: summary_record
+2023-09-30 19:09:07,494 INFO    SenderThread:17925 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-09-30 19:09:07,627 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/wandb-summary.json
+2023-09-30 19:09:08,625 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:09:10,134 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:09:10,649 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:09:12,670 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:09:14,145 DEBUG   SenderThread:17925 [sender.py:send():379] send: stats
+2023-09-30 19:09:14,232 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: internal_messages
+2023-09-30 19:09:14,270 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-30 19:09:14,271 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: stop_status
+2023-09-30 19:09:14,710 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:09:16,008 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:09:16,751 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:09:18,754 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:09:20,775 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:09:21,234 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:09:22,849 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:09:24,339 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-30 19:09:24,340 DEBUG   SenderThread:17925 [sender.py:send():379] send: history
+2023-09-30 19:09:24,340 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: summary_record
+2023-09-30 19:09:24,340 INFO    SenderThread:17925 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-09-30 19:09:24,855 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:09:24,856 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/wandb-summary.json
+2023-09-30 19:09:26,869 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:09:26,909 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:09:28,872 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:09:29,238 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: internal_messages
+2023-09-30 19:09:29,271 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-30 19:09:29,272 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: stop_status
+2023-09-30 19:09:30,887 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:09:32,932 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:09:32,952 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:09:34,921 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:09:36,933 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:09:38,086 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:09:38,975 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:09:40,990 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:09:41,077 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-30 19:09:41,078 DEBUG   SenderThread:17925 [sender.py:send():379] send: history
+2023-09-30 19:09:41,078 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: summary_record
+2023-09-30 19:09:41,078 INFO    SenderThread:17925 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-09-30 19:09:41,996 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/wandb-summary.json
+2023-09-30 19:09:43,019 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:09:43,598 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:09:44,155 DEBUG   SenderThread:17925 [sender.py:send():379] send: stats
+2023-09-30 19:09:44,247 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: internal_messages
+2023-09-30 19:09:44,275 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-30 19:09:44,275 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: stop_status
+2023-09-30 19:09:45,038 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:09:47,045 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:09:49,087 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:09:49,539 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:09:51,095 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:09:53,111 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:09:54,728 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:09:55,126 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:09:57,138 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:09:57,752 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-30 19:09:57,753 DEBUG   SenderThread:17925 [sender.py:send():379] send: history
+2023-09-30 19:09:57,753 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: summary_record
+2023-09-30 19:09:57,753 INFO    SenderThread:17925 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-09-30 19:09:58,146 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/wandb-summary.json
+2023-09-30 19:09:59,148 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:09:59,252 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: internal_messages
+2023-09-30 19:09:59,285 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-30 19:09:59,287 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: stop_status
+2023-09-30 19:10:00,291 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:10:01,159 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:10:03,172 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:10:05,202 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:10:06,204 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:10:07,207 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:10:09,236 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:10:11,240 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:10:11,476 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:10:13,247 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:10:14,159 DEBUG   SenderThread:17925 [sender.py:send():379] send: stats
+2023-09-30 19:10:14,250 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: internal_messages
+2023-09-30 19:10:14,281 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-30 19:10:14,282 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: stop_status
+2023-09-30 19:10:14,390 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-30 19:10:14,567 DEBUG   SenderThread:17925 [sender.py:send():379] send: history
+2023-09-30 19:10:14,567 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: summary_record
+2023-09-30 19:10:14,567 INFO    SenderThread:17925 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-09-30 19:10:15,253 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:10:15,253 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/wandb-summary.json
+2023-09-30 19:10:17,071 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:10:17,260 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:10:19,276 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:10:21,287 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:10:22,855 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:10:23,304 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:10:25,310 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:10:27,327 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:10:28,185 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:10:29,257 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: internal_messages
+2023-09-30 19:10:29,287 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-30 19:10:29,288 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: stop_status
+2023-09-30 19:10:29,338 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:10:31,193 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-30 19:10:31,194 DEBUG   SenderThread:17925 [sender.py:send():379] send: history
+2023-09-30 19:10:31,194 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: summary_record
+2023-09-30 19:10:31,195 INFO    SenderThread:17925 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-09-30 19:10:31,348 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:10:31,348 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/wandb-summary.json
+2023-09-30 19:10:33,359 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:10:33,805 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:10:35,387 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:10:37,401 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:10:39,407 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:10:39,591 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:10:41,418 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:10:43,473 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:10:44,169 DEBUG   SenderThread:17925 [sender.py:send():379] send: stats
+2023-09-30 19:10:44,260 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: internal_messages
+2023-09-30 19:10:44,289 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-30 19:10:44,290 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: stop_status
+2023-09-30 19:10:44,886 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:10:45,483 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:10:47,494 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:10:47,841 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-30 19:10:47,842 DEBUG   SenderThread:17925 [sender.py:send():379] send: history
+2023-09-30 19:10:47,842 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: summary_record
+2023-09-30 19:10:47,842 INFO    SenderThread:17925 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-09-30 19:10:48,503 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/wandb-summary.json
+2023-09-30 19:10:49,505 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:10:50,441 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:10:51,540 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:10:53,553 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:10:55,559 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:10:56,244 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:10:57,591 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:10:59,270 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: internal_messages
+2023-09-30 19:10:59,293 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-30 19:10:59,294 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: stop_status
+2023-09-30 19:10:59,597 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:11:01,604 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:11:01,875 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:11:03,633 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:11:05,398 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: log_artifact
+2023-09-30 19:11:05,399 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: log_artifact
+2023-09-30 19:11:05,417 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-30 19:11:05,642 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:11:05,643 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/media/table/Generations Table_25_c2743ae1ac9806e412b5.table.json
+2023-09-30 19:11:05,644 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/media
+2023-09-30 19:11:05,644 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/media/table
+2023-09-30 19:11:06,323 INFO    wandb-upload_0:17925 [upload_job.py:push():131] Uploaded file /var/folders/dt/bgs1hq3d2k3dvhpt3llvs4rw0000gn/T/tmp50jcr8fswandb/18ony4rj-media/table/Generations Table_25_c2743ae1ac9806e412b5.table.json
+2023-09-30 19:11:06,424 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: poll_exit
+2023-09-30 19:11:06,861 INFO    wandb-upload_1:17925 [upload_job.py:push():89] Uploaded file /Users/leo/Library/Application Support/wandb/artifacts/staging/tmpysa7rb7o
+2023-09-30 19:11:07,667 INFO    SenderThread:17925 [sender.py:send_request_log_artifact():1441] logged artifact run-c54jskrz-GenerationsTable - {'id': 'QXJ0aWZhY3Q6NTg5OTkwOTcz', 'state': 'PENDING', 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjEwMjc4NzIzOA==', 'latestArtifact': None}}
+2023-09-30 19:11:07,668 DEBUG   SenderThread:17925 [sender.py:send():379] send: files
+2023-09-30 19:11:07,668 INFO    SenderThread:17925 [sender.py:_save_file():1375] saving file media/table/Generations Table_25_c2743ae1ac9806e412b5.table.json with policy now
+2023-09-30 19:11:07,668 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:11:07,668 DEBUG   SenderThread:17925 [sender.py:send():379] send: history
+2023-09-30 19:11:07,669 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: summary_record
+2023-09-30 19:11:07,669 INFO    SenderThread:17925 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-09-30 19:11:07,669 DEBUG   SenderThread:17925 [sender.py:send():379] send: telemetry
+2023-09-30 19:11:07,669 DEBUG   SenderThread:17925 [sender.py:send():379] send: exit
+2023-09-30 19:11:07,669 INFO    SenderThread:17925 [sender.py:send_exit():584] handling exit code: 0
+2023-09-30 19:11:07,669 INFO    SenderThread:17925 [sender.py:send_exit():586] handling runtime: 441
+2023-09-30 19:11:07,670 INFO    SenderThread:17925 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-09-30 19:11:07,670 INFO    SenderThread:17925 [sender.py:send_exit():592] send defer
+2023-09-30 19:11:07,670 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: poll_exit
+2023-09-30 19:11:07,670 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: defer
+2023-09-30 19:11:07,670 INFO    HandlerThread:17925 [handler.py:handle_request_defer():170] handle defer: 0
+2023-09-30 19:11:07,670 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: defer
+2023-09-30 19:11:07,670 INFO    SenderThread:17925 [sender.py:send_request_defer():608] handle sender defer: 0
+2023-09-30 19:11:07,670 INFO    SenderThread:17925 [sender.py:transition_state():612] send defer: 1
+2023-09-30 19:11:07,670 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: defer
+2023-09-30 19:11:07,670 INFO    HandlerThread:17925 [handler.py:handle_request_defer():170] handle defer: 1
+2023-09-30 19:11:07,670 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: defer
+2023-09-30 19:11:07,670 INFO    SenderThread:17925 [sender.py:send_request_defer():608] handle sender defer: 1
+2023-09-30 19:11:07,670 INFO    SenderThread:17925 [sender.py:transition_state():612] send defer: 2
+2023-09-30 19:11:07,670 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: defer
+2023-09-30 19:11:07,670 INFO    HandlerThread:17925 [handler.py:handle_request_defer():170] handle defer: 2
+2023-09-30 19:11:07,671 INFO    HandlerThread:17925 [system_monitor.py:finish():190] Stopping system monitor
+2023-09-30 19:11:07,671 DEBUG   SystemMonitor:17925 [system_monitor.py:_start():166] Finished system metrics aggregation loop
+2023-09-30 19:11:07,671 DEBUG   SystemMonitor:17925 [system_monitor.py:_start():170] Publishing last batch of metrics
+2023-09-30 19:11:07,671 INFO    HandlerThread:17925 [interfaces.py:finish():202] Joined cpu monitor
+2023-09-30 19:11:07,671 INFO    HandlerThread:17925 [interfaces.py:finish():202] Joined disk monitor
+2023-09-30 19:11:08,236 INFO    wandb-upload_0:17925 [upload_job.py:push():131] Uploaded file /var/folders/dt/bgs1hq3d2k3dvhpt3llvs4rw0000gn/T/tmp50jcr8fswandb/q2kale8g-media/table/Generations Table_25_c2743ae1ac9806e412b5.table.json
+2023-09-30 19:11:08,666 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/wandb-summary.json
+2023-09-30 19:11:08,833 INFO    HandlerThread:17925 [interfaces.py:finish():202] Joined gpuapple monitor
+2023-09-30 19:11:08,833 INFO    HandlerThread:17925 [interfaces.py:finish():202] Joined memory monitor
+2023-09-30 19:11:08,833 INFO    HandlerThread:17925 [interfaces.py:finish():202] Joined network monitor
+2023-09-30 19:11:08,834 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: defer
+2023-09-30 19:11:08,834 INFO    SenderThread:17925 [sender.py:send_request_defer():608] handle sender defer: 2
+2023-09-30 19:11:08,834 INFO    SenderThread:17925 [sender.py:transition_state():612] send defer: 3
+2023-09-30 19:11:08,834 DEBUG   SenderThread:17925 [sender.py:send():379] send: stats
+2023-09-30 19:11:08,834 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: defer
+2023-09-30 19:11:08,834 INFO    HandlerThread:17925 [handler.py:handle_request_defer():170] handle defer: 3
+2023-09-30 19:11:08,834 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: defer
+2023-09-30 19:11:08,834 INFO    SenderThread:17925 [sender.py:send_request_defer():608] handle sender defer: 3
+2023-09-30 19:11:08,834 INFO    SenderThread:17925 [sender.py:transition_state():612] send defer: 4
+2023-09-30 19:11:08,834 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: defer
+2023-09-30 19:11:08,834 INFO    HandlerThread:17925 [handler.py:handle_request_defer():170] handle defer: 4
+2023-09-30 19:11:08,834 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: defer
+2023-09-30 19:11:08,834 INFO    SenderThread:17925 [sender.py:send_request_defer():608] handle sender defer: 4
+2023-09-30 19:11:08,834 INFO    SenderThread:17925 [sender.py:transition_state():612] send defer: 5
+2023-09-30 19:11:08,834 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: defer
+2023-09-30 19:11:08,834 INFO    HandlerThread:17925 [handler.py:handle_request_defer():170] handle defer: 5
+2023-09-30 19:11:08,834 DEBUG   SenderThread:17925 [sender.py:send():379] send: summary
+2023-09-30 19:11:08,835 INFO    SenderThread:17925 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-09-30 19:11:08,835 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: defer
+2023-09-30 19:11:08,835 INFO    SenderThread:17925 [sender.py:send_request_defer():608] handle sender defer: 5
+2023-09-30 19:11:08,835 INFO    SenderThread:17925 [sender.py:transition_state():612] send defer: 6
+2023-09-30 19:11:08,835 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: defer
+2023-09-30 19:11:08,835 INFO    HandlerThread:17925 [handler.py:handle_request_defer():170] handle defer: 6
+2023-09-30 19:11:08,835 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: defer
+2023-09-30 19:11:08,835 INFO    SenderThread:17925 [sender.py:send_request_defer():608] handle sender defer: 6
+2023-09-30 19:11:08,836 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: status_report
+2023-09-30 19:11:09,075 INFO    SenderThread:17925 [sender.py:transition_state():612] send defer: 7
+2023-09-30 19:11:09,075 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: defer
+2023-09-30 19:11:09,075 INFO    HandlerThread:17925 [handler.py:handle_request_defer():170] handle defer: 7
+2023-09-30 19:11:09,076 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: defer
+2023-09-30 19:11:09,076 INFO    SenderThread:17925 [sender.py:send_request_defer():608] handle sender defer: 7
+2023-09-30 19:11:09,669 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/wandb-summary.json
+2023-09-30 19:11:09,670 INFO    Thread-40 :17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/config.yaml
+2023-09-30 19:11:10,829 INFO    SenderThread:17925 [sender.py:transition_state():612] send defer: 8
+2023-09-30 19:11:10,830 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: defer
+2023-09-30 19:11:10,830 INFO    HandlerThread:17925 [handler.py:handle_request_defer():170] handle defer: 8
+2023-09-30 19:11:10,830 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: defer
+2023-09-30 19:11:10,830 INFO    SenderThread:17925 [sender.py:send_request_defer():608] handle sender defer: 8
+2023-09-30 19:11:10,831 INFO    SenderThread:17925 [job_builder.py:build():281] Attempting to build job artifact
+2023-09-30 19:11:10,835 INFO    SenderThread:17925 [job_builder.py:_get_source_type():393] is repo sourced job
+2023-09-30 19:11:10,838 INFO    SenderThread:17925 [job_builder.py:build():369] adding wandb-job metadata file
+2023-09-30 19:11:10,851 INFO    SenderThread:17925 [sender.py:transition_state():612] send defer: 9
+2023-09-30 19:11:10,851 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: defer
+2023-09-30 19:11:10,852 INFO    HandlerThread:17925 [handler.py:handle_request_defer():170] handle defer: 9
+2023-09-30 19:11:10,852 DEBUG   SenderThread:17925 [sender.py:send():379] send: artifact
+2023-09-30 19:11:11,448 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: keepalive
+2023-09-30 19:11:11,495 INFO    SenderThread:17925 [sender.py:send_artifact():1453] sent artifact job-https___github.com_leothesouthafrican_PLR.git_Leo_gen_algo_opt_folder_genetic_algorithm.py - {'id': 'QXJ0aWZhY3Q6NTg5OTQ0MjU2', 'state': 'COMMITTED', 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjEwMjY3Mjc5OA==', 'latestArtifact': {'id': 'QXJ0aWZhY3Q6NTg5OTc3OTUz', 'versionIndex': 20}}}
+2023-09-30 19:11:11,495 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: defer
+2023-09-30 19:11:11,495 INFO    SenderThread:17925 [sender.py:send_request_defer():608] handle sender defer: 9
+2023-09-30 19:11:11,495 INFO    SenderThread:17925 [dir_watcher.py:finish():358] shutting down directory watcher
+2023-09-30 19:11:11,687 INFO    SenderThread:17925 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:11:11,688 INFO    SenderThread:17925 [dir_watcher.py:finish():388] scan: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files
+2023-09-30 19:11:11,688 INFO    SenderThread:17925 [dir_watcher.py:finish():402] scan save: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/requirements.txt requirements.txt
+2023-09-30 19:11:11,688 INFO    SenderThread:17925 [dir_watcher.py:finish():402] scan save: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log output.log
+2023-09-30 19:11:11,688 INFO    SenderThread:17925 [dir_watcher.py:finish():402] scan save: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/config.yaml config.yaml
+2023-09-30 19:11:11,688 INFO    SenderThread:17925 [dir_watcher.py:finish():402] scan save: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/wandb-summary.json wandb-summary.json
+2023-09-30 19:11:11,689 INFO    SenderThread:17925 [dir_watcher.py:finish():402] scan save: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/wandb-metadata.json wandb-metadata.json
+2023-09-30 19:11:11,689 INFO    SenderThread:17925 [dir_watcher.py:finish():402] scan save: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/media/table/Generations Table_25_c2743ae1ac9806e412b5.table.json media/table/Generations Table_25_c2743ae1ac9806e412b5.table.json
+2023-09-30 19:11:11,689 INFO    SenderThread:17925 [sender.py:transition_state():612] send defer: 10
+2023-09-30 19:11:11,690 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: defer
+2023-09-30 19:11:11,690 INFO    HandlerThread:17925 [handler.py:handle_request_defer():170] handle defer: 10
+2023-09-30 19:11:11,698 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: defer
+2023-09-30 19:11:11,698 INFO    SenderThread:17925 [sender.py:send_request_defer():608] handle sender defer: 10
+2023-09-30 19:11:11,699 INFO    SenderThread:17925 [file_pusher.py:finish():175] shutting down file pusher
+2023-09-30 19:11:12,117 INFO    wandb-upload_2:17925 [upload_job.py:push():131] Uploaded file /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/output.log
+2023-09-30 19:11:12,206 INFO    wandb-upload_0:17925 [upload_job.py:push():131] Uploaded file /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/config.yaml
+2023-09-30 19:11:12,206 INFO    wandb-upload_3:17925 [upload_job.py:push():131] Uploaded file /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/wandb-summary.json
+2023-09-30 19:11:12,207 INFO    wandb-upload_1:17925 [upload_job.py:push():131] Uploaded file /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/files/requirements.txt
+2023-09-30 19:11:12,412 INFO    Thread-39 (_thread_body):17925 [sender.py:transition_state():612] send defer: 11
+2023-09-30 19:11:12,413 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: defer
+2023-09-30 19:11:12,413 INFO    HandlerThread:17925 [handler.py:handle_request_defer():170] handle defer: 11
+2023-09-30 19:11:12,413 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: defer
+2023-09-30 19:11:12,413 INFO    SenderThread:17925 [sender.py:send_request_defer():608] handle sender defer: 11
+2023-09-30 19:11:12,413 INFO    SenderThread:17925 [file_pusher.py:join():181] waiting for file pusher
+2023-09-30 19:11:12,413 INFO    SenderThread:17925 [sender.py:transition_state():612] send defer: 12
+2023-09-30 19:11:12,413 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: defer
+2023-09-30 19:11:12,413 INFO    HandlerThread:17925 [handler.py:handle_request_defer():170] handle defer: 12
+2023-09-30 19:11:12,413 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: defer
+2023-09-30 19:11:12,413 INFO    SenderThread:17925 [sender.py:send_request_defer():608] handle sender defer: 12
+2023-09-30 19:11:12,413 INFO    SenderThread:17925 [file_stream.py:finish():594] file stream finish called
+2023-09-30 19:11:12,923 INFO    SenderThread:17925 [file_stream.py:finish():598] file stream finish is done
+2023-09-30 19:11:12,923 INFO    SenderThread:17925 [sender.py:transition_state():612] send defer: 13
+2023-09-30 19:11:12,923 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: defer
+2023-09-30 19:11:12,924 INFO    HandlerThread:17925 [handler.py:handle_request_defer():170] handle defer: 13
+2023-09-30 19:11:12,924 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: defer
+2023-09-30 19:11:12,924 INFO    SenderThread:17925 [sender.py:send_request_defer():608] handle sender defer: 13
+2023-09-30 19:11:12,924 INFO    SenderThread:17925 [sender.py:transition_state():612] send defer: 14
+2023-09-30 19:11:12,924 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: defer
+2023-09-30 19:11:12,925 DEBUG   SenderThread:17925 [sender.py:send():379] send: final
+2023-09-30 19:11:12,925 INFO    HandlerThread:17925 [handler.py:handle_request_defer():170] handle defer: 14
+2023-09-30 19:11:12,925 DEBUG   SenderThread:17925 [sender.py:send():379] send: footer
+2023-09-30 19:11:12,925 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: defer
+2023-09-30 19:11:12,925 INFO    SenderThread:17925 [sender.py:send_request_defer():608] handle sender defer: 14
+2023-09-30 19:11:12,927 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: internal_messages
+2023-09-30 19:11:12,928 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: poll_exit
+2023-09-30 19:11:12,928 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: server_info
+2023-09-30 19:11:12,929 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: get_summary
+2023-09-30 19:11:12,930 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: sampled_history
+2023-09-30 19:11:12,931 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: job_info
+2023-09-30 19:11:12,931 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: poll_exit
+2023-09-30 19:11:12,933 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: server_info
+2023-09-30 19:11:13,087 DEBUG   SenderThread:17925 [sender.py:send_request():406] send_request: job_info
+2023-09-30 19:11:13,089 DEBUG   HandlerThread:17925 [handler.py:handle_request():144] handle_request: shutdown
+2023-09-30 19:11:13,090 INFO    HandlerThread:17925 [handler.py:finish():840] shutting down handler
+2023-09-30 19:11:13,933 INFO    WriterThread:17925 [datastore.py:close():294] close: /Users/leo/Programming/PLR/wandb/run-20230930_190342-c54jskrz/run-c54jskrz.wandb
+2023-09-30 19:11:14,093 INFO    SenderThread:17925 [sender.py:finish():1531] shutting down sender
+2023-09-30 19:11:14,093 INFO    SenderThread:17925 [file_pusher.py:finish():175] shutting down file pusher
+2023-09-30 19:11:14,093 INFO    SenderThread:17925 [file_pusher.py:join():181] waiting for file pusher
