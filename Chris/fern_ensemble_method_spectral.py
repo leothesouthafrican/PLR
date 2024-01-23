@@ -30,7 +30,7 @@ SEARCH_TYPE = 'randomized_search'  # we want random parameterisations for divers
 if CLUSTERING_ALGO == 'kmeans':
     SAMPLE_SIZE = 500  # number of sample to take from each pipeline to build library
     #RUN_IDS_TO_INCLUDE = [1]  # using only UMAP+kmeans
-    RUN_IDS_TO_INCLUDE = [21]  # using only UMAP+kmeans
+    RUN_IDS_TO_INCLUDE = [22]  # using only UMAP+kmeans
 # elif CLUSTERING_ALGO == 'hdbscan':
 #     SAMPLE_SIZE = 15  # number of sample to take from each pipeline to build library
 #     RUN_IDS_TO_INCLUDE = [3, 4, 7, 8]  # we will reproduce using only kmeans (and including p-umap)
@@ -42,7 +42,7 @@ if CLUSTERING_ALGO == 'kmeans':
 NMI_SCORE = 'mi'  # arg to pass to clustering_similarity method to use partial NMI (ignoring -1 labels from hdbscan)
 BASE_SEED = 0  # random seed for base results
 ENSEMBLE_SELECTION_METHODS = ['JC', 'CAS']
-KNN_IMPUTE = False  # if imputing missing labels, use knn classifier or just fill with -1
+KNN_IMPUTE = True # if imputing missing labels, use knn classifier or just fill with -1
 IMPUTE_FOR_RUN_IDS = [21, 22]
 ALPHA = 0.5  # JC objective weighting
 # Note: set IGNORE_LABEL to None for speed, unless in use:
@@ -455,14 +455,14 @@ def impute_labels(cluster_assignment_dict, symptom_data, knn_impute=False, k=3):
         )
 
         def impute(patient_symptom_data, imputer=imputer):
-            return imputer.predict(patient_symptom_data)
+            return int(imputer.predict(patient_symptom_data))
 
     else:
         def impute(patient_symptom_data):
             return -1
 
     return [
-        cluster_assignment_dict.get(i, impute(symptom_data.loc[i]))
+        cluster_assignment_dict.get(i, impute(symptom_data.loc[i].to_numpy().reshape(1, -1)))
         for i in symptom_data.index
     ]
 
@@ -474,7 +474,7 @@ def create_imputed_labels(lib, symptom_data, knn_impute=False, k=3):
         cluster_assignment_dict = dict(zip(
             library.iloc[i].patient_sample_index, library.iloc[i].labels
         ))
-        imputed_labels.append(impute_labels(cluster_assignment_dict, symptom_data))
+        imputed_labels.append(impute_labels(cluster_assignment_dict, symptom_data, knn_impute, k))
 
     return imputed_labels
 
