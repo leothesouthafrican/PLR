@@ -1,0 +1,28 @@
+﻿cluster,cluster name,size,woman,symptom_count,age_numeric,Physical_PEM_Severity_norm,Cognitive_PEM_Severity_norm,method
+B0,Speech and cognition,615,0.833,53,45.1,0.806,0.739,B
+B1,respiratory,872,0.748,30,47.7,0.74,0.478,B
+B2,Speech and vision,506,0.866,89,45.5,0.876,0.786,B
+B3,Cognition,1105,0.693,34,47.3,0.749,0.654,B
+B4,Smell and taste,887,0.692,21,50.3,0.676,0.479,B
+B5,Dysautonomia,727,0.834,54,45,0.794,0.611,B
+B6,Neurological,611,0.855974,69,45.664484,0.848414,0.736286,B
+B7,Temperature dysregulation,708,0.836158,40,47.194915,0.762693,0.554049,B
+A0,Severe Cardio-respiratory and cognition,1125,0.795,44,47.3,0.773,0.549,A
+A1,Multisystem with high symptom burden,2126,0.83,60,46.7,0.811,0.636,A
+A2,Moderate Cardio-respiratory and cognition,321,0.791,35,45.9,0.747,0.485,A
+A3,Cardio-cognitive and sleep,498,0.791,46,46.3,0.773,0.594,A
+A4,Low symptom burden,850,0.714,28,47.7,0.719,0.48,A
+A5,Sleep disturbed and low temperature burden,889,0.721,37,47.1,0.735,0.53,A
+C0,"Temperature  dysregulation, sleep disturbance,  and cognition",656,0.794,40,45.2,0.758,0.595,C
+C1,High symptom burden with sensory features,178,0.848,101,44,0.897,0.818,C
+C2,Speech and cognition with more symptoms per person,399,0.769,56,45.7,0.811,0.772,C
+C3,Low symptom burden,549,0.745,27,47.9,0.71,0.416,C
+C4,Lowest symptom burden,389,0.64,11,47.6,0.667,0.394,C
+C5,Heart and breath,352,0.835,44,46.8,0.788,0.593,C
+C6,Speech with temperature and sleep difficulty,449,0.902,58,44.2,0.825,0.703,C
+C7,High symptom burden with speech focus ,544,0.881,78,45.8,0.854,0.757,C
+C8,Sleep difficulty,490,0.673,23,49.4,0.742,0.539,C
+C9,Strong sleepers,534,0.738,24,47.3,0.718,0.574,C
+C10,Insomnia plus,509,0.8,45,46.9,0.759,0.555,C
+C11,Speech and cognition with fewer symptoms per person,608,0.745,38,46.3,0.775,0.682,C
+C12,High burden with reduced cognitive/speech,374,0.813,63,45.3,0.822,0.675,C
