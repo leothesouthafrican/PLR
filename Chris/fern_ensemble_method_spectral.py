@@ -422,7 +422,7 @@ def build_cas_ensemble(partition, library, library_clusters=None, select_best=Tr
     return ensemble, ensemble_indices
 
 
-def impute_labels(cluster_assignment_dict, symptom_data, knn_impute=False, k=10):
+def impute_labels(cluster_assignment_dict, symptom_data, knn_impute=False, k=30):
     """
     Method to impute missing labels when patient labelling is incomplete (e.g. when subsampling for robustness
     or when hdbscan labels a patient as -1.)
@@ -448,7 +448,7 @@ def impute_labels(cluster_assignment_dict, symptom_data, knn_impute=False, k=10)
     if knn_impute:
         from sklearn.neighbors import KNeighborsClassifier
 
-        imputer = KNeighborsClassifier(n_neighbors=3)
+        imputer = KNeighborsClassifier(n_neighbors=k)
         imputer.fit(
             symptom_data.loc[cluster_assignment_dict.keys()],
             list(cluster_assignment_dict.values())
@@ -467,7 +467,7 @@ def impute_labels(cluster_assignment_dict, symptom_data, knn_impute=False, k=10)
     ]
 
 
-def create_imputed_labels(lib, symptom_data, knn_impute=False, k=10):
+def create_imputed_labels(lib, symptom_data, knn_impute=False, k=30):
     imputed_labels = []
 
     for i in range(len(lib)):
