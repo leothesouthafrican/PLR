@@ -70,7 +70,7 @@ class RandomizedSearch:
             params = self.choose_params()
             self.pipeline.set_params(**params)
 
-            self.results_['x_iters'].append(params)
+            # self.results_['x_iters'].append(params)
             all_scores = self.scorer(self.pipeline, _X, score='all')
             this_score = all_scores[self.scoring]
 
@@ -79,11 +79,12 @@ class RandomizedSearch:
             ):
                 self.results_['fun'] = this_score
                 self.results_['x'] = params
-                self.results_['symptom_sample'] = list(symptom_sample.columns)
-                if self.bootstrap:
-                    self.results_['bootstrap_sample_index'] = list(bootstrap_sample.index)
-                elif self.patient_frac < 1.0:
-                    self.results_['patient_sample_index'] = list(patient_sample.index)
+
+            self.results_['symptom_sample'] = list(symptom_sample.columns)
+            if self.bootstrap:
+                self.results_['bootstrap_sample_index'] = list(bootstrap_sample.index)
+            elif self.patient_frac < 1.0:
+                self.results_['patient_sample_index'] = list(patient_sample.index)
 
             callback(self.results_, params, all_scores)
 
