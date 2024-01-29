@@ -30,7 +30,7 @@ SEARCH_TYPE = 'randomized_search'  # we want random parameterisations for divers
 if CLUSTERING_ALGO == 'kmeans':
     SAMPLE_SIZE = 500  # number of sample to take from each pipeline to build library
     #RUN_IDS_TO_INCLUDE = [1]  # using only UMAP+kmeans
-    RUN_IDS_TO_INCLUDE = [22]  # using only UMAP+kmeans
+    RUN_IDS_TO_INCLUDE = [21]  # using only UMAP+kmeans
 # elif CLUSTERING_ALGO == 'hdbscan':
 #     SAMPLE_SIZE = 15  # number of sample to take from each pipeline to build library
 #     RUN_IDS_TO_INCLUDE = [3, 4, 7, 8]  # we will reproduce using only kmeans (and including p-umap)
@@ -142,11 +142,11 @@ run_metadata = {
         },
         21: {
             'run_path': 'rusty-chris/tune_shallow_clustering/runs/lo5r07or',
-            'results_path': 'results/umap_kmeans_silhouette_False_1.0_0.8_run_43/all_results.pickle'
+            'results_path': 'results/umap_kmeans_silhouette_False_1.0_0.8_run_44/all_results.pickle'
         },
         22: {
             'run_path': 'rusty-chris/tune_shallow_clustering/tv9hnbnn',
-            'results_path': 'results/umap_kmeans_silhouette_False_0.8_0.8_run_43/all_results.pickle'
+            'results_path': 'results/umap_kmeans_silhouette_False_0.8_0.8_run_44/all_results.pickle'
         }
     }
 }
