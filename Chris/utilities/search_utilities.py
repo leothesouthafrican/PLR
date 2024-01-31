@@ -71,6 +71,7 @@ class RandomizedSearch:
             self.pipeline.set_params(**params)
 
             # self.results_['x_iters'].append(params)
+            self.results_['x_iters'].append(i)
             all_scores = self.scorer(self.pipeline, _X, score='all')
             this_score = all_scores[self.scoring]
 
