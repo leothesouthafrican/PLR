@@ -291,7 +291,7 @@ run_configs = {
         'bootstrap': True
     },
     21: {
-        'run_id': 42,
+        'run_id': 44,
         'random_seed': None,
         'dim_reducer': 'umap',
         'clustering_algo': 'kmeans',
@@ -304,7 +304,7 @@ run_configs = {
         'patient_frac': 0.8
     },
     22: {
-        'run_id': 42,
+        'run_id': 44,
         'random_seed': None,
         'dim_reducer': 'umap',
         'clustering_algo': 'kmeans',
