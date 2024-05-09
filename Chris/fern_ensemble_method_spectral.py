@@ -22,14 +22,15 @@ from utilities import run_configs, load_symptom_data, modularity, clustering_sim
 ENSEMBLE_SELECTION_ID = int(sys.argv[1])
 CLUSTERING_ALGO = str(sys.argv[2])
 
-ENSEMBLE_SIZE = 20
+ENSEMBLE_SIZE = 50
 LIBRARY_N_CLUSTER = 5
 N_REPEATS = 10
 SEARCH_TYPE = 'randomized_search'  # we want random parameterisations for diversity.
 
 if CLUSTERING_ALGO == 'kmeans':
     SAMPLE_SIZE = 500  # number of sample to take from each pipeline to build library
-    RUN_IDS_TO_INCLUDE = [1]  # using only UMAP+kmeans
+    #RUN_IDS_TO_INCLUDE = [1]  # using only UMAP+kmeans
+    RUN_IDS_TO_INCLUDE = [21]  # using only UMAP+kmeans
 # elif CLUSTERING_ALGO == 'hdbscan':
 #     SAMPLE_SIZE = 15  # number of sample to take from each pipeline to build library
 #     RUN_IDS_TO_INCLUDE = [3, 4, 7, 8]  # we will reproduce using only kmeans (and including p-umap)
@@ -41,6 +42,8 @@ if CLUSTERING_ALGO == 'kmeans':
 NMI_SCORE = 'mi'  # arg to pass to clustering_similarity method to use partial NMI (ignoring -1 labels from hdbscan)
 BASE_SEED = 0  # random seed for base results
 ENSEMBLE_SELECTION_METHODS = ['JC', 'CAS']
+KNN_IMPUTE = True # if imputing missing labels, use knn classifier or just fill with -1
+IMPUTE_FOR_RUN_IDS = [21, 22]
 ALPHA = 0.5  # JC objective weighting
 # Note: set IGNORE_LABEL to None for speed, unless in use:
 IGNORE_LABEL = None  # ignore noise in hdbscan when building co-association matrix and computing similarity scores.
@@ -139,11 +142,11 @@ run_metadata = {
         },
         21: {
             'run_path': 'rusty-chris/tune_shallow_clustering/runs/lo5r07or',
-            'results_path': 'results/umap_kmeans_silhouette_False_1.0_0.8_run_43/all_results.pickle'
+            'results_path': 'results/umap_kmeans_silhouette_False_1.0_0.8_run_44/all_results.pickle'
         },
         22: {
             'run_path': 'rusty-chris/tune_shallow_clustering/tv9hnbnn',
-            'results_path': 'results/umap_kmeans_silhouette_False_0.8_0.8_run_43/all_results.pickle'
+            'results_path': 'results/umap_kmeans_silhouette_False_0.8_0.8_run_44/all_results.pickle'
         }
     }
 }
@@ -192,7 +195,7 @@ def convert_age(age_string):
         '18-29': 24,
         '60-69': 65,
         '70-79': 75,
-        '80+': 85
+        '80+': 80
     }
     return conversion_diict[age_string]
 
@@ -418,6 +421,63 @@ def build_cas_ensemble(partition, library, library_clusters=None, select_best=Tr
 
     return ensemble, ensemble_indices
 
+
+def impute_labels(cluster_assignment_dict, symptom_data, knn_impute=False, k=30):
+    """
+    Method to impute missing labels when patient labelling is incomplete (e.g. when subsampling for robustness
+    or when hdbscan labels a patient as -1.)
+
+    Default behaviour is to just fill the missing labels with -1 (consistent with hdbscan).
+    The alternative, when knn_impute=True is to train a KNN-classifier and use it to predict the
+    missing labels.
+
+    Note:
+
+    Args:
+        cluster_assignment_dict (dict): an incomplete cluster assignment where keys
+                                        are the patient index from the original (symptom)
+                                        dataframe, and values are the cluster label for that
+                                        patient.
+
+        symptom_data (pandas.DataFrame): the original dataset with only symptom columns retained.
+
+        knn_impute (bool): flag, whether to use knn to impute missing labels or just fill with -1
+        k (int): number of neighbours for knn-impupter
+    """
+
+    if knn_impute:
+        from sklearn.neighbors import KNeighborsClassifier
+
+        imputer = KNeighborsClassifier(n_neighbors=k)
+        imputer.fit(
+            symptom_data.loc[cluster_assignment_dict.keys()],
+            list(cluster_assignment_dict.values())
+        )
+
+        def impute(patient_symptom_data, imputer=imputer):
+            return int(imputer.predict(patient_symptom_data))
+
+    else:
+        def impute(patient_symptom_data):
+            return -1
+
+    return [
+        cluster_assignment_dict.get(i, impute(symptom_data.loc[i].to_numpy().reshape(1, -1)))
+        for i in symptom_data.index
+    ]
+
+
+def create_imputed_labels(lib, symptom_data, knn_impute=False, k=30):
+    imputed_labels = []
+
+    for i in range(len(lib)):
+        cluster_assignment_dict = dict(zip(
+            library.iloc[i].patient_sample_index, library.iloc[i].labels
+        ))
+        imputed_labels.append(impute_labels(cluster_assignment_dict, symptom_data, knn_impute, k))
+
+    return imputed_labels
+
 ensemble_outputs = {}
 
 for r in range(N_REPEATS):
@@ -437,13 +497,16 @@ for r in range(N_REPEATS):
         }
 
     library = all_results[RUN_IDS_TO_INCLUDE[0]]
-    for run_id in RUN_IDS_TO_INCLUDE[1:]:
-        library = pd.concat(
-            [library, all_results[run_id]], ignore_index=True
-        )
+    if RUN_IDS_TO_INCLUDE[0] in IMPUTE_FOR_RUN_IDS:
+        library['labels'] = create_imputed_labels(library, symptom_data, knn_impute=KNN_IMPUTE)
 
-    ## TODO: insert code here to handle incomplete libraries
-    ## Note: this could be knn-imputation, but in the first instance we will try -1
+    for run_id in RUN_IDS_TO_INCLUDE[1:]:
+        add_lib = all_results[run_id].copy()
+        if run_id in IMPUTE_FOR_RUN_IDS:
+            add_lib['labels'] = create_imputed_labels(add_lib, symptom_data, knn_impute=KNN_IMPUTE)
+        library = pd.concat(
+            [library, add_lib], ignore_index=True
+        )
 
     library_co_association_matrix = ensemble_to_co_association(library)
     library_linkage_matrix = similarity_to_linkage(library_co_association_matrix)
@@ -462,7 +525,7 @@ for r in range(N_REPEATS):
 
     final_co_association_matrix = ensemble_to_co_association(ensemble)
     final_clusters = [
-        SpectralClustering(nc, affinity='precomputed', n_init=100, random_state=BASE_SEED).fit(final_co_association_matrix).labels_        
+        SpectralClustering(nc+1, affinity='precomputed', n_init=100, random_state=BASE_SEED).fit(final_co_association_matrix).labels_        
         for nc in range(MAXCLUST)
     ]
 
