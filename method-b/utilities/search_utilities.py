@@ -1,5 +1,19 @@
+import pandas as pd
 import numpy as np
 from collections.abc import Iterable, Mapping
+
+
+def load_symptom_data(data_path):
+    df = pd.read_csv(data_path, index_col=0)
+    df = df.fillna(value=0)
+
+    symptoms = [
+        col
+        for col in df.columns
+        if 'Symptom' in col
+    ]
+    return df[symptoms]
+
 
 class RandomizedSearch:
     """
