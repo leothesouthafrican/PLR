@@ -1,6 +1,9 @@
-### Welcome to Chris's corner of the project!
+### Method B code: ensemble clustering
 
-In utilities you will find some helper functions that may be useful.
+Code is provided for reproducing the results "Clustering B".
 
-To set this up, you should run ```python build_utilities.py``` from inside the utilities directory. This will build the relevant networks and save them to disk for use in modularity calculations. You can see some examples of how to use the graph_utilities methods in networks.ipynb. 
+The main figures are produced in the notebook: `plotting_embeddings_and_comparng_clusterings.ipynb`
 
+Instructions on how to use the code to follow...
+
+Development code, including network analyses and Shap explainability has been remvoed and can now be found in the legacy branch (Chris-archival).
